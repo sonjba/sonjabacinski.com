@@ -311,28 +311,184 @@ section p + p {
 }
 
 /* ---------- Experience ---------- */
-.exp-date {
-  font-size: 0.75rem;
+.company-group {
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+/* Company Header */
+.company-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.company-logo {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  background: #1f2937;
+  color: white;
+  font-weight: 700;
+  font-size: 1.25rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.company-logo-green {
+  background: #10b981;
+}
+
+.company-header-info {
+  flex: 1;
+}
+
+.company-header-info h3 {
+  margin: 0;
+  font-size: 1.1rem;
   font-weight: 600;
+  color: var(--color-heading);
+}
+
+.company-header-info h3 a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.company-header-info h3 .arrow {
+  display: inline-block;
+  vertical-align: baseline;
+  transition: transform 0.2s ease;
+}
+
+.company-header-info h3 a:hover .arrow {
+  transform: translate(3px, -3px);
+}
+
+.company-duration {
+  font-size: 0.85rem;
+  color: var(--color-faint);
+  font-weight: 500;
+  margin: 0.25rem 0 0 0;
+}
+
+.company-timeline-dot {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: var(--color-bg);
+  border: 2.5px solid var(--color-heading);
+  margin-top: 0.25rem;
+}
+
+/* Company Roles Container */
+.company-roles {
+  position: relative;
+  margin-left: 2.25rem;
+}
+
+.company-roles::before {
+  content: "";
+  position: absolute;
+  left: -1.125rem;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--color-line);
+}
+
+/* Individual Role Item */
+.role-item {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.role-item:last-child {
+  margin-bottom: 0;
+}
+
+.role-timeline-dot {
+  flex-shrink: 0;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--color-line);
+  margin-top: 0.375rem;
+}
+
+.role-content {
+  flex: 1;
+  padding-bottom: 0.5rem;
+}
+
+.role-header {
+  margin-bottom: 0.75rem;
+}
+
+.role-header h4 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-heading);
+}
+
+.role-date {
+  font-size: 0.75rem;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--color-faint);
-  margin-top: 0.2rem;
-  white-space: nowrap;
+  margin: 0.25rem 0 0 0;
 }
 
-@media (min-width: 64rem) {
-  .exp-card {
-    display: grid;
-    grid-template-columns: 9rem 1fr;
-    gap: 1.5rem;
-  }
-}
-
-.exp-role {
-  font-size: 0.85rem;
+.role-location {
+  font-size: 0.8rem;
   color: var(--color-faint);
-  margin-top: 0.15rem !important;
+  margin: 0.15rem 0 0 0;
+}
+
+/* Role Bullets */
+.role-bullets {
+  list-style: none;
+  margin: 0.75rem 0;
+  padding: 0;
+}
+
+.role-bullets li {
+  margin-bottom: 0.5rem;
+  padding-left: 1.25rem;
+  position: relative;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.role-bullets li:last-child {
+  margin-bottom: 0;
+}
+
+.role-bullets li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--color-heading);
+  font-weight: 700;
+}
+
+/* Role Skills - Now using .tags style */
+.role-item .tags {
+  margin-top: 0.75rem;
 }
 
 /* ---------- Buttons ---------- */
@@ -390,10 +546,12 @@ section p + p {
   z-index: 1;
 }
 
+.btn .arrow,
 .cv-link .arrow {
   transition: transform 0.2s ease;
 }
 
+.btn:hover .arrow,
 .cv-link:hover .arrow {
   transform: translate(3px, -3px);
 }
