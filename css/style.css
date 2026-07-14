@@ -66,12 +66,15 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 2rem;
+  gap: 1rem;
   padding: 1rem 1.5rem;
+  flex-wrap: wrap;
 }
 
 @media (min-width: 64rem) {
   .header-container {
+    gap: 2rem;
+    flex-wrap: nowrap;
     padding: 1.5rem 6rem;
   }
 }
@@ -79,7 +82,13 @@ a {
 .main-content {
   max-width: var(--max-width);
   margin-inline: auto;
-  padding: 4rem 1.5rem 4rem;
+  padding: 2rem 1.25rem 4rem;
+}
+
+@media (min-width: 48rem) {
+  .main-content {
+    padding: 3rem 2rem 4rem;
+  }
 }
 
 @media (min-width: 64rem) {
@@ -106,12 +115,18 @@ a {
 }
 
 .identity h1 {
-  font-size: 1.15rem;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: -0.03em;
   color: var(--color-heading);
   line-height: 1.1;
   margin: 0;
+}
+
+@media (min-width: 48rem) {
+  .identity h1 {
+    font-size: 1.15rem;
+  }
 }
 
 .identity h1 a {
@@ -120,25 +135,29 @@ a {
 
 /* Top nav */
 .top-nav {
-  flex: 1;
+  order: 3;
+  width: 100%;
+  min-width: 100%;
 }
 
 .top-nav ul {
   list-style: none;
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
   margin: 0;
   padding: 0;
+  flex-wrap: wrap;
 }
 
 .top-nav a {
   text-decoration: none;
   text-transform: uppercase;
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
   color: var(--color-faint);
   transition: color 0.2s ease;
+  padding: 0.5rem 0.75rem;
 }
 
 .top-nav a:hover,
@@ -146,13 +165,54 @@ a {
   color: var(--color-heading);
 }
 
+@media (min-width: 48rem) {
+  .top-nav {
+    order: unset;
+    width: auto;
+    min-width: auto;
+    flex: 1;
+  }
+
+  .top-nav ul {
+    gap: 2rem;
+  }
+
+  .top-nav a {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    padding: 0;
+  }
+}
+
 /* Social icons */
 .social-links {
   display: flex;
-  gap: 1.25rem;
+  gap: 1rem;
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-links svg {
+  width: 20px;
+  height: 20px;
+}
+
+@media (min-width: 48rem) {
+  .social-links {
+    gap: 1.25rem;
+  }
+
+  .social-links svg {
+    width: 24px;
+    height: 24px;
+  }
 }
 
 .social-links a {
@@ -167,19 +227,30 @@ a {
 
 /* ---------- Sections ---------- */
 section {
-  margin-bottom: 6rem;
+  margin-bottom: 4rem;
   scroll-margin-top: 8rem;
+}
+
+@media (min-width: 48rem) {
+  section {
+    margin-bottom: 6rem;
+  }
 }
 
 @media (min-width: 64rem) {
   section {
     margin-bottom: 9rem;
-    scroll-margin-top: 8rem;
   }
 }
 
 section p + p {
-  margin-top: 1.25rem;
+  margin-top: 0.75rem;
+}
+
+@media (min-width: 48rem) {
+  section p + p {
+    margin-top: 1.25rem;
+  }
 }
 
 /* Section headings: sticky bar on mobile, hidden on desktop (nav labels them) */
@@ -187,16 +258,24 @@ section p + p {
   position: sticky;
   top: 0;
   z-index: 20;
-  margin: 0 -1.5rem 1.5rem;
-  padding: 1.25rem 1.5rem;
+  margin: 0 -1.25rem 1.25rem;
+  padding: 1rem 1.25rem;
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--color-heading);
+}
+
+@media (min-width: 48rem) {
+  .section-heading {
+    margin: 0 -2rem 1.5rem;
+    padding: 1.25rem 2rem;
+    font-size: 0.875rem;
+  }
 }
 
 @media (min-width: 64rem) {
@@ -216,9 +295,9 @@ section p + p {
 .skills {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.4rem;
   list-style: none;
-  margin-top: 1.5rem;
+  margin-top: 1.25rem;
   clear: both;
 }
 
@@ -226,10 +305,23 @@ section p + p {
 .tags li {
   background: var(--color-card-hover);
   color: var(--color-heading);
-  padding: 0.25rem 0.85rem;
+  padding: 0.25rem 0.7rem;
   border-radius: 999px;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 500;
+}
+
+@media (min-width: 48rem) {
+  .skills,
+  .tags {
+    gap: 0.5rem;
+  }
+
+  .skills li,
+  .tags li {
+    padding: 0.25rem 0.85rem;
+    font-size: 0.8rem;
+  }
 }
 
 /* ---------- Projects ---------- */
@@ -237,20 +329,36 @@ section p + p {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.75rem;
+}
+
+@media (min-width: 48rem) {
+  .project-list {
+    gap: 1rem;
+  }
 }
 
 .project-card {
   position: relative;
-  padding: 1.5rem;
+  padding: 1rem;
   border-radius: var(--radius);
   transition: background 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
 }
 
 .project-card h3 {
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--color-heading);
+}
+
+@media (min-width: 48rem) {
+  .project-card {
+    padding: 1.5rem;
+  }
+
+  .project-card h3 {
+    font-size: 1rem;
+  }
 }
 
 .project-card h3 a {
@@ -273,8 +381,15 @@ section p + p {
 }
 
 .project-card p {
-  margin-top: 0.5rem;
-  font-size: 0.925rem;
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+}
+
+@media (min-width: 48rem) {
+  .project-card p {
+    margin-top: 0.5rem;
+    font-size: 0.925rem;
+  }
 }
 
 .project-note {
@@ -312,24 +427,38 @@ section p + p {
 
 /* ---------- Experience ---------- */
 .company-group {
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   position: relative;
+}
+
+@media (min-width: 48rem) {
+  .company-group {
+    margin-bottom: 3rem;
+  }
 }
 
 /* Company Header */
 .company-header {
   display: flex;
   align-items: flex-start;
-  gap: 1.25rem;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1.5rem;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
   border-bottom: 1px solid var(--color-line);
+}
+
+@media (min-width: 48rem) {
+  .company-header {
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
 }
 
 .company-logo {
   flex-shrink: 0;
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -337,8 +466,16 @@ section p + p {
   background: #1f2937;
   color: white;
   font-weight: 700;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 48rem) {
+  .company-logo {
+    width: 48px;
+    height: 48px;
+    font-size: 1.25rem;
+  }
 }
 
 .company-logo-green {
@@ -351,9 +488,15 @@ section p + p {
 
 .company-header-info h3 {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   font-weight: 600;
   color: var(--color-heading);
+}
+
+@media (min-width: 48rem) {
+  .company-header-info h3 {
+    font-size: 1.1rem;
+  }
 }
 
 .company-header-info h3 a {
@@ -374,13 +517,20 @@ section p + p {
 }
 
 .company-duration {
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   color: var(--color-faint);
   font-weight: 500;
   margin: 0.25rem 0 0 0;
 }
 
+@media (min-width: 48rem) {
+  .company-duration {
+    font-size: 0.85rem;
+  }
+}
+
 .company-timeline-dot {
+  display: none;
   flex-shrink: 0;
   width: 1rem;
   height: 1rem;
@@ -390,13 +540,20 @@ section p + p {
   margin-top: 0.25rem;
 }
 
+@media (min-width: 48rem) {
+  .company-timeline-dot {
+    display: block;
+  }
+}
+
 /* Company Roles Container */
 .company-roles {
   position: relative;
-  margin-left: 2.25rem;
+  margin-left: 0;
 }
 
 .company-roles::before {
+  display: none;
   content: "";
   position: absolute;
   left: -1.125rem;
@@ -406,12 +563,29 @@ section p + p {
   background: var(--color-line);
 }
 
+@media (min-width: 48rem) {
+  .company-roles {
+    margin-left: 2.25rem;
+  }
+
+  .company-roles::before {
+    display: block;
+  }
+}
+
 /* Individual Role Item */
 .role-item {
   position: relative;
   display: flex;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 48rem) {
+  .role-item {
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
 }
 
 .role-item:last-child {
@@ -419,6 +593,7 @@ section p + p {
 }
 
 .role-timeline-dot {
+  display: none;
   flex-shrink: 0;
   width: 0.5rem;
   height: 0.5rem;
@@ -427,35 +602,71 @@ section p + p {
   margin-top: 0.375rem;
 }
 
+@media (min-width: 48rem) {
+  .role-timeline-dot {
+    display: block;
+  }
+}
+
 .role-content {
   flex: 1;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.3rem;
+}
+
+@media (min-width: 48rem) {
+  .role-content {
+    padding-bottom: 0.5rem;
+  }
 }
 
 .role-header {
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 48rem) {
+  .role-header {
+    margin-bottom: 0.75rem;
+  }
 }
 
 .role-header h4 {
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--color-heading);
 }
 
+@media (min-width: 48rem) {
+  .role-header h4 {
+    font-size: 0.95rem;
+  }
+}
+
 .role-date {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--color-faint);
-  margin: 0.25rem 0 0 0;
+  margin: 0.2rem 0 0 0;
 }
 
 .role-location {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: var(--color-faint);
-  margin: 0.15rem 0 0 0;
+  margin: 0.1rem 0 0 0;
+}
+
+@media (min-width: 48rem) {
+  .role-date {
+    font-size: 0.75rem;
+    margin: 0.25rem 0 0 0;
+  }
+
+  .role-location {
+    font-size: 0.8rem;
+    margin: 0.15rem 0 0 0;
+  }
 }
 
 /* Role Bullets */
@@ -466,12 +677,21 @@ section p + p {
 }
 
 .role-bullets li {
-  margin-bottom: 0.5rem;
-  padding-left: 1.25rem;
+  margin-bottom: 0.4rem;
+  padding-left: 1rem;
   position: relative;
-  font-size: 0.9rem;
-  line-height: 1.5;
+  font-size: 0.85rem;
+  line-height: 1.4;
   color: var(--color-text);
+}
+
+@media (min-width: 48rem) {
+  .role-bullets li {
+    margin-bottom: 0.5rem;
+    padding-left: 1.25rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
 }
 
 .role-bullets li:last-child {
@@ -498,19 +718,29 @@ section p + p {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  margin-top: 1.5rem;
-  padding: 0.9rem 2.25rem;
+  margin-top: 1rem;
+  padding: 0.75rem 1.75rem;
   border: 1px solid var(--color-heading);
   border-radius: 0;
   background: transparent;
   color: var(--color-heading);
   text-decoration: none;
   text-transform: uppercase;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 600;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.15em;
   overflow: hidden;
   transition: color 0.25s ease;
+}
+
+@media (min-width: 48rem) {
+  .btn,
+  .cv-link {
+    margin-top: 1.5rem;
+    padding: 0.9rem 2.25rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+  }
 }
 
 .cv-link {
