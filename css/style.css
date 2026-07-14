@@ -1,0 +1,416 @@
+/* ---------- Variables & reset ---------- */
+:root {
+  --color-bg: #ffffff;
+  --color-text: #424245;
+  --color-heading: #1d1d1f;
+  --color-faint: #6e6e73;
+  --color-accent: #1d1d1f;
+  --color-accent-tint: rgba(0, 0, 0, 0.05);
+  --color-card-hover: #f5f5f7;
+  --color-line: #d2d2d7;
+  --max-width: 80rem;
+  --radius: 8px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-heading);
+  color: var(--color-bg);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-heading);
+  outline-offset: 3px;
+}
+
+/* ---------- Layout ---------- */
+.top-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.header-container {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1rem 1.5rem;
+}
+
+@media (min-width: 64rem) {
+  .header-container {
+    padding: 1.5rem 6rem;
+  }
+}
+
+.main-content {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding: 4rem 1.5rem 4rem;
+}
+
+@media (min-width: 64rem) {
+  .main-content {
+    padding: 4rem 6rem;
+  }
+}
+
+/* ---------- Header ---------- */
+.identity {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  min-width: fit-content;
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+.identity h1 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--color-heading);
+  line-height: 1.1;
+  margin: 0;
+}
+
+.identity h1 a {
+  text-decoration: none;
+}
+
+/* Top nav */
+.top-nav {
+  flex: 1;
+}
+
+.top-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.top-nav a {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-faint);
+  transition: color 0.2s ease;
+}
+
+.top-nav a:hover,
+.top-nav a.active {
+  color: var(--color-heading);
+}
+
+/* Social icons */
+.social-links {
+  display: flex;
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.social-links a {
+  display: block;
+  color: var(--color-text);
+  transition: color 0.2s ease;
+}
+
+.social-links a:hover {
+  color: var(--color-heading);
+}
+
+/* ---------- Sections ---------- */
+section {
+  margin-bottom: 6rem;
+  scroll-margin-top: 8rem;
+}
+
+@media (min-width: 64rem) {
+  section {
+    margin-bottom: 9rem;
+    scroll-margin-top: 8rem;
+  }
+}
+
+section p + p {
+  margin-top: 1.25rem;
+}
+
+/* Section headings: sticky bar on mobile, hidden on desktop (nav labels them) */
+.section-heading {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  margin: 0 -1.5rem 1.5rem;
+  padding: 1.25rem 1.5rem;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-heading);
+}
+
+@media (min-width: 64rem) {
+  .section-heading {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+}
+
+/* ---------- About ---------- */
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  margin-top: 1.5rem;
+  clear: both;
+}
+
+.skills li,
+.tags li {
+  background: var(--color-card-hover);
+  color: var(--color-heading);
+  padding: 0.25rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* ---------- Projects ---------- */
+.project-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.project-card {
+  position: relative;
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  transition: background 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.project-card h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-heading);
+}
+
+.project-card h3 a {
+  text-decoration: none;
+}
+
+/* Make the whole card clickable when it has a link */
+.project-card h3 a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.project-card .arrow {
+  display: inline-block;
+  vertical-align: baseline;
+  margin-left: 0.25rem;
+  transition: transform 0.2s ease;
+}
+
+.project-card p {
+  margin-top: 0.5rem;
+  font-size: 0.925rem;
+}
+
+.project-note {
+  color: var(--color-faint);
+  font-size: 0.8rem !important;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+  margin-top: 1rem;
+}
+
+@media (min-width: 64rem) {
+  .project-card:hover {
+    background: var(--color-card-hover);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  }
+
+  .project-card:hover .arrow {
+    transform: translate(3px, -3px);
+  }
+
+  /* Dim sibling cards while one is hovered */
+  .project-list:hover .project-card {
+    opacity: 0.5;
+  }
+
+  .project-list:hover .project-card:hover {
+    opacity: 1;
+  }
+}
+
+/* ---------- Experience ---------- */
+.exp-date {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-faint);
+  margin-top: 0.2rem;
+  white-space: nowrap;
+}
+
+@media (min-width: 64rem) {
+  .exp-card {
+    display: grid;
+    grid-template-columns: 9rem 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.exp-role {
+  font-size: 0.85rem;
+  color: var(--color-faint);
+  margin-top: 0.15rem !important;
+}
+
+/* ---------- Buttons ---------- */
+.btn,
+.cv-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding: 0.9rem 2.25rem;
+  border: 1px solid var(--color-heading);
+  border-radius: 0;
+  background: transparent;
+  color: var(--color-heading);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  overflow: hidden;
+  transition: color 0.25s ease;
+}
+
+.cv-link {
+  margin-left: 1.5rem;
+}
+
+/* Sliding fill on hover */
+.btn::before,
+.cv-link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--color-heading);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+  z-index: 0;
+}
+
+.btn:hover::before,
+.cv-link:hover::before {
+  transform: scaleX(1);
+}
+
+.btn:hover,
+.cv-link:hover {
+  color: var(--color-bg);
+}
+
+.btn > *,
+.cv-link > * {
+  position: relative;
+  z-index: 1;
+}
+
+.cv-link .arrow {
+  transition: transform 0.2s ease;
+}
+
+.cv-link:hover .arrow {
+  transform: translate(3px, -3px);
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .spotlight {
+    display: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+}
