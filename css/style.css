@@ -794,3 +794,75 @@ a:hover .arrow {
     transition: none !important;
   }
 }
+
+/* ---------- 14. Mobile breathing room ----------
+   Applies below 48rem only — desktop layout unchanged. */
+
+@media (max-width: 47.99rem) {
+  /* More air between major sections, with a divider line */
+  section {
+    margin-bottom: 4rem;
+    padding-bottom: 4rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  section:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .hero {
+    margin-bottom: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  /* Section headings: centered, slightly larger, more space below */
+  .section-heading {
+    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .skills-groups {
+    gap: 1.75rem;
+  }
+
+  .education-item + .education-item {
+    margin-top: 2.75rem;
+    padding-top: 2.75rem;
+  }
+
+  /* Certifications: year above name, left-aligned and consistent */
+  .cert-list {
+    gap: 1.75rem;
+  }
+
+  .cert-list li {
+    display: flex;
+    flex-direction: column-reverse; /* year renders above the name */
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .cert-meta {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .company-group {
+    margin-bottom: 4rem;
+  }
+
+  .role-item {
+    margin-bottom: 2.75rem;
+  }
+
+  .project-list {
+    gap: 1.75rem;
+  }
+
+  .testimonial-quote {
+    margin-bottom: 1.75rem;
+  }
+}
