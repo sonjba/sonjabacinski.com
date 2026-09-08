@@ -21,9 +21,18 @@
   <header class="top-header">
     <div class="header-container">
       <div class="identity">
-        <img src="images/sonja.jpg" alt="Sonja Bacinski" class="avatar" width="48" height="48">
+        <a href="#top" aria-label="Sonja Bacinski - Home">
+          <img src="images/sonja.jpg" alt="Sonja Bacinski" class="avatar" width="44" height="44">
+        </a>
       </div>
-      <nav class="top-nav" aria-label="In-page navigation">
+
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="site-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="top-nav" id="site-nav" aria-label="In-page navigation">
         <ul>
           <li><a href="#about">About</a></li>
           <li><a href="#experience">Experience</a></li>
@@ -34,6 +43,7 @@
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
+
       <ul class="social-links">
         <li>
           <a href="https://github.com/sonjba" target="_blank" rel="noopener" aria-label="GitHub">
@@ -68,8 +78,14 @@
         </div>
 
         <ul class="hero-meta">
-          <li><span class="hero-meta-icon">📍</span> London</li>
-          <li><span class="hero-meta-icon">💼</span> Open to opportunities</li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            London
+          </li>
+          <li>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></svg>
+            Open to opportunities
+          </li>
         </ul>
 
         <div class="hero-actions">
