@@ -22,15 +22,15 @@
     <div class="header-container">
       <div class="identity">
         <img src="images/sonja.jpg" alt="Sonja Bacinski" class="avatar" width="48" height="48">
-        <div>
-          <h1><a href="#top">Sonja Bacinski</a></h1>
-        </div>
       </div>
       <nav class="top-nav" aria-label="In-page navigation">
         <ul>
-          <li><a href="#about" class="active">About</a></li>
+          <li><a href="#about">About</a></li>
           <li><a href="#experience">Experience</a></li>
           <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#certifications">Certifications</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -55,29 +55,55 @@
   </header>
 
   <main class="main-content">
+
+      <!-- Hero section -->
+      <section id="hero" aria-label="Introduction" class="hero">
+        <div class="hero-accent-bar">
+          <h1 class="hero-name">Sonja Bacinski</h1>
+          <h2 class="hero-headline">Finance Meets Software Engineering</h2>
+          <p class="hero-value-prop">
+            Building reliable data solutions at the intersection of finance and
+            software engineering.
+          </p>
+        </div>
+
+        <ul class="hero-meta">
+          <li><span class="hero-meta-icon">📍</span> London</li>
+          <li><span class="hero-meta-icon">💼</span> Open to opportunities</li>
+        </ul>
+
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-secondary"><span>View Projects</span></a>
+          <a href="Sonja-Bacinski-Resume.pdf" target="_blank" rel="noopener" class="btn btn-primary"><span>Download CV</span></a>
+          <a href="#contact" class="btn btn-secondary"><span>Contact</span></a>
+        </div>
+      </section>
       <!-- About -->
       <section id="about" aria-label="About me">
         <h2 class="section-heading">About</h2>
         <p>
-          I started in finance, a foundation degree in financial management and
-          hands-on work in accounts and reconciliation, before moving into
-          software. That combination is now the core of how I work: I understand
-          both the code that moves financial data and what the data means to the
-          business.
+          My career began in finance, where I completed a foundation degree 
+          in Financial Management and gained hands-on experience in accounts 
+          and reconciliation before moving into software engineering. 
+          That combination has become one of my greatest strengths. 
+          I understand both the code that moves financial data and the 
+          business context behind it.
         </p>
         <p>
-          For the past year and a half I was at Exaloan, a fintech connecting
-          institutional investors with loan originators, building production
-          Python systems: data pipelines, API integrations, and automated
-          reconciliation. I completed my BSc in Computing at Birkbeck, University
-          of London in 2026, my thesis on graph databases for financial lending
-          data was built in collaboration with Exaloan.
+          Over the past year and a half, I worked at Exaloan, a fintech 
+          connecting institutional investors with loan originators. 
+          There, I built production-grade Python systems, including data 
+          pipelines, API integrations, and automated reconciliation solutions. 
+          In 2026, I completed my BSc in Computing at Birkbeck, 
+          University of London. My thesis, focused on graph databases for 
+          financial lending data, was developed in collaboration with Exaloan.
         </p>
         <p>
-          I'm currently looking for integration, data engineering,
-          and automation-focused roles in financial services,
-          anywhere the problem is a messy, manual process or
-          multi-source financial data that needs to become clean, validated, and reliable.
+          I’m now looking for opportunities in integration, data engineering, 
+          and automation within financial services. I’m particularly interested 
+          in solving complex problems involving manual processes or fragmented
+           financial data, turning them into systems that are clean, 
+           validated and reliable.
         </p>
         <ul class="skills">
           <li>Python</li>
@@ -91,6 +117,26 @@
           <li>Git</li>
           <li>Process Automation</li>
         </ul>
+      </section>
+
+      <!-- What Colleagues Say -->
+      <section id="testimonials" aria-label="What colleagues say">
+        <h2 class="section-heading">What Colleagues Say</h2>
+        <blockquote class="testimonial">
+          <p class="testimonial-quote">
+            &ldquo;What stood out most was her growth. Over the year she took on more
+            ownership, sharpened her problem-solving, and steadily raised the
+            quality of her work. Her communication was a real strength
+            throughout&mdash;clear, proactive, and dependable.&rdquo;
+          </p>
+          <footer class="testimonial-attribution">
+            <span class="testimonial-name">Luca Andre Frignani</span>
+            <span class="testimonial-role">CEO &amp; Co-Founder, Exaloan</span>
+            <a href="https://www.linkedin.com/in/sonja-bacinski/" target="_blank" rel="noopener" class="testimonial-link">
+              View full recommendation on LinkedIn &rarr;
+            </a>
+          </footer>
+        </blockquote>
       </section>
 
       <!-- Experience -->
@@ -229,6 +275,7 @@
       <section id="projects" aria-label="Projects">
         <h2 class="section-heading">Projects</h2>
         <ul class="project-list">
+
           <li class="project-card">
             <h3>
               <a href="https://github.com/sonjba/fix-allocation-transformer" target="_blank" rel="noopener">
@@ -236,41 +283,52 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="arrow" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
               </a>
             </h3>
-            <p>A Python tool that parses FIX 4.4 AllocationInstruction messages,
-              the post-trade format used when block trades are split across client accounts,
-              and flattens them into clean CSV. Handles repeating-group reconstruction,
-              party resolution by role, validation, and idempotent de-duplication.
-              Built test-first on synthetic data with a full pytest suite.</p>
+            <p><strong>Challenge:</strong> FIX 4.4 AllocationInstruction messages, the post-trade
+              format used when block trades are split across client accounts, are dense,
+              repeating-group structures that are hard to validate or work with directly.</p>
+            <p><strong>Solution:</strong> Built a Python tool that parses these messages and flattens
+              them into clean CSV, handling repeating-group reconstruction, party resolution by role,
+              validation, and idempotent de-duplication. Built test-first on synthetic data with a
+              full pytest suite.</p>
             <ul class="tags">
               <li>Python</li>
               <li>FIX 4.4</li>
               <li>pytest</li>
             </ul>
           </li>
+
           <li class="project-card">
-            <h3>Email-Ingestion &amp; Reconciliation Pipeline</h3>
-            <p>An automated pipeline in production use at Exaloan, a fintech.
-              Investment-account statements arrive as email attachments in inconsistent
-              formats; the pipeline extracts and parses them with pandas and pdfplumber,
-              classifies each transaction, reconciles monthly cash balances, and files
-              everything into SharePoint via the Microsoft Graph API triggered by
-              AWS Lambda.</p>
-            <p class="project-note">In production · code private</p>
+            <h3>Email Ingestion &amp; Reconciliation Pipeline</h3>
+            <p><strong>Challenge:</strong> Investment-account statements arrived in different formats,
+              making reconciliation and filing a manual, time-consuming process.</p>
+            <p><strong>Solution:</strong> Built an automated Python pipeline that extracts and classifies
+              transactions, reconciles monthly cash balances, and files validated data to SharePoint via
+              the Microsoft Graph API. The pipeline is triggered by AWS Lambda and is used in production
+              at Exaloan.</p>
+            <p class="project-note">In production · Code private</p>
             <ul class="tags">
               <li>Python</li>
               <li>pandas</li>
               <li>pdfplumber</li>
-              <li>Microsoft Graph API</li>
               <li>AWS Lambda</li>
+              <li>Microsoft Graph API</li>
+              <li>SharePoint</li>
             </ul>
           </li>
+
           <li class="project-card">
-            <h3>Graph ETL Pipeline — BSc Thesis</h3>
-            <p>A 4,000+ line Python ETL pipeline that transforms loan-portfolio data
-              from NoSQL and Excel sources into a property graph in ArangoDB,
-              ~58,000 nodes and ~110,000 edges with zero orphan edges. Deterministic,
-              hash-keyed idempotent ingestion with schema-drift detection, validation,
-              and PII redaction. Built in collaboration with Exaloan.</p>
+            <h3>Graph ETL Pipeline | BSc Thesis</h3>
+            <p><strong>Challenge:</strong> In a lending ecosystem, loans, borrowers and investors are
+              heavily interconnected. Stored as an operational NoSQL document store, though, those
+              relationships aren't directly queryable, answering a "who's connected to what" question
+              means reconstructing it through repeated lookups instead of a single traversal.</p>
+            <p><strong>Solution:</strong> Worked with developers and finance stakeholders at Exaloan to
+              understand the underlying data and designed a graph schema that faithfully represented it,
+              then built a 4,000+ line Python ETL pipeline transforming the loan-portfolio data into a
+              property graph in ArangoDB (~58,000 nodes, ~110,000 edges, zero orphan edges), with
+              deterministic hash-keyed idempotent ingestion, schema-drift detection, validation, and PII
+              redaction. The thesis evaluates the graph as a derived analytical layer sitting alongside the
+              existing document store, rather than replacing it.</p>
             <p class="project-note">Code private (built with employer)</p>
             <ul class="tags">
               <li>Python</li>
@@ -278,21 +336,181 @@
               <li>ETL</li>
             </ul>
           </li>
+
           <li class="project-card">
             <h3>Invoice Automation System</h3>
-            <p>An Excel-based invoicing system for a family food-production business:
-              generates invoices, tracks invoice numbers, exports to PDF, and maintains
-              per-customer totals and payment tracking, consolidating 144 customers
-              from 73 separate invoice templates into one clean master register.</p>
+            <p><strong>Challenge:</strong> A family business managed 144 customers
+              across 73 separate invoice templates, making invoicing, tracking, and payment
+              reconciliation slow and error-prone.</p>
+            <p><strong>Solution:</strong> Built an Excel-based invoicing system that generates invoices,
+              tracks invoice numbers, exports to PDF, and maintains per-customer totals and payment
+              tracking, consolidating everything into one clean master register.</p>
             <p class="project-note">Private (family business)</p>
             <ul class="tags">
               <li>Excel</li>
               <li>Process Automation</li>
             </ul>
           </li>
+
         </ul>
       </section>
 
+      <!-- Skills -->
+      <section id="skills" aria-label="Skills">
+        <h2 class="section-heading">Skills</h2>
+        <div class="skills-groups">
+
+          <div class="skill-group">
+            <h3>Languages</h3>
+            <ul class="tags">
+              <li>Apex</li>
+              <li>JavaScript</li>
+              <li>Java</li>
+              <li>Python</li>
+              <li>SQL</li>
+            </ul>
+          </div>
+
+          <div class="skill-group">
+            <h3>Python Libraries</h3>
+            <ul class="tags">
+              <li>pandas</li>
+              <li>pdfplumber</li>
+              <li>openpyxl</li>
+              <li>python-arango</li>
+              <li>python-dotenv</li>
+              <li>MSAL</li>
+            </ul>
+          </div>
+
+          <div class="skill-group">
+            <h3>Web Development</h3>
+            <ul class="tags">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>React</li>
+            </ul>
+          </div>
+
+          <div class="skill-group">
+            <h3>Data Engineering</h3>
+            <ul class="tags">
+              <li>ETL</li>
+              <li>Data Pipelines</li>
+              <li>NoSQL</li>
+            </ul>
+          </div>
+
+          <div class="skill-group">
+            <h3>Databases</h3>
+            <ul class="tags">
+              <li>ArangoDB (NoSQL &amp; Graph)</li>
+              <li>Graph Data Modeling</li>
+              <li>SQLite</li>
+            </ul>
+          </div>
+
+          <div class="skill-group">
+            <h3>APIs &amp; Integrations</h3>
+            <ul class="tags">
+              <li>REST APIs &amp; OAuth2</li>
+              <li>Microsoft Graph API</li>
+              <li>SharePoint</li>
+              <li>FIX 4.4</li>
+            </ul>
+          </div>
+
+          <div class="skill-group">
+            <h3>Cloud, DevOps &amp; Testing</h3>
+            <ul class="tags">
+              <li>AWS Lambda</li>
+              <li>Git</li>
+              <li>pytest</li>
+            </ul>
+          </div>
+
+          <div class="skill-group">
+            <h3>Frontend &amp; Automation</h3>
+            <ul class="tags">
+              <li>React</li>
+              <li>Excel</li>
+              <li>Process Automation</li>
+            </ul>
+          </div>
+
+          <div class="skill-group">
+            <h3>CRM &amp; Business</h3>
+            <ul class="tags">
+              <li>Salesforce</li>
+              <li>Business Analysis</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Education -->
+      <section id="education" aria-label="Education">
+        <h2 class="section-heading">Education</h2>
+        <ul class="education-list">
+
+          <li class="education-item">
+            <h3>BSc Computing</h3>
+            <p class="education-meta">Birkbeck, University of London · Graduated 2026</p>
+            <p class="education-detail">
+              Thesis: <em>Transforming Loan-Related Financial Data from NoSQL Collections into a
+              Graph Model Using ArangoDB</em>, developed in collaboration with Exaloan. Attended the
+              Connected Data Conference to deepen understanding of graph data modelling in
+              financial systems.
+            </p>
+          </li>
+
+          <li class="education-item">
+            <h3>Foundation Degree in Computing</h3>
+            <p class="education-meta">Birkbeck, University of London · 2024</p>
+            <p class="education-detail">
+              Focused on web development, databases, and object-oriented programming
+              (Java, Python, PHP, SQL, HTML, CSS, JS). Thesis project,
+              <a href="https://github.com/sonjba/Salesforce-Quiz-App" target="_blank" rel="noopener">PATHFINDER</a>,
+              repurposed Salesforce as a learning platform, a data model of 9 custom objects with an
+              Experience Cloud student portal and an interactive quiz app built in Lightning Web
+              Components and Apex, featuring difficulty levels and progress tracking.
+            </p>
+          </li>
+
+          <li class="education-item">
+            <h3>Foundation Degree in Financial Management</h3>
+            <p class="education-meta">International Business Academy, Kolding, Denmark · 2018</p>
+            <p class="education-detail">
+              Coursework: Financial Methodology, Advanced Statistics, Financial Market and Advising,
+              and Financial Control. Thesis, <em>Transforming with Big Data</em>, written with fellow
+              student Brendan Hutchinson in collaboration with Aperian Global, a global cross-cultural
+              leadership consultancy. We identified that years of behavioural data from the firm's
+              cultural-training tools sat unused as a stored cost rather than a revenue driver, and
+              proposed turning it into a product: a phased plan using data mining and machine-learning
+              classification to surface patterns in that data and generate predictive sales-and-client
+              profiles, grounded in a full strategic and financial analysis of the business.
+            </p>
+          </li>
+
+        </ul>
+      </section>
+
+      <!-- Certifications & Training -->
+      <section id="certifications" aria-label="Certifications and training">
+        <h2 class="section-heading">Certifications &amp; Training</h2>
+        <ul class="cert-list">
+          <li>
+            <span class="cert-name">Connected Data Masterclass</span>
+            <span class="cert-meta">2025</span>
+          </li>
+          <li>
+            <span class="cert-name">Salesforce Pathfinder Programme | Administrator &amp; Developer Track</span>
+            <span class="cert-meta">2022</span>
+          </li>
+        </ul>
+      </section>
+      
       <!-- Contact -->
       <section id="contact" aria-label="Contact">
         <h2 class="section-heading">Contact</h2>
@@ -301,7 +519,16 @@
           in financial services, or you work in fintech and would
           like to connect, I'd be glad to hear from you.
         </p>
-        <a href="mailto:sonja.bacinski@live.com" class="btn"><span>Email me</span><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="arrow" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg></a>
+        <div class="contact-actions">
+          <a href="mailto:sonja.bacinski@live.com" class="btn">
+            <span>Email me</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="arrow" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/sonja-bacinski/" target="_blank" rel="noopener" class="btn btn-secondary">
+            <span>LinkedIn</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="arrow" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+          </a>
+        </div>
       </section>
 
   </main>
