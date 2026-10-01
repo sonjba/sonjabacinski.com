@@ -744,6 +744,10 @@ a:hover .arrow {
   max-width: 640px;
 }
 
+.education-detail + .education-link {
+  margin-top: 0.75rem;
+}
+
 .education-item + .education-item {
   margin-top: var(--s-4);
   padding-top: var(--s-4);
@@ -797,6 +801,275 @@ a:hover .arrow {
 
 /* ---------- 14. Mobile breathing room ----------
    Applies below 48rem only — desktop layout unchanged. */
+
+/* ---------- 15. Articles ---------- */
+.article-back {
+  display: inline-block;
+  margin-bottom: var(--s-4);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--faint);
+  text-decoration: none;
+}
+
+.article-back:hover {
+  color: var(--heading);
+}
+
+.article-back-bottom {
+  margin-top: var(--s-5);
+  margin-bottom: 0;
+}
+
+.article-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+
+.article-card {
+  position: relative;
+  padding: var(--s-3);
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+}
+
+.article-card h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--heading);
+}
+
+.article-card h2 a {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.article-card h2 a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.article-card-meta {
+  font-size: 0.8rem;
+  color: var(--faint);
+  margin-top: 0.3rem;
+}
+
+.article-card p:last-child {
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+}
+
+@media (min-width: 64rem) {
+  .article-card:hover {
+    background: var(--card);
+  }
+}
+
+.article {
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+.article-header {
+  margin-bottom: var(--s-4);
+  padding-bottom: var(--s-4);
+  border-bottom: 1px solid var(--line);
+}
+
+.article-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--faint);
+  margin-bottom: var(--s-2);
+}
+
+.article-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--heading);
+  line-height: 1.25;
+  margin-bottom: var(--s-2);
+}
+
+.article-dek {
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--heading);
+  margin-bottom: var(--s-2);
+}
+
+.article-meta {
+  font-size: 0.85rem;
+  color: var(--faint);
+}
+
+@media (min-width: 48rem) {
+  .article-title {
+    font-size: 2.25rem;
+  }
+}
+
+.article-body h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--heading);
+  margin: var(--s-5) 0 var(--s-3);
+}
+
+.article-body h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--heading);
+  margin: var(--s-4) 0 var(--s-2);
+}
+
+.article-body p {
+  margin-top: 1rem;
+}
+
+.article-body p:first-child {
+  margin-top: 0;
+}
+
+.article-body ul,
+.article-body ol {
+  margin: 0.75rem 0 1rem;
+  padding-left: 1.5rem;
+  list-style: disc;
+}
+
+.article-body ol {
+  list-style: decimal;
+}
+
+.article-body li {
+  margin-bottom: 0.2rem;
+  line-height: 1.6;
+}
+
+.article-body code {
+  background: var(--card);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 0.85em;
+}
+
+.article-body pre {
+  background: #1d1d1f;
+  color: #f5f5f7;
+  padding: var(--s-3);
+  border-radius: var(--radius);
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.article-body pre code {
+  background: none;
+  padding: 0;
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+.article-callout {
+  background: var(--card);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: var(--s-3);
+  margin: 1rem 0;
+}
+
+.article-callout p {
+  margin-top: 0;
+}
+
+.article-note {
+  font-size: 0.85rem;
+  color: var(--faint);
+  font-style: italic;
+}
+
+.article-references li {
+  font-size: 0.9rem;
+  color: var(--faint);
+}
+
+.article-diagram {
+  margin: 1.5rem 0;
+}
+
+.article-diagram svg {
+  width: 100%;
+  height: auto;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.article-diagram figcaption {
+  font-size: 0.85rem;
+  color: var(--faint);
+  margin-top: var(--s-2);
+}
+
+.diagram-col-header {
+  font-size: 15px;
+  fill: var(--faint);
+}
+
+.diagram-node {
+  fill: var(--card);
+  stroke: var(--line);
+  stroke-width: 1;
+}
+
+.diagram-node-title {
+  font-size: 17px;
+  font-weight: 700;
+  fill: var(--heading);
+}
+
+.diagram-node-sub {
+  font-size: 13px;
+  fill: var(--faint);
+}
+
+.diagram-arrow {
+  stroke: #a3a3a8;
+  stroke-width: 2;
+}
+
+.diagram-arrowhead {
+  fill: #a3a3a8;
+}
+
+.diagram-chip-graph {
+  fill: #e3f5ef;
+  stroke: #1f9d78;
+  stroke-width: 1;
+}
+
+.diagram-chip-text-graph {
+  font-size: 13px;
+  fill: #157a5b;
+}
+
+.diagram-chip-doc {
+  fill: #fbe9e6;
+  stroke: #d1573b;
+  stroke-width: 1;
+}
+
+.diagram-chip-text-doc {
+  font-size: 13px;
+  fill: #b8452b;
+}
 
 @media (max-width: 47.99rem) {
   /* More air between major sections, with a divider line */

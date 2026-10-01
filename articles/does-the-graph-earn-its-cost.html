@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A final-year project compared a graph database against a document store on the same lending data, asking the same six questions of both, to test what a graph actually buys you.">
+
+  <meta property="og:title" content="Does the Graph Earn Its Cost? — Sonja Bacinski">
+  <meta property="og:description" content="A final-year project compared a graph database against a document store on the same lending data, asking the same six questions of both, to test what a graph actually buys you.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://sonjabacinski.com/articles/does-the-graph-earn-its-cost.html">
+  <meta property="og:image" content="https://sonjabacinski.com/images/sonja.jpg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Does the Graph Earn Its Cost? — Sonja Bacinski">
+  <meta name="twitter:description" content="A final-year project compared a graph database against a document store on the same lending data, asking the same six questions of both, to test what a graph actually buys you.">
+  <meta name="twitter:image" content="https://sonjabacinski.com/images/sonja.jpg">
+
+  <title>Does the Graph Earn Its Cost? — Sonja Bacinski</title>
+  <link rel="icon" type="image/svg+xml" href="../images/sb-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header class="top-header">
+    <div class="header-container">
+      <div class="identity">
+        <a href="../index.html#top" aria-label="Sonja Bacinski - Home">
+          <img src="../images/sonja.jpg" alt="Sonja Bacinski" class="avatar" width="44" height="44">
+        </a>
+      </div>
+
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="site-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="top-nav" id="site-nav" aria-label="In-page navigation">
+        <ul>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#projects">Projects</a></li>
+          <li><a href="index.html" class="active">Articles</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#education">Education</a></li>
+          <li><a href="../index.html#certifications">Certifications</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social-links">
+        <li>
+          <a href="https://github.com/sonjba" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/sonja-bacinski/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href="mailto:sonja.bacinski@live.com" aria-label="Email">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <article class="article">
+
+      <a href="index.html" class="article-back">&larr; All articles</a>
+
+      <header class="article-header">
+        <p class="article-eyebrow">Data &amp; Graph Engineering</p>
+        <h1 class="article-title">Does the Graph Earn Its Cost?</h1>
+        <p class="article-dek">
+          In a sense, a graph is just a table of connections you could rebuild anywhere.
+          So I tried to test what a graph database actually buys you.
+        </p>
+        <p class="article-meta">Sonja Bacinski · 1 October 2026</p>
+      </header>
+
+      <div class="article-body">
+
+        <p>
+          A document model stores records as the main objects. A graph model also stores the
+          connections between them, as explicit links, called edges. Both can hold the same
+          information, so my question was what changes in practice when you store connections
+          and can query them directly. I tested it in my final-year project: I built a graph next to
+          an existing document store of real lending data, and asked the same six questions of
+          both.
+        </p>
+
+        <div class="article-callout">
+          <p>
+            <strong>The short version.</strong> For questions you already know how to ask, a
+            graph doesn't reveal information that wasn't already in your data. What changes is
+            where the work of connecting records happens: once, in a tested pipeline, instead of
+            again in every query. I think that's worth paying for when the same connecting logic
+            keeps being rebuilt across reports and tools, and not when a single document already
+            holds the answer.
+          </p>
+        </div>
+
+        <p>
+          In my comparison, five of the six document queries rebuilt the same ID by gluing two
+          fields together; the graph stored that link once.
+        </p>
+
+        <p>
+          What matters is whether connections are stored and checked, or rebuilt by every query.
+          A graph is one way to store them, and a relational database with declared foreign keys
+          gets much of the same benefit. The design worked for the questions I tested. I can
+          explain why it helps with consistent numbers and audits, but whether that's worth the
+          cost is a decision each company has to make based on its own needs.
+        </p>
+
+        <p>
+          Company data is also increasingly queried by AI tools, not only by people. Stored,
+          named links could matter for them too, and that's where this article ends, and my next
+          project starts.
+        </p>
+
+        <h2>1. The premise nobody states</h2>
+
+        <p>
+          Graph databases are often sold with the promise that they will reveal connections
+          hidden in your data. I believed that for a while, but then I realised the connections
+          weren't hidden anywhere. They were already in the data; the graph just stores them
+          differently. There is also a simpler promise: when connections have their own names,
+          questions about them become easier to ask. So that's the promise I wanted to test.
+          There are three main reasons people want a graph:
+        </p>
+
+        <ul>
+          <li><strong>Retrieval.</strong> Questions that follow connections, like what is linked to
+            what, through what, and how many steps apart, are easier to write when the links are
+            stored.</li>
+          <li><strong>Readability.</strong> Named links show how the data fits together, in a way
+            both people and programs can read. That matters more now that AI tools are asked
+            to query company data, because without named links they have to guess how records
+            connect. Section 6 comes back to this.</li>
+          <li><strong>Algorithms.</strong> These are methods that look at the whole network at
+            once, like finding groups, the most connected players, or patterns that repeat over
+            time. A follow-up article looks at one of these, temporal motifs.</li>
+        </ul>
+
+        <p>
+          Many of these algorithms work on the network as a matrix, a table marking which pairs
+          of records are connected. Some graph databases, like FalkorDB, store graphs that way
+          underneath.
+        </p>
+
+        <p>
+          That also shows something important. The same connections can live in documents,
+          relational tables, a matrix or a graph database, and moving them doesn't add or lose
+          any information. This stops being true once time matters, because a single matrix
+          can't say that A paid B before B paid C. For that you also need the dates, and section 5
+          comes back to this.
+        </p>
+
+        <p>
+          That's why I think the useful question is what you buy by moving the work of
+          connecting records, who pays for it, and when. I set out to show that the graph version
+          was better than the document version it came from, and ended up with a more useful
+          answer than the one I wanted.
+        </p>
+
+        <h2>2. Setting it up so the answer meant something</h2>
+
+        <p>
+          Comparing two data models is harder than it looks. If you put the document version in
+          one database and the graph version in another, you also change the query language
+          and how fluently you write each one. Once you time anything, you also change how
+          each database plans its queries. Any difference you find could come from any of those.
+        </p>
+
+        <p>
+          I was lucky here. I didn't choose ArangoDB for the experiment, and I didn't build the
+          document store either: both were already there, behind the commercial system my
+          data came from. My part was the graph side. I designed the model, built the pipeline
+          that loads it and the checks that verify it, and wrote the queries for both versions.
+          Because ArangoDB stores documents and graphs side by side and queries both with
+          AQL, I could build the graph alongside the existing documents from the same records
+          and compare the two in one language. That removes the problems above. I compared
+          the shape of the queries, not their speed, so the control that matters is the language: if
+          both sides use the same one, differences in structure can't come from syntax. Section
+          5 explains why performance is out of scope.
+        </p>
+
+        <p>
+          This has limits. AQL may not be the most natural language for either model. And my
+          six comparisons all had a fixed number of steps, because those were the questions I
+          was asking of this data. None needed shortest paths, or whether one thing connects to
+          another no matter how many steps away. That's my main point again: the question
+          decides what the model has to do well. It also means my result doesn't cover those
+          questions, and they're exactly where a graph may have a clearer advantage. Questions
+          like knock-on effects, where a problem at one party spreads to others connected to it,
+          could turn out to be that kind.
+        </p>
+
+        <p>
+          The two schemas were also built for different jobs. The document store takes in
+          records from several platforms that all name things differently and keeps working
+          when one of them changes, and it does that well. My graph was built to answer
+          questions about how a process connects. That means part of what I measured is the
+          difference in purpose, and this isn't a general claim about documents versus graphs.
+        </p>
+
+        <h2>3. How I decided what counted as "better"</h2>
+
+        <p>
+          I built the graph, and I wanted it to win, so I couldn't just pick the version that looked
+          better to me. Before comparing anything, I set three tests and used them on every pair
+          of queries:
+        </p>
+
+        <ul>
+          <li><strong>Simplicity:</strong> things you can count. How many query blocks there are,
+            how many collections the query uses, and how many joins or steps it needs. A step
+            means following one link from one record to the next.</li>
+          <li><strong>Clarity:</strong> can you tell what the query is for just by reading it, without a
+            comment explaining it?</li>
+          <li><strong>Easy to change:</strong> if the question changes a little, can you make a small
+            change, or do you have to rewrite the whole query?</li>
+        </ul>
+
+        <p>
+          These are my own tests, and they're still judgements, so I linked each one to
+          something I could point to in the query. They also line up with an established
+          standard: clarity and ease of change correspond to analysability and modifiability, two
+          parts of maintainability in the ISO/IEC 25010 software quality standard.
+        </p>
+
+        <p>
+          I also kept track of three tricks the document queries needed, because the
+          connections weren't stored:
+        </p>
+
+        <ul>
+          <li>gluing two text fields together to rebuild an ID</li>
+          <li>searching inside a list stored inside a record</li>
+          <li>connecting records by comparing names</li>
+        </ul>
+
+        <p>
+          Two of these have names in the relational world. Storing a list inside one field is what
+          Karwin (2010) calls Jaywalking, and leaving relationships undeclared is his Keyless
+          Entry.
+        </p>
+
+        <p>
+          I didn't count lines of code, because the number of lines depends on how the data is
+          stored, not on how hard the question is. A document that already holds everything
+          about a record takes one line to fetch. The graph stores the same details as separate
+          records, so the query needs a line for each one. A short query can simply mean the
+          data was kept in one place, so line counts would make the graph look worse even
+          where its query is the safer one.
+        </p>
+
+        <p>
+          Counting steps is fairer, but it still treats every step as equal, and section 4 explains
+          why that matters.
+        </p>
+
+        <h2>4. What I found: the work is conserved</h2>
+
+        <p>
+          I compared six pairs of queries. Each pair asked the same question twice, once of the
+          documents and once of the graph. The questions were of three kinds:
+        </p>
+
+        <ul>
+          <li><strong>Looking up one thing:</strong> for example, everything about one shipment.</li>
+          <li><strong>Following the whole path:</strong> for example, from the purchasing policy, through the
+            orders placed under its rules, to the shipment that delivered each one.</li>
+          <li><strong>Totals and breakdowns:</strong> for example, how much was spent with each supplier,
+            split by product, month and department.</li>
+        </ul>
+
+        <p>
+          The data came from a commercial system, so I can't show the real details. The
+          example below uses a made-up domain instead: a buyer, its suppliers, purchase
+          orders and shipments. The queries have the same shape as the real ones, but the
+          names and details are invented.
+        </p>
+
+        <p>
+          In the example, the buyer has one purchasing policy for its approved suppliers, with
+          one rule per supplier that sets that supplier's prices and terms. Every order is placed
+          with one supplier and has to follow that supplier's rule. Once the order is placed, it is
+          shipped.
+        </p>
+
+        <p>
+          In the graph, each of these is a record, and each link between them is stored once
+          with a name:
+        </p>
+
+        <ul>
+          <li>the policy has rules (<code>POLICY_HAS_RULE</code>)</li>
+          <li>each rule governs the orders placed under it (<code>RULE_GOVERNS_ORDER</code>)</li>
+          <li>each order is placed with a supplier (<code>ORDER_PLACED_WITH_SUPPLIER</code>)</li>
+          <li>each order is fulfilled by a shipment (<code>ORDER_FULFILLED_BY_SHIPMENT</code>)</li>
+        </ul>
+
+        <p>The documents don't store these links, so every query has to recompute them.</p>
+
+        <p>
+          Here is one of the path questions, written both ways: for a given purchasing policy,
+          which fulfilled orders were placed under it, which rule covered each order's supplier,
+          and which shipment delivered each order?
+        </p>
+
+        <figure class="article-diagram">
+          <svg viewBox="0 0 760 800" role="img" aria-labelledby="path-diagram-title path-diagram-desc" xmlns="http://www.w3.org/2000/svg">
+            <title id="path-diagram-title">The path of one question, graph versus documents</title>
+            <desc id="path-diagram-desc">
+              A four-step path from purchasing policy to rule to order to shipment. At each
+              step, the graph follows a stored, named link, while the documents rebuild the
+              same connection: searching a nested list, matching supplier names, and gluing
+              fields into an ID.
+            </desc>
+
+            <!-- column headers -->
+            <text x="140" y="24" text-anchor="middle" class="diagram-col-header">The path</text>
+            <text x="395" y="24" text-anchor="middle" class="diagram-col-header">Graph: stored link</text>
+            <text x="640" y="24" text-anchor="middle" class="diagram-col-header">Documents: rebuilt</text>
+
+            <!-- Purchasing policy -->
+            <g>
+              <rect x="20" y="45" width="240" height="72" rx="10" class="diagram-node"/>
+              <text x="140" y="76" text-anchor="middle" class="diagram-node-title">Purchasing policy</text>
+              <text x="140" y="98" text-anchor="middle" class="diagram-node-sub">The buyer's rules</text>
+            </g>
+
+            <!-- arrow 1 + chips -->
+            <line x1="140" y1="117" x2="140" y2="172" class="diagram-arrow"/>
+            <polygon points="140,178 133,164 147,164" class="diagram-arrowhead"/>
+            <rect x="290" y="126" width="210" height="44" rx="22" class="diagram-chip-graph"/>
+            <text x="395" y="153" text-anchor="middle" class="diagram-chip-text-graph">policy has rule</text>
+            <rect x="530" y="126" width="210" height="44" rx="22" class="diagram-chip-doc"/>
+            <text x="635" y="153" text-anchor="middle" class="diagram-chip-text-doc">search a nested list</text>
+
+            <!-- Rule -->
+            <g>
+              <rect x="20" y="184" width="240" height="72" rx="10" class="diagram-node"/>
+              <text x="140" y="215" text-anchor="middle" class="diagram-node-title">Rule</text>
+              <text x="140" y="237" text-anchor="middle" class="diagram-node-sub">For one supplier</text>
+            </g>
+
+            <!-- arrow 2 + chips -->
+            <line x1="140" y1="256" x2="140" y2="311" class="diagram-arrow"/>
+            <polygon points="140,317 133,303 147,303" class="diagram-arrowhead"/>
+            <rect x="290" y="265" width="210" height="44" rx="22" class="diagram-chip-graph"/>
+            <text x="395" y="292" text-anchor="middle" class="diagram-chip-text-graph">rule governs order</text>
+            <rect x="530" y="265" width="210" height="44" rx="22" class="diagram-chip-doc"/>
+            <text x="635" y="292" text-anchor="middle" class="diagram-chip-text-doc">match supplier names</text>
+
+            <!-- Order -->
+            <g>
+              <rect x="20" y="323" width="240" height="72" rx="10" class="diagram-node"/>
+              <text x="140" y="354" text-anchor="middle" class="diagram-node-title">Order</text>
+              <text x="140" y="376" text-anchor="middle" class="diagram-node-sub">Must follow its rule</text>
+            </g>
+
+            <!-- arrow 3 + chips -->
+            <line x1="140" y1="395" x2="140" y2="450" class="diagram-arrow"/>
+            <polygon points="140,456 133,442 147,442" class="diagram-arrowhead"/>
+            <rect x="290" y="404" width="210" height="44" rx="22" class="diagram-chip-graph"/>
+            <text x="395" y="431" text-anchor="middle" class="diagram-chip-text-graph">order fulfilled by shipment</text>
+            <rect x="530" y="404" width="210" height="44" rx="22" class="diagram-chip-doc"/>
+            <text x="635" y="431" text-anchor="middle" class="diagram-chip-text-doc">glue fields into an ID</text>
+
+            <!-- Shipment -->
+            <g>
+              <rect x="20" y="462" width="240" height="72" rx="10" class="diagram-node"/>
+              <text x="140" y="493" text-anchor="middle" class="diagram-node-title">Shipment</text>
+              <text x="140" y="515" text-anchor="middle" class="diagram-node-sub">Sent after the order</text>
+            </g>
+
+            <!-- arrow 4 (no chip) -->
+            <line x1="140" y1="534" x2="140" y2="589" class="diagram-arrow"/>
+            <polygon points="140,595 133,581 147,581" class="diagram-arrowhead"/>
+
+            <!-- Answer -->
+            <g>
+              <rect x="20" y="601" width="720" height="90" rx="10" class="diagram-node"/>
+              <text x="380" y="636" text-anchor="middle" class="diagram-node-title">Answer</text>
+              <text x="380" y="662" text-anchor="middle" class="diagram-node-sub">Each fulfilled order with its rule, supplier, shipment and delivery date</text>
+            </g>
+          </svg>
+          <figcaption>
+            The path of one question. At each link, the graph follows a stored, named link.
+            The documents rebuild it inside the query.
+          </figcaption>
+        </figure>
+
+        <h3>Document version</h3>
+        <pre><code>LET policy = DOCUMENT("policies", "P-4471")
+
+FOR order IN purchase_orders
+  FILTER order.policy == policy._key
+  FILTER order.status == "fulfilled"
+
+  LET rule = FIRST(
+    FOR r IN policy.rules
+      FILTER LOWER(r.supplier_name) == LOWER(order.supplier_name)
+      RETURN r
+  )
+  FILTER rule != null
+
+  LET shipment = DOCUMENT(
+    "shipments",
+    CONCAT(order.carrier_code, "_",
+           TO_STRING(order.carrier_consignment_id))
+  )
+  FILTER shipment != null
+
+  RETURN {
+    order: order._key,
+    supplier: order.supplier_name,
+    rule: rule.rule_ref,
+    shipment: shipment._key,
+    delivered_at: shipment.delivered_at
+  }</code></pre>
+
+        <p>In plain words:</p>
+        <ol>
+          <li>Begin with the policy record.</li>
+          <li>Identify all fulfilled orders referencing this policy.</li>
+          <li>For each order, locate the corresponding rule within the policy's rules list by
+            matching supplier names.</li>
+          <li>Construct the shipment's unique identifier by concatenating two specific fields
+            from the order.</li>
+          <li>Use this constructed ID to retrieve the associated shipment record.</li>
+        </ol>
+
+        <p>Three fragile things are happening here:</p>
+        <ul>
+          <li><strong>A manufactured key.</strong> The shipment's ID is built by gluing two fields
+            together, so the query depends on a naming convention that exists only in people's
+            heads. It also assumes each order has exactly one shipment, because one ID can
+            only find one document.</li>
+          <li><strong>A name match.</strong> The order is matched to its rule by comparing
+            supplier names in lowercase, so a trailing space or a renamed company breaks it
+            without any error.</li>
+          <li><strong>A nested-list filter.</strong> The rule lookup searches a list stored inside the
+            policy, so it depends on that list keeping the same shape across records from
+            different sources.</li>
+        </ul>
+
+        <h3>Graph version</h3>
+        <pre><code>LET policy = DOCUMENT("policy", "P-4471")
+
+FOR rule IN 1..1 OUTBOUND policy POLICY_HAS_RULE
+  FOR order IN 1..1 OUTBOUND rule RULE_GOVERNS_ORDER
+    FILTER order.status == "fulfilled"
+    FOR supplier IN 1..1 OUTBOUND order ORDER_PLACED_WITH_SUPPLIER
+      FOR shipment IN 1..1 OUTBOUND order ORDER_FULFILLED_BY_SHIPMENT
+        RETURN {
+          order: order._key,
+          supplier: supplier.name,
+          rule: rule.rule_ref,
+          shipment: shipment._key,
+          delivered_at: shipment.delivered_at
+        }</code></pre>
+
+        <p>
+          In plain words: the query starts from the same policy and follows its named links. It
+          goes to the policy's rules, then from each rule to the orders it governs (keeping only
+          fulfilled ones), then from each order to its supplier and its shipment.
+        </p>
+
+        <p>
+          There's no manufactured key, no name matching and no nested list, and the language
+          is the same in both. The work was done once, when the data was loaded, and the links
+          were built. That's what I mean by the work being conserved: the same logic still exists,
+          but it runs once in the pipeline, and every query reuses the result.
+        </p>
+
+        <p>
+          Most of that work went into one link, <code>RULE_GOVERNS_ORDER</code>. Building it
+          means doing the same supplier-name match the document query does. It also means
+          deciding, once, what happens when two rules name the same supplier. The document
+          query answers that with <code>FIRST()</code>, which silently takes whichever match
+          comes first, depending on the order the documents happen to be in. The pipeline has
+          to answer it explicitly, write the answer down and test it.
+        </p>
+
+        <h3>What the six pairs showed</h3>
+
+        <p>
+          Manufactured keys, nested-list filters and name matches all appeared only on the
+          document side. Five of the six document queries rebuilt an ID by gluing fields together,
+          and none of the graph queries did. A document store built for analysis could also store
+          those IDs when the data is loaded, but then it pays the same cost in its own pipeline,
+          which is my point.
+        </p>
+
+        <p>
+          The other two tricks aren't visible in the data itself. Nothing says that
+          <code>rules[].supplier_name</code> is supposed to match
+          <code>purchase_orders.supplier_name</code>. That knowledge lives in the head of the
+          analyst who wrote the query, and it leaves with them. An AI tool asked to query the
+          same documents would have to guess it too.
+        </p>
+
+        <p>
+          The two models also start in different places. Five of the six document queries had to
+          begin from an internal mapping record. This separate document links records to each
+          other, because that's where the storage makes the connection findable. Graph queries
+          start from the thing the question is about, such as the policy.
+        </p>
+
+        <p>
+          On the step counts from section 3, the graph actually did worse: in most pairs it took
+          more steps. What differed was the kind of step. Every graph step does the same
+          simple thing, following one named link to the next record, so you can read what the
+          query is for from the link names. The document versions mix lookups, status filters,
+          nested fields, manufactured keys and name matching.
+        </p>
+
+        <p>
+          Ease of change showed most clearly in a query that broke spending down four ways.
+          Adding a fifth way to the graph version would take one more link to follow and one
+          more entry in a list. In the document version, I'd have to find the right field in records
+          from different sources and check that they were named the same way.
+        </p>
+
+        <h3>What the pipeline costs</h3>
+
+        <p>
+          The moved work isn't free. I built the pipeline in four stages: extract, normalise, link,
+          load. I gave every record a fixed ID made from source fields that don't change, so the
+          same input always produces the same record. Rerunning the pipeline updates records
+          instead of duplicating them, and it rejects records without an ID. After loading, I ran
+          separate checks to confirm that every link points to existing records and that the main
+          chain the questions depend on has no breaks. Both checks came back clean.
+        </p>
+
+        <p>
+          The prototype has one weakness: when something looks wrong, it doesn't stop. It
+          keeps going. If two sources disagree, for example, one says an order was placed on 3
+          March, and the other says 4 March, it picks one and writes the conflict to a log. If a
+          link points to a record that doesn't exist, it skips that link instead of rejecting it. The
+          post-load checks would only notice the gap if it happened to be on a path they test. In
+          production, I'd make both of these stop the load, because quietly working around bad
+          data is exactly the problem this approach is meant to catch. So the pipeline has a real
+          cost. My argument is that it's cheaper to pay that cost once, in the pipeline, than again
+          in every query.
+        </p>
+
+        <p>
+          Storing links has one more benefit: you can ask questions about the link itself, like
+          which rule applied, whether it held on a given date, or how many steps separate two
+          records. In the document version there's nothing to ask, because the link only exists
+          while the query that builds it is running.
+        </p>
+
+        <h3>The pair that went against me</h3>
+
+        <p>
+          One comparison contradicted my thesis, and it's the one I'd want to see if I were
+          reading this. The question was "give me everything about one shipment". The
+          shipment document already holds its carrier, origin, destination, customs classification
+          and insurance, with its milestones in a nested list, so the document version is a single
+          fetch. The graph version needs a separate step for every detail that became its own
+          record, plus one for each of three event streams: planned milestones, status changes,
+          and tracking scans. For that question, it's worse in every way that matters.
+        </p>
+
+        <p>
+          I think that's a fact about my modelling choice more than about graphs. I built the
+          schema around a process, how an order moves from policy to rule to supplier to
+          shipment, so questions about the process became short, named paths. A question
+          about one thing's details isn't a process question, and the same split that made the
+          process easy to follow scatters one shipment's details across many steps. The
+          document version made the opposite choice: it kept the shipment together and left the
+          process implicit.
+        </p>
+
+        <p>
+          The split isn't pure cost, though. Pulling the three event streams out of the shipment is
+          what makes them queryable as separate series. So comparing what was planned with
+          what actually happened becomes a simple walk along links, instead of digging through
+          a nested list.
+        </p>
+
+        <p>
+          So the real boundary, I think, is between a model built around processes and a model
+          built around things, and the question you ask decides which one looks clumsy. That's
+          uncomfortable, because it means a comparison like mine partly compares two
+          modelling decisions, and not only two technologies. It's also the most useful thing I
+          learned: the model follows the question, and if you model around one kind of question,
+          expect to pay on another.
+        </p>
+
+        <h2>5. Why moving it is worth paying for</h2>
+
+        <p>
+          If the logic is conserved, why move it at all? This is the part that answers the business
+          question.
+        </p>
+
+        <p>
+          Logic that gets rebuilt in every query gets rebuilt slightly differently each time. In my
+          six document queries, the same ID-building logic appears five times. My copies match
+          because I wrote them all, so the drift below is how it usually happens, not something I
+          measured.
+        </p>
+
+        <p>
+          In a typical company, the same logic also ends up in a dashboard, a monthly report, a
+          reconciliation script written in a hurry, and an Excel file that was meant to be
+          temporary. Those are four versions, written by different people at different times, and
+          nothing in the system knows they're supposed to agree. When a source changes a
+          field, or someone handles a missing value differently, they drift apart, and months later
+          two numbers disagree in a meeting. Keeping it in one pipeline means you write and test
+          the logic once, so it can only be wrong in one place. The benefit is control and audit.
+        </p>
+
+        <p>
+          I didn't compare speed. I had limited time, so I focused on these internal business
+          benefits. Speed matters when choosing a database, but it's a separate question and
+          would make a good project on its own. LDBC's FinBench, a benchmark built for
+          financial graph workloads such as anti-fraud, would be the place to start. A quick test
+          wouldn't have answered it anyway. Both versions sit in the same database, but my
+          dataset fit entirely in memory, where almost any query is fast. So the differences would
+          mostly be noise, and they wouldn't show how either version performs on a large
+          production system. I set this scope before running anything, and nothing here says the
+          graph is faster.
+        </p>
+
+        <p>
+          History matters too, especially in regulated lending. Regulators and auditors often ask
+          what was in force when a decision was made, or what state a loan was in on a given
+          date. When history is kept only as dates on records, answering that means rebuilding it
+          inside each report, and different reports can end up doing it slightly differently. When
+          each change is stored as its own record, linked to what it changed, the question
+          becomes a simple filter. Most of that benefit comes from storing changes as records,
+          which a history table can also do. The graph adds a named link from each change to
+          what it changed, which makes these questions easier to ask. That's a much smaller
+          claim than meeting any regulation, and it's the only one my evidence supports.
+        </p>
+
+        <p>
+          A temporal graph goes one step further, because time belongs to the whole graph. You
+          can ask for "the network as it was on a date" directly, without writing that query each
+          time. I didn't use one in this comparison, but Raphtory (Steer et al., 2024), which I used
+          in my thesis, supports this kind of view. My next project uses one from the start
+          (section 7).
+        </p>
+
+        <h2>6. What I'd tell someone deciding</h2>
+
+        <p>
+          I wouldn't migrate by default. Start by building a separate analytical layer next to the
+          document system of record (the main database the business treats as the official
+          record), fed by a pipeline. Let the document store keep the job it's good at: taking in
+          data from sources that all name things differently, and keeping each source's own
+          view of it. A full migration could make sense later, if most of the questions a business
+          asks turn out to be process questions, or if keeping the layer in step with its source
+          costs more than it saves. I didn't test a migration, so those are conditions to check,
+          not findings.
+        </p>
+
+        <p>I'd reach for the graph in two situations:</p>
+        <ul>
+          <li>when the same connecting logic keeps being rebuilt across many reports and
+            tools</li>
+          <li>when "what was true on this date?" is a regular requirement rather than an
+            occasional favour</li>
+        </ul>
+
+        <p>
+          Model it around the questions you actually intend to ask, because the modelling
+          decision does more work than the technology choice. Don't reach for a graph because
+          the diagram looks better, and don't expect a query to reveal anything. Everything a
+          graph query shows you was already there, unless you built the links yourself from your
+          own matching logic, and then it's also showing you that logic.
+        </p>
+
+        <p>
+          The same goes for choosing a method. Start by asking what you actually want to find
+          out, because each kind of question needs something different built:
+        </p>
+
+        <ul>
+          <li><strong>"How did this case unfold?"</strong> To follow one case from start to end,
+            break it down, or check what was true on a date, you need the whole process
+            modelled, with every kind of link. That's the graph in sections 4 and 5.</li>
+          <li><strong>"Does this pattern show up more than it should?"</strong> To find a few
+            events between two or three parties, close together in time, you don't need the
+            whole process. You need a clean list of the events: who did what to whom, and
+            when. That's what temporal motifs are for.</li>
+          <li><strong>"Where did the money go?"</strong> To follow money from one account over
+            many steps, you need the same list of events but a different method:
+            time-respecting paths, which follow a link only if it happened after the previous one.
+            Raphtory supports these too.</li>
+        </ul>
+
+        <h3>Why not just rebuild the network each time?</h3>
+
+        <p>
+          If a graph is just a matrix you can rebuild anywhere, why store it at all? You could build
+          the network from the documents with a script and run the analysis in a graph library.
+          At prototype scale, that works, and for algorithms it can be exactly the right choice. It's
+          how I ran one of my thesis analyses.
+        </p>
+
+        <p>
+          What matters is whether building the network is a lasting, tested piece of work or
+          something rebuilt for each analysis. A one-off export brings back the problem from
+          section 4, with the manufactured keys and name matches now living in Python scripts.
+          My own script is an example.
+        </p>
+
+        <p>A stored graph buys three things:</p>
+        <ul>
+          <li>the ability to ask new questions along links you've already built, without writing
+            new matching logic</li>
+          <li>checks on the data as it's written</li>
+          <li>one place where the meaning of each connection is defined</li>
+        </ul>
+
+        <p>I think those are worth something, but on their own they're not worth a migration.</p>
+
+        <p>
+          What I didn't evaluate is how often the question is asked and what a rebuild costs.
+          Building a network usually means reading all the data. If the question comes up once a
+          quarter for a report, that's fine. If it's asked hundreds of times a day, or sits behind
+          something a person is waiting for, rebuilding every time is a waste.
+        </p>
+
+        <p>
+          On the other side, a stored graph has to stay in step with its source, and one rebuilt
+          nightly from data that changes hourly is wrong in a different way. So it depends on how
+          often the question is asked, how expensive a rebuild is, and how fresh the answer has
+          to be. I measured none of those, so they belong in the decision next to the structural
+          argument.
+        </p>
+
+        <h3>Named links and AI tools</h3>
+
+        <p>
+          This is the readability reason from section 1. Named links are documentation a
+          program can read. Unwritten conventions, like the glued key or the name match
+          standing in for a join, have to be rediscovered by every analyst who touches the data. More and more, they also have to be
+          rediscovered by every AI tool asked to query it.
+        </p>
+
+        <p>
+          An AI tool can infer those conventions by spotting patterns, and it often will, confidently,
+          but it can't reliably tell you which parts of its answer were inferred. A graph query can
+          only follow connections that were built and checked when the data was loaded. That's
+          a narrower ability, and an easier one to audit.
+        </p>
+
+        <p>
+          This is strongest against a document store where connections are conventions. It's
+          much weaker against a relational database with declared foreign keys, or a semantic
+          layer that defines business terms for machines, because both can state the same
+          structural facts without a graph. My model also went beyond structure: it captured when
+          each change happened, and facts the pipeline derived from the data using rules, so you
+          could trace which rule applied and when. A relational database or a semantic layer can
+          store all of that too. What the graph adds is that these facts are connected to the
+          records they describe by named links.
+        </p>
+
+        <p>
+          That leaves a practical question. Most companies won't move their whole database
+          into a graph just so AI tools can read it more easily, and I wouldn't recommend it. But
+          the separate layer I recommend above, fed by a pipeline and kept next to the system of
+          record, might be enough. AI tools could read its named, checked links instead of
+          guessing from the raw documents. That only works if the layer itself can be trusted: it
+          has to record what happened and when, record how each fact was derived, and keep
+          checking itself against the source, so any answer can be verified rather than just
+          believed. I haven't tested whether that actually makes their answers more reliable.
+        </p>
+
+        <h2>7. What I'm building next</h2>
+
+        <p>
+          That question is where my next project starts. My thesis model already captured time and
+          rule-based facts, so this builds on it rather than starting over. I'm building it publicly, with synthetic
+          data for a made-up e-money firm: its own records, its bank statements and its
+          customer balances. The question is one UK payments firms must answer every
+          business day: do the funds we hold cover what we owe customers, and if not, why?
+          The data stays where it is, and a graph layer gives each connection a clear name and
+          meaning. Rules do the matching; an AI agent investigates what's left, explains each
+          break with evidence, and a person approves it. The principle is simple: rules for what you can state, machine
+          learning for what you can't, and a graph as the shared, checkable context for both. I
+          plan to use Python, store the records
+          in a document database like the system I studied, and use Raphtory for the graph layer
+          because it has time built in. The agent runs on an LLM that calls a small set of tested
+          tools rather than writing its own queries, so you can swap the model without changing
+          the design. Then I'll test whether the agent is more reliable and more traceable
+          working through the graph layer than from the raw data. Time is part of it from the start,
+          because every reconciliation is about what was true, and what was known, on a given
+          day.
+        </p>
+
+        <h2>8. The conclusion I can actually defend</h2>
+
+        <p>
+          I started this project wanting to show that the graph was better. What I can actually
+          defend is a smaller claim: the graph moved the work of connecting records into one
+          tested pipeline, without adding any information that wasn't already there. Whether that
+          pays off depends on how often a business rebuilds that logic, and how often it needs to
+          ask what was true on a past date.
+        </p>
+
+        <p>
+          The prototype ran on a narrow slice of one portfolio, so I hold these claims at three
+          levels of confidence. The design works for the questions I tested. The business case
+          looks promising but is untested. And I know what data would settle it: many investors
+          and originators, not one. A lot of technical writing quietly treats the first as if it proved
+          the second.
+        </p>
+
+        <p>
+          If there's one thing I'd want a reader to take away, it's that the question comes first. It
+          decided what my model had to do well, it decides which method fits, and a comparison
+          like mine is only as fair as the questions behind it.
+        </p>
+
+        <p>
+          So I finished with a better question than "should I use a graph?". Once connections
+          are explicit, checked and readable by machines, can an AI system use them more
+          reliably than it can rebuild them for itself? And can a graph layer next to the existing
+          database give it that, without moving everything? That's what I'm building next, with
+          reconciliation as the test case.
+        </p>
+
+        <p class="article-note">
+          A note on how I wrote this: the research, the graph model, the pipeline, the queries
+          and the analysis are my own work from my thesis. I used AI tools (Claude) to help edit
+          and restructure the text, and to check my summaries of the cited papers and the
+          Raphtory documentation.
+        </p>
+
+        <h2>References</h2>
+        <ul class="article-references">
+          <li>Steer, B. et al. (2024). Raphtory: The temporal graph engine for Rust and Python.
+            <em>Journal of Open Source Software</em>, 9(95), 5940.</li>
+          <li>Karwin, B. (2010). <em>SQL Antipatterns: Avoiding the Pitfalls of Database
+            Programming</em>. Pragmatic Bookshelf.</li>
+          <li>ISO/IEC 25010, <em>Systems and software quality models</em>.</li>
+        </ul>
+
+      </div>
+
+      <a href="index.html" class="article-back article-back-bottom">&larr; All articles</a>
+    </article>
+  </main>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
