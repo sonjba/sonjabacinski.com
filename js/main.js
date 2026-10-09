@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const back = document.createElement("a");
     back.className = "sidebar-back";
-    back.href = "../index.html";
+    back.href = "../";
     back.textContent = "← Homepage";
     nav.parentNode.insertBefore(back, nav);
   }
