@@ -50,6 +50,7 @@
       <div class="identity">
         <a href="../index.html#top" aria-label="Sonja Bacinski - Home">
           <img src="../images/sonja.jpg" alt="Sonja Bacinski" class="avatar" width="44" height="44">
+          <span class="identity-text"><strong>Sonja Bacinski</strong><span>Software developer</span></span>
         </a>
       </div>
 
@@ -61,13 +62,16 @@
 
       <nav class="top-nav" id="site-nav" aria-label="In-page navigation">
         <ul>
+          <li><a href="../index.html#top">Intro</a></li>
           <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#testimonials">Colleagues</a></li>
           <li><a href="../index.html#experience">Experience</a></li>
           <li><a href="../index.html#projects">Projects</a></li>
-          <li><a href="index.html" class="active">Articles</a></li>
+          <li><a href="../index.html#how-i-work">How I work</a></li>
+          <li><a href="index.html" class="active">Writing</a></li>
           <li><a href="../index.html#skills">Skills</a></li>
           <li><a href="../index.html#education">Education</a></li>
-          <li><a href="../index.html#certifications">Certifications</a></li>
+          <li><a href="../index.html#certifications">Awards</a></li>
           <li><a href="../index.html#contact">Contact</a></li>
         </ul>
       </nav>
@@ -139,15 +143,22 @@
 
         <p>
           The question I started with was: do the firm's closing balance and the bank's agree?
-          That's the purpose of a reconciliation. If the statements looked the same every month,
-          reconciliations wouldn't sound so terrible. But agreeing the closing balance isn't just
-          checking the final amount. It's checking every amount on both pages: joining one end to
-          the other, and making sense of every line on the way. That's the outcome.
+          That's the purpose of a reconciliation. I thought that was the question until I
+          realised a sum answers it. No graph needed.
         </p>
 
         <p>
-          So it isn't a question about a moment in time, like the balance on the last day of the
-          month. It's a question about process: how is a reconciliation actually done?
+          If the statements looked the same every month, reconciliations wouldn't sound so
+          terrible. But agreeing the closing balance isn't just checking the final amount, because
+          balances can agree by accident when two mistakes cancel out. It's checking every amount
+          on both pages: joining one end to the other, and making sense of every line on the way.
+          That's the outcome.
+        </p>
+
+        <p>
+          Every reconciliation is as at a date, and dates matter: a payment on the wrong side of
+          month-end is a break. But the question I needed wasn't about one moment. It was about
+          process: how is a reconciliation actually done?
         </p>
 
         <p>
@@ -170,7 +181,12 @@
         <p>
           When I answered the questions by hand, most answers were a walk through the records:
           from the bank line to our entry, to the portfolio, to the client who owns it, sometimes
-          five steps long. That walk is the logic of the reconciliation. Usually it lives in
+          five steps long. That's when it clicked for me. The nouns in the person's question
+          became the nodes, and the steps they took to answer it became the paths.
+        </p>
+
+        <p>
+          That walk is the logic of the reconciliation. Usually it lives in
           someone's head, or gets rebuilt with lookups in every month's spreadsheet. And every
           firm walks it a little differently, with matching rules nobody ever wrote down. That's
           why the logic has to come from the firm's own process, not from a template.
@@ -185,8 +201,8 @@
 
         <p>
           Knowing the tools widens the questions you can imagine, and the job decides which ones
-          are worth building. Experience is going round that loop many times, until you recognise
-          the shapes faster and start noticing new questions.
+          are worth building. Experience comes from going round that loop repeatedly, until you
+          start recognising the patterns and noticing new questions.
         </p>
 
         <h2>2. What kind of graph answers a process</h2>
@@ -266,7 +282,7 @@
           The bank's side holds what the bank sends: the monthly statement and every line on it.
           The firm's side holds what the firm records: its clients, their portfolios, the
           securities they hold, their trades, and every cash entry it books. The two sides meet at
-          the account, the one thing both of them describe.
+          the account: the bank's statement is for it, and the firm's entries are booked to it.
         </p>
 
         <div class="article-table-wrap">
@@ -321,28 +337,40 @@
         </p>
 
         <p>
+          When more than one entry fits, the walk decides. A line says
+          <code>FASTER PAYMENT NAIR P</code>, £5,000, and the firm booked two £5,000 entries two
+          days apart: Priya Nair's and the Hart Family Trust's. Follow each entry to its portfolio
+          and its client, and only one is called Nair. Liquet proposes that match, with the
+          reason the other entry was ruled out, and a person confirms it. A name is evidence, not
+          proof.
+        </p>
+
+        <p>
           When it doesn't, the question changes from "which entry is this?" to "why is it
-          different?", and the walk gets longer. A dividend arrives smaller than the firm
+          different?", and the walk gets longer. Sometimes there's no entry at all, like interest
+          the bank paid that the firm never booked. A dividend arrives smaller than the firm
           recorded: follow the entry to its security, and it's an overseas share, taxed before it
-          was paid. The fees the firm booked don't add up to what the bank took: follow the one
-          that's wrong to its portfolio and client, and you know whose money it is. Each answer is
-          stored as a finding, linked to the bank line it explains (<code>EXPLAINS_LINE</code>)
-          and to the firm's entries it explains (<code>EXPLAINS_MOVEMENT</code>). A person reads
-          it and approves it, or doesn't.
+          was paid. The fees the firm booked don't add up to what the bank took: check each one
+          against the fee schedule, follow the one that's off to its portfolio and client, and you
+          know whose money it is. Each answer is stored as a finding, linked to the bank line it
+          explains (<code>EXPLAINS_LINE</code>) and to the firm's entries it explains
+          (<code>EXPLAINS_MOVEMENT</code>). A person reads it and approves it, or doesn't: the
+          agent prepares, a person reviews, the same split auditors expect to see.
         </p>
 
         <p>
           When it isn't clear, Liquet says so. A difference isn't always a yes or a no; often it's
-          blurry. Two entries could fit, or the evidence points both ways. Then the finding gets
-          the verdict <em>non liquet</em>: it isn't clear, so a person decides.
+          blurry. Sometimes even the walk doesn't settle it: the evidence points both ways, or
+          nothing explains the difference yet. Then the finding gets the verdict <em>non liquet</em>: it isn't clear, so a person decides.
         </p>
 
         <p>
           Some open items explain themselves later. A share bought at the end of June is paid for
-          in July, so its finding stays open, and next month Liquet looks for it first. When the
-          payment turns up, a link joins the old finding to the line that cleared it
-          (<code>CLEARED_BY</code>). When it doesn't, the finding stays open and gets older until
-          a person acts.
+          in July, so its finding stays open, and next month Liquet looks for it first. The trade
+          already says when the cash should arrive, so the item isn't just open: it's expected on
+          a date. When the payment turns up, a link joins the old finding to the line that cleared
+          it (<code>CLEARED_BY</code>), which supports the explanation June could only propose. If
+          that date passes, it becomes a real break and gets older until a person acts.
         </p>
 
         <p>
@@ -361,7 +389,7 @@
 
         <p>
           This is where the design should pay off. Picture the person closing the month asking:
-          why doesn't this line match? In a spreadsheet, the answer is a yes or a no in a column.
+          why doesn't this line match? In a spreadsheet, the answer is a status and maybe a comment, cut off from the records that prove it.
           Here, the agent will be able to walk the same links the person would: from the line to
           the entries, to the portfolio, to the client, and to any finding already written about
           them.
@@ -383,17 +411,17 @@
 
         <p>
           A reconciliation gets faster when its patterns are shared, and findings are where the
-          patterns show. If the same question gets the same answer every month, like whether a
-          "CUSTODY FEE" line is a fee the firm forgot to record, the agent can propose it as a
-          rule. A person approves it and tests it like any other rule, and from then on it's
-          matched without the agent. That's how a firm's unwritten matching rules get written
-          down, one at a time.
+          patterns show. If the same question gets the same answer every month, like dividends
+          from one overseas share always arriving with tax already taken off, the agent can
+          propose it as a rule. A person approves it and tests it like any other rule, and from
+          then on it's matched without the agent. That's how a firm's unwritten matching rules get
+          written down, one at a time.
         </p>
 
         <p>
-          But only if it's how things normally work, like a trade agreed at month-end that
-          settles the next month. If the same mistake shows up every month, a rule would only
-          hide it, so it should be fixed where it starts.
+          But only if it's how things normally work. If the firm forgets to book the custody fee
+          every month, that's the same mistake repeating, and a rule would only hide it. The fix
+          is to start booking the fee.
         </p>
 
         <p>
@@ -410,6 +438,18 @@
           plain tables, scored on whether it finds the right explanation and says
           <em>non liquet</em> when it should. The data is small and synthetic, too: five
           portfolios, one account, one month and six planted differences.
+        </p>
+
+        <p>
+          Version 1 also runs once a month. If that cash is client money, monthly is the minimum
+          <a href="https://www.handbook.fca.org.uk/handbook/CASS/7/15.html" target="_blank" rel="noopener">UK rules</a>
+          allow for this check, and a firm whose client money moves every day should usually
+          reconcile every business day. Daily would be a bigger test.
+        </p>
+
+        <p>
+          I expect parts of this design to change once I build the matching rules, and the next
+          article will say which.
         </p>
 
         <p>If your questions are different, your graph may be too.</p>

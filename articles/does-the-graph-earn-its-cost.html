@@ -50,6 +50,7 @@
       <div class="identity">
         <a href="../index.html#top" aria-label="Sonja Bacinski - Home">
           <img src="../images/sonja.jpg" alt="Sonja Bacinski" class="avatar" width="44" height="44">
+          <span class="identity-text"><strong>Sonja Bacinski</strong><span>Software developer</span></span>
         </a>
       </div>
 
@@ -61,13 +62,16 @@
 
       <nav class="top-nav" id="site-nav" aria-label="In-page navigation">
         <ul>
+          <li><a href="../index.html#top">Intro</a></li>
           <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#testimonials">Colleagues</a></li>
           <li><a href="../index.html#experience">Experience</a></li>
           <li><a href="../index.html#projects">Projects</a></li>
-          <li><a href="index.html" class="active">Articles</a></li>
+          <li><a href="../index.html#how-i-work">How I work</a></li>
+          <li><a href="index.html" class="active">Writing</a></li>
           <li><a href="../index.html#skills">Skills</a></li>
           <li><a href="../index.html#education">Education</a></li>
-          <li><a href="../index.html#certifications">Certifications</a></li>
+          <li><a href="../index.html#certifications">Awards</a></li>
           <li><a href="../index.html#contact">Contact</a></li>
         </ul>
       </nav>
@@ -967,38 +971,29 @@ FOR rule IN 1..1 OUTBOUND policy POLICY_HAS_RULE
 
         <p>
           That question is where my next project starts. My thesis model already captured time
-          and rule-based facts, so this builds on it rather than starting over.
+          and rule-based facts, so this builds on it rather than starting over. I'm building
+          <a href="https://github.com/sonjba/Liquet" target="_blank" rel="noopener">Liquet</a> in
+          public, with synthetic data for a made-up wealth manager: its own cash records and its
+          custodian's monthly statement. The question is the one every finance team answers at
+          month-end: does our cash book agree with the bank, and if not, why?
         </p>
 
         <p>
-          The question it answers is an everyday one: why doesn't our cash book agree with the
-          bank statement this month? Every month, a business has to check its own records of its
-          bank account against the statement. Most of it matches; the rest has to be explained
-          by hand, which is slow and easy to get wrong. The records come from different places,
-          in different formats, and every answer has to be traceable, because an accountant or
-          auditor must be able to see why.
+          The records stay in a document database, like the system I studied, and a graph layer
+          gives each connection a clear name and meaning. Rules do the matching; an AI agent
+          investigates what's left, explains each difference with evidence, and a person approves
+          it. The principle is simple: rules for what you can state, an agent for what you can't,
+          and a graph as the shared, checkable context for both. The agent runs on an LLM that
+          calls a small set of tested tools rather than writing its own queries, so you can swap
+          the model without changing the design.
         </p>
 
         <p>
-          I'm building it publicly, with synthetic data. Rules match everything that agrees. A
-          graph layer connects each record to its match, its explanation and its history across
-          months. An AI agent investigates what's left, explains each difference with evidence
-          and suggests a correcting entry, and a person approves. The next month, the system
-          checks that timing differences actually cleared. The principle is simple: rules for
-          what you can state, the AI agent for what you can't, and a graph as the shared,
-          checkable context for both.
-        </p>
-
-        <p>
-          I plan to use Python and a document database like the system I studied. How to build
-          the graph layer is still open, and deciding that is the first research step. The agent
-          calls a small set of tested tools rather than writing its own queries, so the model
-          can be swapped without changing the design. It can't change records, every answer
-          comes with its evidence, and "I can't explain this" is an allowed answer. Then I'll
-          test whether it is more reliable and easier to trace working through the graph layer
-          than from the raw data, measured against differences planted in the synthetic data.
-          Time is part of it from the start, because every reconciliation is about what was
-          true, and what was known, on a given date.
+          Then I'll test whether the agent is more reliable and more traceable working through the
+          graph layer than from plain tables. Time is part of it from the start, because every
+          reconciliation is about what was true, and what was known, on a given day. My second
+          article, <a href="model-the-job-not-the-outcome.html">Model the Job, Not the Outcome</a>,
+          shows how I designed that graph.
         </p>
 
         <h2>9. The conclusion I can actually defend</h2>
