@@ -139,67 +139,19 @@
         <h2>1. The outcome is not the question</h2>
 
         <p>
-          The question I started with was: do the firm's closing balance and the bank's agree?
-          That's the purpose of a reconciliation. I thought that was the question until I
-          realised a sum answers it. No graph needed.
+          A reconciliation isn't a check that two closing balances agree. They can agree by accident, when two mistakes cancel each other out, and a payment on the wrong side of month-end is a break even when the totals look fine. The work is checking every amount on both sides, joining one end to the other and making sense of every line on the way.
         </p>
 
         <p>
-          If the statements looked the same every month, reconciliations wouldn't sound so
-          terrible. But agreeing the closing balance isn't just checking the final amount, because
-          balances can agree by accident when two mistakes cancel out. It's checking every amount
-          on both pages: joining one end to the other, and making sense of every line on the way.
-          That's the outcome.
+          But when you design a system for it, the easiest thing to model is the outcome: the two closing balances and whether they agree. That fits in a table, and a sum produces it. The work that gets you there doesn't, and that work is what I wanted Liquet to capture.
         </p>
 
         <p>
-          Every reconciliation is as at a date, and dates matter: a payment on the wrong side of
-          month-end is a break. But the question I needed wasn't about one moment. It was about
-          process: how is a reconciliation actually done?
+          The work is a sequence of questions the person closing the month asks. Which of our entries is this bank line? Why does this one differ? Whose money is it? Can I sign this off? A model can only show a process in as much detail as the questions you ask about it, so knowing what to ask is the core of the work.
         </p>
 
         <p>
-          The job is what the person closing the month does to get there, and it's a sequence of
-          questions. Which of our entries is this bank line? Why does this one differ? Whose money
-          is it? Can I sign this off? That's the process I wanted to capture, not the outcome.
-        </p>
-
-        <p>
-          A model can only show a process in as much detail as the questions you ask about it:
-          what happens, why, and how. So knowing what to ask is the core of the work.
-        </p>
-
-        <p>
-          But where do good questions come from? At first it felt like a circle. You rarely ask a
-          question you think can't be answered, and you can't search for a tool if you don't know
-          what to ask. It turned out to be a loop, and you can step in from either side.
-        </p>
-
-        <p>
-          When I answered the questions by hand, most answers were a walk through the records:
-          from the bank line to our entry, to the portfolio, to the client who owns it, sometimes
-          five steps long. That's when it clicked for me. The nouns in the person's question
-          became the nodes, and the steps they took to answer it became the paths.
-        </p>
-
-        <p>
-          That walk is the logic of the reconciliation. Usually it lives in
-          someone's head, or gets rebuilt with lookups in every month's spreadsheet. And every
-          firm walks it a little differently, with matching rules nobody ever wrote down. That's
-          why the logic has to come from the firm's own process, not from a template.
-        </p>
-
-        <p>
-          A graph stores those steps once, as named links between records. My first article showed
-          that the connections are there however you store the data. What the graph changes is
-          where the logic lives: the path the person follows is written into the data model, so
-          the system follows the same path. The rules and the arithmetic stay in code.
-        </p>
-
-        <p>
-          Knowing the tools widens the questions you can imagine, and the job decides which ones
-          are worth building. Experience comes from going round that loop repeatedly, until you
-          start recognising the patterns and noticing new questions.
+          Most of the answers are a walk through the records: from the bank line to our entry, to the portfolio, to the client who owns it. That walk is the logic of the reconciliation. Usually it lives in someone's head, or gets rebuilt with lookups in every month's spreadsheet. And every firm walks it a little differently, with matching rules nobody ever wrote down. That's why the logic has to come from the firm's own process, not from a template. So I followed the person closing June and wrote every question down.
         </p>
 
         <h2>2. What kind of graph answers a process</h2>
