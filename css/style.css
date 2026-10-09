@@ -1374,10 +1374,119 @@ a:hover .arrow {
   margin-bottom: var(--s-4);
 }
 
-/* Comfortable line length */
+/* One reading width for text blocks; grids (skills groups, project list) stay wide */
 section > p,
+section > ul.skills,
 .project-card p,
+.project-card .tags,
 .role-bullets li,
+.role-content .tags,
 .education-detail {
-  max-width: 70ch;
+  max-width: 62ch;
+}
+
+
+
+/* About: quiet side notes next to the text, wide screens only */
+.split-aside {
+  margin-top: var(--s-4);
+  font-size: 0.9rem;
+  color: var(--faint);
+}
+
+.split-aside h3 {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin: 0 0 0.35rem;
+}
+
+.split-aside p {
+  margin: 0 0 1.75rem;
+  line-height: 1.55;
+}
+
+.split-aside a {
+  color: var(--heading);
+}
+
+.split-main p,
+.split-main ul.skills {
+  max-width: 62ch;
+}
+
+@media (min-width: 75rem) {
+  .split {
+    display: grid;
+    grid-template-columns: minmax(0, 44rem) 14rem;
+    justify-content: space-between;
+    gap: var(--s-5);
+    align-items: start;
+  }
+
+  .split-aside {
+    margin-top: 0;
+    position: sticky;
+    top: 2rem;
+  }
+}
+
+/* Awards: year sits directly under the name */
+.cert-list li {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0.15rem;
+}
+
+.cert-meta {
+  font-size: 0.85rem;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* ---------- One type scale ----------
+   --text-size  : every reading paragraph, bullet and list line
+   --meta-size  : dates, locations, notes, tags and small captions
+   --item-title : titles of companies, projects, degrees and roles */
+:root {
+  --text-size: 1rem;
+  --meta-size: 0.85rem;
+  --item-title: 1.05rem;
+}
+
+body,
+.role-bullets li,
+.project-card p,
+.education-detail,
+.cert-name,
+.testimonial-quote,
+.split-main p {
+  font-size: var(--text-size);
+}
+
+.role-date,
+.role-location,
+.company-duration,
+.education-meta,
+.cert-meta,
+.testimonial-role,
+.testimonial-link,
+.tags li,
+.skills li,
+.split-aside {
+  font-size: var(--meta-size);
+}
+
+.project-note {
+  font-size: var(--meta-size) !important;
+}
+
+.company-header-info h3,
+.project-card h3,
+.education-item h3,
+.role-header h4 {
+  font-size: var(--item-title);
 }
