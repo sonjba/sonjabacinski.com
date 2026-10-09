@@ -1452,9 +1452,9 @@ section > ul.skills,
    --meta-size  : dates, locations, notes, tags and small captions
    --item-title : titles of companies, projects, degrees and roles */
 :root {
-  --text-size: 1rem;
-  --meta-size: 0.85rem;
-  --item-title: 1.05rem;
+  --text-size: 0.9375rem;
+  --meta-size: 0.8rem;
+  --item-title: 1rem;
 }
 
 body,
@@ -1489,4 +1489,92 @@ body,
 .education-item h3,
 .role-header h4 {
   font-size: var(--item-title);
+}
+
+/* ---------- Phone and tablet clean-up ---------- */
+@media (max-width: 74.99rem) {
+  .split-aside {
+    display: none; /* side notes need the wide layout */
+  }
+}
+
+@media (max-width: 47.99rem) {
+  section {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .hero {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .section-heading {
+    text-align: left;
+    font-size: 1.25rem;
+    letter-spacing: -0.01em;
+    text-transform: none;
+    margin-bottom: 1.25rem;
+  }
+
+  .role-bullets li,
+  .project-card p,
+  .education-detail,
+  .split-main p {
+    line-height: 1.6;
+  }
+
+  .company-group {
+    margin-bottom: 2.5rem;
+  }
+
+  .role-item {
+    margin-bottom: 2rem;
+  }
+
+  .education-item + .education-item {
+    margin-top: 1.75rem;
+    padding-top: 1.75rem;
+  }
+
+  .skills-groups {
+    gap: 1rem;
+  }
+
+  .project-list {
+    gap: 1.25rem;
+  }
+
+  .cert-list {
+    gap: 1.25rem;
+  }
+
+  .cert-list li {
+    flex-direction: column; /* name first, year under it */
+  }
+
+  .cert-meta {
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: var(--meta-size);
+  }
+
+  .hero-actions {
+    gap: 0.6rem;
+  }
+}
+
+.article-card p:last-child {
+  font-size: var(--text-size);
+}
+
+@media (max-width: 47.99rem) {
+  .project-card {
+    padding-inline: 0;
+  }
+
+  .article-card,
+  .skill-group {
+    padding: 1rem;
+  }
 }
