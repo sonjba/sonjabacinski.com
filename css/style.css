@@ -1763,10 +1763,6 @@ body,
   display: none;
 }
 
-details.project-more > summary {
-  display: none;
-}
-
 @media (max-width: 47.99rem) {
   /* side notes repeat the content on a phone */
   .split-aside {
@@ -1776,35 +1772,6 @@ details.project-more > summary {
   .project-summary {
     display: block;
     margin-top: 0.35rem;
-  }
-
-  details.project-more > summary {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    margin-top: 0.6rem;
-    font-size: var(--meta-size);
-    font-weight: 600;
-    color: var(--heading);
-    cursor: pointer;
-    list-style: none;
-  }
-
-  details.project-more > summary::-webkit-details-marker {
-    display: none;
-  }
-
-  details.project-more > summary::after {
-    content: "+";
-    font-weight: 500;
-  }
-
-  details.project-more[open] > summary::after {
-    content: "\2212";
-  }
-
-  details.project-more[open] > summary {
-    margin-bottom: 0.6rem;
   }
 
   section {
@@ -1840,59 +1807,135 @@ details.project-more > summary {
   }
 }
 
-/* Skills groups: always open on desktop, tap to open on phones */
-details.skill-group > summary {
-  list-style: none;
+
+
+/* ---------- Tap to open: project details and skill groups ---------- */
+.more-toggle {
+  display: none;
+}
+
+.skill-toggle {
+  all: unset;
+  display: block;
   cursor: default;
   pointer-events: none;
 }
 
-details.skill-group > summary::-webkit-details-marker {
-  display: none;
-}
-
-details.skill-group > summary h3 {
-  margin: 0;
-}
-
 @media (max-width: 47.99rem) {
-  details.skill-group > summary {
+  /* closed until tapped */
+  .project-more {
+    display: none;
+    position: relative;
+    z-index: 2; /* above the card's stretched link */
+  }
+
+  .project-card.is-open .project-more {
+    display: block;
+    margin-top: 1rem;
+  }
+
+  .skill-group .tags {
+    display: none;
+  }
+
+  .skill-group.is-open .tags {
+    display: flex;
+  }
+
+  /* big, clearly tappable bar */
+  .more-toggle {
+    position: relative;
+    z-index: 2; /* above the card's stretched link */
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
+    min-height: 48px;
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    font: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--heading);
+    text-align: left;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .skill-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 48px;
     cursor: pointer;
     pointer-events: auto;
+    color: inherit;
+    -webkit-tap-highlight-color: transparent;
   }
 
-  details.skill-group > summary::after {
-    content: "+";
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: var(--heading);
+  .more-toggle::after,
+  .skill-toggle::after {
+    content: "";
+    flex: none;
+    width: 0.55rem;
+    height: 0.55rem;
+    margin-left: 1rem;
+    border-right: 2px solid var(--heading);
+    border-bottom: 2px solid var(--heading);
+    transform: translateY(-2px) rotate(45deg);
+    transition: transform 0.2s ease;
   }
 
-  details.skill-group[open] > summary::after {
-    content: "\2212";
+  .project-card.is-open > .more-toggle::after,
+  .skill-group.is-open .skill-toggle::after {
+    transform: translateY(2px) rotate(-135deg);
   }
 
-  details.skill-group {
-    padding-block: 0.9rem;
+  .skill-group {
+    padding: 0 1rem;
   }
 
-  details.skill-group[open] > summary {
-    margin-bottom: 0.75rem;
+  .skill-group h3 {
+    margin: 0;
+    padding: 0;
+    border-bottom: 0;
+  }
+
+  .skill-group.is-open h3 {
+    margin-bottom: 0.25rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .skill-group.is-open .tags {
+    padding: 0.9rem 0 1.1rem;
   }
 }
 
+/* Experience roles: same tap-to-open as projects */
+.role-summary {
+  display: none;
+}
+
 @media (max-width: 47.99rem) {
-  details.skill-group:not([open]) > summary h3 {
-    border-bottom: 0;
-    margin-bottom: 0;
-    padding-bottom: 0;
+  .role-summary {
+    display: block;
+    margin-top: 0.4rem;
   }
 
-  details.skill-group[open] > summary h3 {
-    flex: 1;
-    margin-right: 0.75rem;
+  .role-more {
+    display: none;
+  }
+
+  .role-item.is-open .role-more {
+    display: block;
+  }
+
+  .role-item.is-open > .role-content > .more-toggle::after,
+  .role-item.is-open .more-toggle::after {
+    transform: translateY(2px) rotate(-135deg);
   }
 }

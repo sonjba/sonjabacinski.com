@@ -119,16 +119,14 @@ document.addEventListener("DOMContentLoaded", function () {
   update();
 });
 
-// Projects and skills: details are open on desktop, collapsed on phones
-document.addEventListener("DOMContentLoaded", function () {
-  const details = document.querySelectorAll("details.project-more, details.skill-group");
-  if (!details.length || !window.matchMedia) return;
-  const phone = window.matchMedia("(max-width: 47.99rem)");
-  function sync() {
-    details.forEach(function (d) { d.open = !phone.matches; });
-  }
-  sync();
-  if (phone.addEventListener) phone.addEventListener("change", sync);
+// Phones: project cards and skill groups open on tap (CSS keeps them closed until then)
+document.addEventListener("click", function (e) {
+  const btn = e.target.closest(".more-toggle, .skill-toggle");
+  if (!btn) return;
+  const box = btn.closest(".project-card, .skill-group, .role-item");
+  if (!box) return;
+  const open = box.classList.toggle("is-open");
+  btn.setAttribute("aria-expanded", open ? "true" : "false");
 });
 
 // Phones: a "Next" link at the end of each section

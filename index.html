@@ -219,7 +219,10 @@
                         <p class="role-location">London, England, United Kingdom · Remote</p>
                       </div>
                     </div>
-                    <ul class="role-bullets">
+                <p class="role-summary">Prototype that turns loan data into a graph in ArangoDB: about 58,000 nodes and 110,000 edges.</p>
+                <button type="button" class="more-toggle" aria-expanded="false">Details</button>
+                <div class="role-more">
+                <ul class="role-bullets">
                       <li>Designed and built a prototype pipeline that turns the company&rsquo;s loan-portfolio data, from its document store and Excel files, into a property graph in ArangoDB: about 58,000 nodes and 110,000 edges across 26 node types and 34 relationship types</li>
                       <li>Packaged it as an installable Python tool with a command line, including a dry run that transforms the data without loading it</li>
                       <li>Made every load safe to re-run: each record&rsquo;s key comes from source fields that don&rsquo;t change, so a second run updates records instead of duplicating them. Post-load checks found zero orphan edges</li>
@@ -227,6 +230,7 @@
                       <li>Worked with developers and finance colleagues to understand what the data meant before designing the schema</li>
                       <li>Compared the graph with the existing document store on six real questions, and ran a temporal-motif analysis in Raphtory. <a href="articles/does-the-graph-earn-its-cost.html">Read the article &rarr;</a></li>
                     </ul>
+                </div>
                     <ul class="tags">
                       <li>Python</li>
                       <li>ArangoDB</li>
@@ -247,7 +251,10 @@
                         <p class="role-location">London Area, United Kingdom · Remote</p>
                       </div>
                     </div>
-                    <ul class="role-bullets">
+                <p class="role-summary">Email-ingestion pipeline in production: files statements, classifies transactions and reconciles cash balances.</p>
+                <button type="button" class="more-toggle" aria-expanded="false">Details</button>
+                <div class="role-more">
+                <ul class="role-bullets">
                       <li>Built the application logic for an email-ingestion pipeline that went into production use, running on AWS Lambda in the team&rsquo;s existing CDK setup. It identifies who sent each statement, renames the file from its content and files it to SharePoint through the Microsoft Graph API (MSAL, OAuth2)</li>
                       <li>Parsed PDF and Excel statements with pdfplumber and pandas, finding tables by their headers rather than fixed positions, so partners&rsquo; layout changes didn&rsquo;t break it</li>
                       <li>Wrote the rules that classify every cash movement (investment, withdrawal, deposit, fee, commission), including refund detection that pairs withdrawals with re-investments and corrects misclassified records</li>
@@ -256,6 +263,7 @@
                       <li>Traced data-quality issues back to their source with the Germany-based team, and took part in code review in Git and Bitbucket</li>
                       <li>Also built React screens to view the processed data</li>
                     </ul>
+                </div>
                     <ul class="tags">
                       <li>Python</li>
                       <li>pandas</li>
@@ -296,10 +304,14 @@
                         <p class="role-location">London Area, United Kingdom · On-site</p>
                       </div>
                     </div>
-                    <ul class="role-bullets">
+                <p class="role-summary">Graduate programme and Salesforce implementations for enterprise clients.</p>
+                <button type="button" class="more-toggle" aria-expanded="false">Details</button>
+                <div class="role-more">
+                <ul class="role-bullets">
                       <li>Joined through Globant&rsquo;s graduate programme: training in business design, functional consulting and technical implementation</li>
                       <li>Contributed to Salesforce implementations for enterprise clients alongside senior consultants, using Apex, Lightning Web Components, Visualforce, SOQL and Flows, and wrote requirements documentation</li>
                     </ul>
+                </div>
                     <ul class="tags">
                       <li>Salesforce</li>
                       <li>Apex</li>
@@ -335,12 +347,16 @@
                         <p class="role-location">London, United Kingdom</p>
                       </div>
                     </div>
-                    <ul class="role-bullets">
+                <p class="role-summary">Co-founded an online shop for ethical and eco-friendly cosmetics.</p>
+                <button type="button" class="more-toggle" aria-expanded="false">Details</button>
+                <div class="role-more">
+                <ul class="role-bullets">
                       <li>Co-founded an online shop for carefully vetted, ethical and eco-friendly cosmetic brands, built on WordPress with Shopify</li>
                       <li>Did the market and financial analysis behind our strategy</li>
                       <li>Finalist in Birkbeck&rsquo;s Pioneer 1.0 programme, 2022. <a href="https://perspectives.blogs.bbk.ac.uk/2022/05/17/meet-the-finalists-pioneer-1-0-programme-2022/" target="_blank" rel="noopener">Meet the finalists &rarr;</a></li>
                       <li><a href="https://www.loom.com/share/b2bf8cbfeb1d4102bb80875776e701ab" target="_blank" rel="noopener">Watch the Zolibri video on Loom (July 2022) &rarr;</a></li>
                     </ul>
+                </div>
                     <ul class="tags">
                       <li>E-commerce</li>
                       <li>WordPress</li>
@@ -376,12 +392,16 @@
                         <p class="role-location">Kolding, Denmark</p>
                       </div>
                     </div>
-                    <ul class="role-bullets">
+                <p class="role-summary">Finance intern: receivables, bank reconciliations and vendor payments.</p>
+                <button type="button" class="more-toggle" aria-expanded="false">Details</button>
+                <div class="role-more">
+                <ul class="role-bullets">
                       <li>Supported the CFO across the full accounts-receivable cycle: invoicing, collections and customer files</li>
                       <li>Prepared the monthly bank reconciliations and journal entries, and the annual fixed-asset reconciliation</li>
                       <li>Kept vendor records, handled vendor payments, and prepared intercompany invoices and charges</li>
                       <li>First used Salesforce here, entering data into it</li>
                     </ul>
+                </div>
                     <ul class="tags">
                       <li>Reconciliation</li>
                       <li>Accounts receivable</li>
@@ -418,8 +438,8 @@
               <li class="project-card">
                 <h3>Email-Ingestion &amp; Reconciliation Pipeline</h3>
                 <p class="project-summary">Statement emails filed, classified and reconciled automatically. In production at Exaloan.</p>
-                <details class="project-more" open>
-                  <summary>Details</summary>
+                <button type="button" class="more-toggle" aria-expanded="false">Details</button>
+                <div class="project-more">
                 <p><strong>Challenge:</strong> Investment-account statements arrived by email as PDFs and
                     spreadsheets, each partner with its own layout. Someone had to download, rename, file,
                     read and check every one by hand.</p>
@@ -428,7 +448,7 @@
                     transaction and reconciles the monthly cash balance against the partner's own figures.
                     Anything it can't identify waits for a person instead of being guessed.</p>
                 
-                </details>
+                </div>
                 <p class="project-note">In production at Exaloan · Code private</p>
                 <ul class="tags">
                   <li>Python</li>
@@ -448,8 +468,8 @@
                   </a>
                 </h3>
                 <p class="project-summary">FIX 4.4 allocation messages flattened into one CSV row per account.</p>
-                <details class="project-more" open>
-                  <summary>Details</summary>
+                <button type="button" class="more-toggle" aria-expanded="false">Details</button>
+                <div class="project-more">
                 <p><strong>Challenge:</strong> When a broker splits a block trade across client accounts,
                     the split arrives as a FIX 4.4 AllocationInstruction: dense, nested repeating groups that
                     are hard to check or use directly.</p>
@@ -459,7 +479,7 @@
                     processed twice. Built test-first on synthetic data with pytest; gap analysis and a
                     command line are next.</p>
                 
-                </details>
+                </div>
                 <p class="project-note">Open source · In progress</p>
                 <ul class="tags">
                   <li>Python</li>
@@ -476,8 +496,8 @@
                   </a>
                 </h3>
                 <p class="project-summary">Month-end reconciliation: rules, an AI agent and a person signing off.</p>
-                <details class="project-more" open>
-                  <summary>Details</summary>
+                <button type="button" class="more-toggle" aria-expanded="false">Details</button>
+                <div class="project-more">
                 <p><strong>Challenge:</strong> Every month a firm checks its cash records against its bank
                     statement. Most lines match; the rest have to be explained by hand, and an auditor has to
                     be able to follow every decision.</p>
@@ -488,7 +508,7 @@
                     (totals, running balance, dates) and tests. Next: the matching rules.</p>
                   <p>Read the article: <a href="articles/model-the-job-not-the-outcome.html">Model the Job, Not the Outcome</a></p>
                 
-                </details>
+                </div>
                 <p class="project-note">Building in public · Open source · Synthetic data</p>
                 <ul class="tags">
                   <li>Python</li>
@@ -501,8 +521,8 @@
               <li class="project-card">
                 <h3>Graph ETL Pipeline | BSc Thesis</h3>
                 <p class="project-summary">Loan data loaded into ArangoDB as a graph: about 58,000 nodes and 110,000 edges.</p>
-                <details class="project-more" open>
-                  <summary>Details</summary>
+                <button type="button" class="more-toggle" aria-expanded="false">Details</button>
+                <div class="project-more">
                 <p><strong>Challenge:</strong> In a lending business, loans, borrowers and investors are
                     tightly connected, but a document store doesn't keep those connections directly
                     queryable. Asking "who is connected to what" means rebuilding the links through repeated
@@ -514,7 +534,7 @@
                     buys you, on six real questions.</p>
                   <p>Read the article: <a href="articles/does-the-graph-earn-its-cost.html">Does the Graph Earn Its Cost?</a></p>
                 
-                </details>
+                </div>
                 <p class="project-note">Prototype · Code private, built with my employer</p>
                 <ul class="tags">
                   <li>Python</li>
@@ -527,8 +547,8 @@
               <li class="project-card">
                 <h3>Receivables system for a small business</h3>
                 <p class="project-summary">144 customers and 73 Excel templates became one app in daily use.</p>
-                <details class="project-more" open>
-                  <summary>Details</summary>
+                <button type="button" class="more-toggle" aria-expanded="false">Details</button>
+                <div class="project-more">
                 <p><strong>Challenge:</strong> A family business invoiced 144 customers from 73 separate
                     Excel templates, so tracking invoices, payments and balances was slow and easy to get
                     wrong.</p>
@@ -538,7 +558,7 @@
                     database before writing any import code, so the old templates came across into one
                     consistent model.</p>
                 
-                </details>
+                </div>
                 <p class="project-note">In daily use · Code private (family business)</p>
                 <ul class="tags">
                   <li>Python</li>
@@ -651,8 +671,8 @@
           <div class="split-main">
             <div class="skills-groups">
 
-              <details class="skill-group" open>
-                <summary><h3>Languages &amp; frameworks</h3></summary>
+              <div class="skill-group">
+                <h3><button type="button" class="skill-toggle" aria-expanded="false">Languages &amp; frameworks</button></h3>
                 <ul class="tags">
                   <li>Python</li>
                   <li>SQL</li>
@@ -663,10 +683,10 @@
                   <li>React</li>
                   <li>HTML/CSS</li>
                 </ul>
-              </details>
+              </div>
 
-              <details class="skill-group" open>
-                <summary><h3>APIs &amp; integration</h3></summary>
+              <div class="skill-group">
+                <h3><button type="button" class="skill-toggle" aria-expanded="false">APIs &amp; integration</button></h3>
                 <ul class="tags">
                   <li>REST APIs</li>
                   <li>OAuth2 (MSAL)</li>
@@ -676,10 +696,10 @@
                   <li>Postman</li>
                   <li>FIX 4.4</li>
                 </ul>
-              </details>
+              </div>
 
-              <details class="skill-group" open>
-                <summary><h3>Data engineering</h3></summary>
+              <div class="skill-group">
+                <h3><button type="button" class="skill-toggle" aria-expanded="false">Data engineering</button></h3>
                 <ul class="tags">
                   <li>ETL pipelines</li>
                   <li>Document extraction (pdfplumber)</li>
@@ -688,10 +708,10 @@
                   <li>pandas</li>
                   <li>openpyxl</li>
                 </ul>
-              </details>
+              </div>
 
-              <details class="skill-group" open>
-                <summary><h3>Databases &amp; modelling</h3></summary>
+              <div class="skill-group">
+                <h3><button type="button" class="skill-toggle" aria-expanded="false">Databases &amp; modelling</button></h3>
                 <ul class="tags">
                   <li>PostgreSQL</li>
                   <li>SQLite</li>
@@ -700,10 +720,10 @@
                   <li>Schema design</li>
                   <li>Graph modelling</li>
                 </ul>
-              </details>
+              </div>
 
-              <details class="skill-group" open>
-                <summary><h3>Testing, cloud &amp; practice</h3></summary>
+              <div class="skill-group">
+                <h3><button type="button" class="skill-toggle" aria-expanded="false">Testing, cloud &amp; practice</button></h3>
                 <ul class="tags">
                   <li>pytest</li>
                   <li>Git</li>
@@ -713,10 +733,10 @@
                   <li>Linux/bash</li>
                   <li>AI-assisted development</li>
                 </ul>
-              </details>
+              </div>
 
-              <details class="skill-group" open>
-                <summary><h3>Finance &amp; markets</h3></summary>
+              <div class="skill-group">
+                <h3><button type="button" class="skill-toggle" aria-expanded="false">Finance &amp; markets</button></h3>
                 <ul class="tags">
                   <li>Bank &amp; cash reconciliation</li>
                   <li>Accounts receivable</li>
@@ -724,32 +744,32 @@
                   <li>Futures &amp; derivatives trade lifecycle</li>
                   <li>Give-ups</li>
                 </ul>
-              </details>
+              </div>
 
-              <details class="skill-group" open>
-                <summary><h3>Working with people</h3></summary>
+              <div class="skill-group">
+                <h3><button type="button" class="skill-toggle" aria-expanded="false">Working with people</button></h3>
                 <ul class="tags">
                   <li>Requirements gathering</li>
                   <li>User training</li>
                   <li>Technical documentation</li>
                 </ul>
-              </details>
+              </div>
 
-              <details class="skill-group" open>
-                <summary><h3>Business systems</h3></summary>
+              <div class="skill-group">
+                <h3><button type="button" class="skill-toggle" aria-expanded="false">Business systems</button></h3>
                 <ul class="tags">
                   <li>Salesforce (Apex, Flow, LWC, SOQL)</li>
                   <li>Excel/VBA</li>
                 </ul>
-              </details>
+              </div>
 
-              <details class="skill-group" open>
-                <summary><h3>Spoken languages</h3></summary>
+              <div class="skill-group">
+                <h3><button type="button" class="skill-toggle" aria-expanded="false">Spoken languages</button></h3>
                 <ul class="tags">
                   <li>English (fluent)</li>
                   <li>Croatian, Bosnian and Serbian (native)</li>
                 </ul>
-              </details>
+              </div>
             </div>
           </div>
           <aside class="split-aside" aria-label="Highlights">
