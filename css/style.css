@@ -1493,8 +1493,16 @@ body,
 
 /* ---------- Phone and tablet clean-up ---------- */
 @media (max-width: 74.99rem) {
+  /* On narrower screens the side notes sit under the text, as a soft grey panel */
   .split-aside {
-    display: none; /* side notes need the wide layout */
+    margin-top: 1.5rem;
+    padding: 1rem 1.1rem 0.25rem;
+    background: var(--card);
+    border-radius: var(--radius);
+  }
+
+  .split-aside p {
+    margin-bottom: 1rem;
   }
 }
 
@@ -1576,5 +1584,176 @@ body,
   .article-card,
   .skill-group {
     padding: 1rem;
+  }
+}
+
+/* Side notes: darker text, grey labels, roomier panel */
+.split-aside {
+  color: #2b2b2b;
+}
+
+.split-aside h3 {
+  color: var(--faint);
+}
+
+@media (max-width: 74.99rem) {
+  .split-aside {
+    padding: 1.5rem 1.5rem 0.75rem;
+  }
+
+  .split-aside p {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Phone/tablet: black panel with more space around it */
+@media (max-width: 74.99rem) {
+  .split-aside {
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding: 2rem 1.75rem 0.75rem;
+    background: #1d1d1f;
+    color: #f5f5f7;
+  }
+
+  .split-aside h3 {
+    color: #a1a1a6;
+  }
+
+  .split-aside a {
+    color: #ffffff;
+  }
+
+  .split-aside p {
+    margin-bottom: 1.75rem;
+  }
+}
+
+/* Phone/tablet: the notes become a full-width black band, square, with space above */
+@media (max-width: 74.99rem) {
+  .split-aside {
+    margin-top: 3.5rem;
+    margin-bottom: 0.5rem;
+    margin-inline: -4rem;
+    padding: 2.25rem 4rem 1rem;
+    border-radius: 0;
+  }
+}
+
+@media (max-width: 63.99rem) {
+  .split-aside {
+    margin-inline: -2rem;
+    padding-inline: 2rem;
+  }
+}
+
+@media (max-width: 47.99rem) {
+  .split-aside {
+    margin-inline: -1.25rem;
+    padding-inline: 1.25rem;
+  }
+}
+
+/* Phone/tablet band: light silver instead of black */
+@media (max-width: 74.99rem) {
+  .split-aside {
+    background: #e8e8ec;
+    color: #2b2b2b;
+  }
+
+  .split-aside h3 {
+    color: #6e6e73;
+  }
+
+  .split-aside a {
+    color: var(--heading);
+  }
+}
+
+/* Wider side margins for a more breathable page */
+.main-content {
+  padding-inline: 1.75rem;
+}
+
+@media (min-width: 48rem) {
+  .main-content {
+    padding-inline: 3rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  .main-content {
+    padding-inline: 5rem;
+  }
+}
+
+/* keep the silver band edge to edge with the new margins */
+@media (max-width: 74.99rem) {
+  .split-aside {
+    margin-inline: -5rem;
+    padding-inline: 5rem;
+  }
+}
+
+@media (max-width: 63.99rem) {
+  .split-aside {
+    margin-inline: -3rem;
+    padding-inline: 3rem;
+  }
+}
+
+@media (max-width: 47.99rem) {
+  .split-aside {
+    margin-inline: -1.75rem;
+    padding-inline: 1.75rem;
+  }
+}
+
+/* Phone/tablet band: lighter grey */
+@media (max-width: 74.99rem) {
+  .split-aside {
+    background: #f4f4f6;
+  }
+}
+
+/* Experience: more room between companies, roles and bullets */
+.company-group {
+  margin-bottom: 5rem;
+}
+
+.company-header {
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.5rem;
+}
+
+.role-item {
+  margin-bottom: 3.25rem;
+}
+
+.role-header {
+  margin-bottom: 1.1rem;
+}
+
+.role-bullets {
+  margin: 1.1rem 0 1.5rem;
+}
+
+.role-bullets li {
+  margin-bottom: 0.75rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 47.99rem) {
+  .company-group {
+    margin-bottom: 4rem;
+  }
+
+  .role-item {
+    margin-bottom: 2.75rem;
+  }
+
+  .role-bullets li {
+    margin-bottom: 0.65rem;
+    line-height: 1.65;
   }
 }
