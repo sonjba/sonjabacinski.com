@@ -117,130 +117,137 @@
         </p>
 
         <p>
-          <a href="does-the-graph-earn-its-cost.html">My first article</a> argued that a model
-          should follow the questions you intend to ask. This one is about how I found those
-          questions, and how they turned into a graph. It's a design, not a result. Nothing here
-          is built yet.
+          <a href="does-the-graph-earn-its-cost.html">My first article</a> ended on one idea: the
+          question comes first. My question was reconciliation. But reconciliation isn't one
+          question. It's a group of questions that live in the head of the person doing it, and
+          every firm asks them a little differently. This article shows how I turned those
+          questions into a graph, and why it looks the way it does. It's a design, not a result:
+          none of this graph is built yet.
         </p>
 
         <div class="article-callout">
           <p>
-            <strong>The short version.</strong> Following each question through the data showed
-            me what the graph needs, found three gaps before I wrote any graph code, and found
-            two links that no question uses. It also gave me a rule for the agent later: a
-            pattern that repeats can become a rule only if it's how things normally work. A
-            mistake that repeats should be fixed where it starts, not automated.
+            <strong>The short version.</strong> Most questions in a reconciliation are walks
+            through the records: from a bank line to our entry, to the portfolio, to the client.
+            So I built the graph from those walks, with each step stored once as a named link.
+            Every decision is stored too, as a finding linked to the records it's about. That's
+            what will let an AI agent explain a difference instead of only flagging it.
           </p>
         </div>
 
         <h2>1. The outcome is not the question</h2>
 
         <p>
-          The question I started with was: do the firm's closing balance and the bank's agree? I
-          thought that was the question until I realised a sum answers it. No graph needed.
+          The question I started with was: do the firm's closing balance and the bank's agree?
+          That's the purpose of a reconciliation. If the statements looked the same every month,
+          reconciliations wouldn't sound so terrible. But agreeing the closing balance isn't just
+          checking the final amount. It's checking every amount on both pages: joining one end to
+          the other, and making sense of every line on the way. That's the outcome.
         </p>
 
         <p>
-          That's the outcome. The job is what the person closing the month does to get there,
-          and it's a sequence of questions. Which of our entries is this bank line? Why does this
-          one differ? Whose money is it? Can I sign this off? A model is only as good as the
-          question behind it, so knowing what to ask is the core of the work. I decided to model
-          those.
+          So it isn't a question about a moment in time, like the balance on the last day of the
+          month. It's a question about process: how is a reconciliation actually done?
+        </p>
+
+        <p>
+          The job is what the person closing the month does to get there, and it's a sequence of
+          questions. Which of our entries is this bank line? Why does this one differ? Whose money
+          is it? Can I sign this off? That's the process I wanted to capture, not the outcome.
+        </p>
+
+        <p>
+          A model can only show a process in as much detail as the questions you ask about it:
+          what happens, why, and how. So knowing what to ask is the core of the work.
         </p>
 
         <p>
           But where do good questions come from? At first it felt like a circle. You rarely ask a
           question you think can't be answered, and you can't search for a tool if you don't know
-          what to ask.
+          what to ask. It turned out to be a loop, and you can step in from either side.
         </p>
 
         <p>
-          It turned out to be a loop, and you can step in from either side. I stepped in from the
-          tool side. I already knew from my thesis that keeping dates on records and links lets
-          you ask about order and time, so "what did the firm know, and when?" felt like a fair
-          question. The risk on that side is asking things only because the tool can answer
-          them. A graph could track a live balance, but that isn't the job of the person closing
-          the month, so I left it out. The job comes in from the other side. The person closing
-          the month asks "whose money is this?" without knowing anything about graphs. When I
-          answered those questions by hand, the answers followed links from one record to the
-          next, sometimes five links long. That's the shape a graph is built for.
+          When I answered the questions by hand, most answers were a walk through the records:
+          from the bank line to our entry, to the portfolio, to the client who owns it, sometimes
+          five steps long. That walk is the logic of the reconciliation. Usually it lives in
+          someone's head, or gets rebuilt with lookups in every month's spreadsheet. And every
+          firm walks it a little differently, with matching rules nobody ever wrote down. That's
+          why the logic has to come from the firm's own process, not from a template.
         </p>
 
         <p>
-          The same data could sit in tables, and my first article showed that the connections
-          are there whichever way you store them. What the graph changes is where the logic of
-          the job lives. The links the person follows are stored once, with names, instead of
-          being worked out again in every query. The rules and the arithmetic still live in code,
-          but the graph holds how the records connect, and that is the logic the system is built
-          around.
+          A graph stores those steps once, as named links between records. My first article showed
+          that the connections are there however you store the data. What the graph changes is
+          where the logic lives: the path the person follows is written into the data model, so
+          the system follows the same path. The rules and the arithmetic stay in code.
         </p>
 
         <p>
-          So knowing the tools widens the questions you can imagine, and the job decides which
-          ones are worth building. Experience is going round that loop many times, until you
-          recognise the shapes faster and start noticing new questions.
+          Knowing the tools widens the questions you can imagine, and the job decides which ones
+          are worth building. Experience is going round that loop many times, until you recognise
+          the shapes faster and start noticing new questions.
         </p>
 
-        <h2>2. Following the person closing June</h2>
+        <h2>2. What kind of graph answers a process</h2>
 
         <p>
-          The first thing they need is a starting point: what did the firm say its balance was on
-          31 May? The firm records it, £250,000.00, but my graph had nowhere to keep it. So the
-          very first question showed a gap. The firm's recorded balance became a node of its own,
-          with its date, so a past month's opening balance can still be found later.
+          Graphs are built for different kinds of questions, so before drawing anything I had to
+          decide which kind mine was. I had four in front of me.
         </p>
 
         <p>
-          Then they open the bank statement. Line 8 says <code>FASTER PAYMENT NAIR P</code>,
-          £5,000. Which of the firm's entries is it? Two could be: Priya Nair's £5,000 on 18 June
-          and the Hart Family Trust's £5,000 on 19 June. To decide, the person walks from the
-          bank line to a client's name:
-        </p>
-
-        <pre><code>BankEntry ←CONTAINS— BankStatement —FOR_ACCOUNT→ Account
-          ←ON_ACCOUNT— CashMovement ←HAS_MOVEMENT— Portfolio
-          ←OWNS_PORTFOLIO— Client</code></pre>
-
-        <p>
-          In plain words: start at the bank line, find its statement and the account it's for,
-          find the firm's £5,000 entries on that account, then follow each one to its portfolio
-          and the client who owns it. "NAIR P" fits Priya, so her entry is the match. The Hart
-          Family Trust's entry is ruled out, with the reason written down.
+          A temporal graph shows the whole network as it was at any moment, so it answers
+          questions about time, like a live balance or the state of everything on a given day. A
+          knowledge graph is built around meaning: what things are and how ideas relate, usually
+          with a formal vocabulary. A process graph is built around the steps of the work. And
+          process mining uses an event graph, which joins process and time: every event is its own
+          record, linked to the things it's about, and the order of events is stored as links too.
         </p>
 
         <p>
-          That's when it clicked for me. The nouns in the person's question became the nodes, and
-          the steps they took to answer it became the paths. If a step has no link in the graph,
-          the graph can't answer the question.
+          The person closing the month never asks for the whole network on a given day, so I left
+          the temporal graph out. My graph does capture knowledge, the reconciler's, but it
+          doesn't define what things mean. It records how one record leads to the next. So it's a
+          process graph.
         </p>
 
         <p>
-          It also answered the question I had been stuck on before writing any code: is a payment
-          a node, an edge or a property? The answer to "which entry is this line?" is a link
-          between a bank line and a cash entry, and a link needs a node at each end. If a payment
-          were drawn as an edge, the match would be an edge pointing at another edge. So the
-          events became nodes: the firm's cash entries, the bank's lines, and trades.
+          The steps, though, happen to dated things: a client's payment in mid-June, a trade at
+          the end of June that the bank only pays in July. So I borrowed the event graph's main
+          idea. Every payment, statement line and trade is a record of its own, with its own date,
+          linked to the client, portfolio, security or account it's about. That's also why a
+          payment can't just be a link: a match links a bank line to an entry, and a link needs a
+          record at each end.
         </p>
 
         <p>
-          Trades showed why a little later in the month. The firm bought 300 ALBN shares for
-          £3,717.00 on 29 June, and the cash moves on 1 July. The firm's books have it in June,
-          and the June statement doesn't. One trade with two dates, so the trade and its cash
-          entry are separate nodes, each keeping its own date. The fees showed it too. The bank
-          took one transfer of £1,562.50 for five fee entries the firm recorded, totalling
-          £1,598.50. Five entries matched to one bank line is easy when each entry is a node.
+          I kept the dates on the events instead of linking each event to the next one, because
+          the person asks what a line is and whose it is, not what happened straight after it. The
+          only order stored as a link is between months: when an open item clears, a link joins it
+          to the line that cleared it.
         </p>
 
         <p>
-          The questions kept coming, and the graph had a path for most of them. Why is the ATIT
-          dividend £225 short? Follow the entry to its security, which is overseas, so 15% tax
-          was taken before it was paid. The path finds the security, and code does the maths.
-          Whose money is the £36.00 fee error? Follow it to the portfolio and then to the client,
-          Amelia Hart. The bank's side knows none of these names. That's the part where I think
-          the graph earns its place.
+          Then the shape. A reconciliation has two sides, what the bank says and what the firm
+          says, and matching only ever happens across them. A bank line is matched to the firm's
+          entries, never to another bank line. Graph people call two groups that only link across
+          each other bipartite.
         </p>
 
-        <p>Put together, the graph for version 1 looks like this:</p>
+        <p>
+          And a decision isn't always about two records. One bank transfer can pay five fee
+          entries, and the decision about them has details of its own: an explanation, a status,
+          an approver. A link can't hold all that, so each decision became a record: a finding,
+          linked to every record it's about. A link that joins many records is what graph people
+          call a hyperedge, and a finding plays that part. That gives the graph two layers: the
+          records the bank and the firm sent, and the findings on top, which hold what Liquet and
+          the person decided.
+        </p>
+
+        <h2>3. What's in the graph</h2>
+
+        <p>Here is the result: the graph for version 1.</p>
 
         <figure class="article-diagram">
           <a href="../images/liquet-graph-v1.png" target="_blank" rel="noopener">
@@ -248,83 +255,161 @@
                  alt="The version 1 graph. On the firm's side: Client, Portfolio, Trade, Security, AccountBalance and CashMovement. On the bank's side: BankStatement and BankEntry. Where they meet: Account. Links built from source data connect them, including OWNS_PORTFOLIO, HAS_TRADE, HAS_MOVEMENT, SETTLED_BY, DIVIDEND_ON, ON_ACCOUNT, FOR_ACCOUNT and CONTAINS. Two links, USES_ACCOUNT and IN_SECURITY, are not used by version 1 questions. A Finding node, created by Liquet's matching, links to cash movements and bank entries through MATCHED_TO, EXPLAINS_MOVEMENT and EXPLAINS_LINE, with a planned CLEARED_BY link that needs a second month.">
           </a>
           <figcaption>
-            The version 1 graph. Blue nodes are things that persist, amber nodes are events with
-            their own date, and red is created by Liquet's matching, not read from any source.
-            Grey dotted links are not used by version 1 questions; the dotted red link is planned
-            and needs a second month. Click to enlarge.
+            The version 1 graph. Blue records last, amber records are events with their own date,
+            and red records are findings, created by Liquet and the person, not read from any
+            source. Grey dotted links are not used by version 1 questions; the dotted red link is
+            planned and needs a second month. Click to enlarge.
           </figcaption>
         </figure>
 
-        <h2>3. What the walk found</h2>
+        <p>
+          The bank's side holds what the bank sends: the monthly statement and every line on it.
+          The firm's side holds what the firm records: its clients, their portfolios, the
+          securities they hold, their trades, and every cash entry it books. The two sides meet at
+          the account, the one thing both of them describe.
+        </p>
+
+        <div class="article-table-wrap">
+          <table class="article-table">
+            <thead>
+              <tr>
+                <th>Record</th>
+                <th>Side</th>
+                <th>What it holds</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Bank statement (<code>BankStatement</code>)</td><td>Bank</td><td>One month's statement for the account</td></tr>
+              <tr><td>Bank line (<code>BankEntry</code>)</td><td>Bank</td><td>Each line on the statement: date, amount and the bank's description</td></tr>
+              <tr><td>Account (<code>Account</code>)</td><td>Where both meet</td><td>The bank account both sides describe</td></tr>
+              <tr><td>Client (<code>Client</code>)</td><td>Firm</td><td>The people and trusts the firm manages money for</td></tr>
+              <tr><td>Portfolio (<code>Portfolio</code>)</td><td>Firm</td><td>Each client's portfolio</td></tr>
+              <tr><td>Security (<code>Security</code>)</td><td>Firm</td><td>The shares and funds in the portfolios</td></tr>
+              <tr><td>Trade (<code>Trade</code>)</td><td>Firm</td><td>Each purchase or sale, with its own date</td></tr>
+              <tr><td>Cash entry (<code>CashMovement</code>)</td><td>Firm</td><td>Each payment the firm booked: date, amount and what it was for</td></tr>
+              <tr><td>Month-end balance (<code>AccountBalance</code>)</td><td>Firm</td><td>The balance the firm recorded at the end of each month</td></tr>
+              <tr><td>Finding (<code>Finding</code>)</td><td>Created by Liquet</td><td>A decision about a match or a difference: explanation, status and approver</td></tr>
+            </tbody>
+          </table>
+        </div>
 
         <p>
-          At the end of the month the person signs off. Who approved each explanation? My graph
-          couldn't say. It had a status and a date, but no name. That was the second gap.
+          The colours in the picture follow the same idea. Blue records last: clients, portfolios,
+          securities, the account. Amber records are events with their own date: cash entries,
+          statement lines and trades. Red records are findings. No source file creates them;
+          Liquet and the person do.
         </p>
 
         <p>
-          Fixing it showed me the method still needs judgement. "Who approved it" could be a
-          node (a person) or just a name on the record. The person closing the month only needs
-          the name on the report, so it's a property. If someone later asks "what else did this
-          person approve?", it would become a node. A difference went through the same test
-          earlier. On its own it's just a value on the match, but once it has an explanation, a
-          status and an approver, it becomes a node of its own, a finding.
+          The links read like the work: a client owns a portfolio, a portfolio has cash entries
+          and trades, a trade is settled by a cash entry, a dividend is paid on a security, a
+          statement contains its lines. Two links are grey, because no version 1 question uses
+          them yet. They're true and cheap, so I kept them, but they're marked rather than
+          pretended.
+        </p>
+
+        <h2>4. Following one bank line</h2>
+
+        <p>
+          Every month starts the same way: take a line from the bank statement and look for the
+          firm's entry that matches it.
         </p>
 
         <p>
-          The third gap is about time. The Hart Family Trust's £5,000 and the ALBN payment are
-          still open at the end of June. A careful person checks next month that they arrived,
-          and nothing in my graph linked one month to the next. So Liquet should remember them.
-          Each month it will start with the items still open from before and look for them on the
-          new statement first. When one turns up, a new link joins the old finding to the bank
-          line that cleared it, which also proves an explanation June could only propose. When
-          one doesn't, it stays open and gets older until a person acts.
+          When it matches by the firm's own rules, Liquet records the match
+          (<code>MATCHED_TO</code>) and moves on. Most lines end here, and a rule is enough.
         </p>
 
         <p>
-          Some of these will repeat, and a repeating pattern can become a rule. But only if it's
-          how things normally work, like a purchase agreed at the end of the month settling in
-          the next one. If the same mistake shows up every month, a rule would hide it. That
-          pattern should be fixed where it starts. Version 1 only has June, so I can't test any
-          of this until I add July.
+          When it doesn't, the question changes from "which entry is this?" to "why is it
+          different?", and the walk gets longer. A dividend arrives smaller than the firm
+          recorded: follow the entry to its security, and it's an overseas share, taxed before it
+          was paid. The fees the firm booked don't add up to what the bank took: follow the one
+          that's wrong to its portfolio and client, and you know whose money it is. Each answer is
+          stored as a finding, linked to the bank line it explains (<code>EXPLAINS_LINE</code>)
+          and to the firm's entries it explains (<code>EXPLAINS_MOVEMENT</code>). A person reads
+          it and approves it, or doesn't.
         </p>
 
         <p>
-          Then I checked it the other way round, looking for parts of the graph that no question
-          used. I found two links: from a portfolio to its account, and from a trade to its
-          security. They're cheap and true, so I kept them, but I've marked them as unused by
-          version 1 so I don't pretend they're needed.
-        </p>
-
-        <h2>4. What I haven't tested</h2>
-
-        <p>
-          None of this is built yet, and I haven't drawn the same data with payments as edges to
-          compare. Nothing here shows that the graph helps the agent either. That's the real test
-          still to come: the same month, one agent with graph tools and one with plain tables.
-          The data is also small and synthetic, with five portfolios, one account, one month and
-          six planted differences.
-        </p>
-
-        <h2>5. What I'd take from it</h2>
-
-        <p>
-          The question I started with described the end of the job. Writing down the job,
-          question by question, told me what the graph needs, and it found three gaps before I
-          wrote any graph code.
+          When it isn't clear, Liquet says so. A difference isn't always a yes or a no; often it's
+          blurry. Two entries could fit, or the evidence points both ways. Then the finding gets
+          the verdict <em>non liquet</em>: it isn't clear, so a person decides.
         </p>
 
         <p>
-          I expect the agent to join the same loop. If it answers the same question every month,
-          like whether a "CUSTODY FEE" line is a fee the firm forgot to record, that answer
-          should become a rule. The agent can suggest it, and a person approves and tests it like
-          any other rule. Then the agent's time goes to the questions nobody has answered yet.
+          Some open items explain themselves later. A share bought at the end of June is paid for
+          in July, so its finding stays open, and next month Liquet looks for it first. When the
+          payment turns up, a link joins the old finding to the line that cleared it
+          (<code>CLEARED_BY</code>). When it doesn't, the finding stays open and gets older until
+          a person acts.
         </p>
 
         <p>
-          Each good question leaves something behind in the system: a link, a node or a rule. So
-          the smarter the questions get, the better the system gets at answering them. The job is
-          what stops that from turning into a graph of everything.
+          So the graph doesn't just hold the records. It holds the reconciliation as it was done:
+          what matched, what differed, why, who signed it off, and what's still open.
+        </p>
+
+        <p>
+          Three parts of this design came from walking a month by hand before writing any graph
+          code. The month-end balance is there because the very first question needed it. Each
+          finding carries an approver because signing off needs a name. And the link between
+          months exists because open items need somewhere to go.
+        </p>
+
+        <h2>5. Asking why</h2>
+
+        <p>
+          This is where the design should pay off. Picture the person closing the month asking:
+          why doesn't this line match? In a spreadsheet, the answer is a yes or a no in a column.
+          Here, the agent will be able to walk the same links the person would: from the line to
+          the entries, to the portfolio, to the client, and to any finding already written about
+          them.
+        </p>
+
+        <p>
+          So it can answer with the path and the evidence, not just a verdict. It does that by
+          calling a small set of tested tools rather than writing its own queries, so every step
+          it takes can be checked.
+        </p>
+
+        <p>
+          Because findings stay in the graph, the agent also knows what was decided before: last
+          month's open item, an explanation a person already approved, a difference that has since
+          cleared. The reconciliation is recorded as a process, so it can be read back as one.
+        </p>
+
+        <h2>6. From findings to rules</h2>
+
+        <p>
+          A reconciliation gets faster when its patterns are shared, and findings are where the
+          patterns show. If the same question gets the same answer every month, like whether a
+          "CUSTODY FEE" line is a fee the firm forgot to record, the agent can propose it as a
+          rule. A person approves it and tests it like any other rule, and from then on it's
+          matched without the agent. That's how a firm's unwritten matching rules get written
+          down, one at a time.
+        </p>
+
+        <p>
+          But only if it's how things normally work, like a trade agreed at month-end that
+          settles the next month. If the same mistake shows up every month, a rule would only
+          hide it, so it should be fixed where it starts.
+        </p>
+
+        <p>
+          Each good question leaves something behind in the system: a link, a record or a rule.
+          So the better the questions get, the better the system gets at answering them. The job
+          is what stops that from turning into a graph of everything.
+        </p>
+
+        <h2>7. What I haven't tested</h2>
+
+        <p>
+          None of this graph is built yet, and nothing here shows that it helps the agent. That's
+          the real test still to come: the same month, one agent with graph tools and one with
+          plain tables, scored on whether it finds the right explanation and says
+          <em>non liquet</em> when it should. The data is small and synthetic, too: five
+          portfolios, one account, one month and six planted differences.
         </p>
 
         <p>If your questions are different, your graph may be too.</p>

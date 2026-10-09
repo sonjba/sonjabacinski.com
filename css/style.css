@@ -1152,3 +1152,26 @@ a:hover .arrow {
     margin-bottom: 1.75rem;
   }
 }
+.article-table-wrap {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.article-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.article-table th,
+.article-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.article-table th {
+  font-weight: 600;
+  color: var(--heading);
+}
