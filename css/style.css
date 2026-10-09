@@ -1006,6 +1006,14 @@ a:hover .arrow {
   margin: 1.5rem 0;
 }
 
+.article-diagram img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
 .article-diagram svg {
   width: 100%;
   height: auto;

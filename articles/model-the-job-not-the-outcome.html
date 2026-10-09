@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://sonjabacinski.com/articles/model-the-job-not-the-outcome">
+  <meta name="description" content="How I found the questions behind Liquet, a month-end reconciliation system, by following the person closing the month, and how those questions turned into a graph design.">
+
+  <meta property="og:title" content="Model the Job, Not the Outcome — Sonja Bacinski">
+  <meta property="og:description" content="How I found the questions behind Liquet, a month-end reconciliation system, by following the person closing the month, and how those questions turned into a graph design.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://sonjabacinski.com/articles/model-the-job-not-the-outcome">
+  <meta property="og:image" content="https://sonjabacinski.com/images/sonja.jpg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Model the Job, Not the Outcome — Sonja Bacinski">
+  <meta name="twitter:description" content="How I found the questions behind Liquet, a month-end reconciliation system, by following the person closing the month, and how those questions turned into a graph design.">
+  <meta name="twitter:image" content="https://sonjabacinski.com/images/sonja.jpg">
+
+  <title>Model the Job, Not the Outcome: Designing a Graph from Real Questions - Sonja Bacinski</title>
+  <link rel="icon" type="image/svg+xml" href="../images/sb-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Model the Job, Not the Outcome",
+    "description": "How I found the questions behind Liquet, a month-end reconciliation system, by following the person closing the month, and how those questions turned into a graph design.",
+    "datePublished": "2026-10-09",
+    "dateModified": "2026-10-09",
+    "author": {
+      "@type": "Person",
+      "name": "Sonja Bacinski",
+      "url": "https://sonjabacinski.com",
+      "sameAs": [
+        "https://www.linkedin.com/in/sonja-bacinski/",
+        "https://github.com/sonjba"
+      ]
+    },
+    "mainEntityOfPage": "https://sonjabacinski.com/articles/model-the-job-not-the-outcome"
+  }
+  </script>
+</head>
+<body>
+  <header class="top-header">
+    <div class="header-container">
+      <div class="identity">
+        <a href="../index.html#top" aria-label="Sonja Bacinski - Home">
+          <img src="../images/sonja.jpg" alt="Sonja Bacinski" class="avatar" width="44" height="44">
+        </a>
+      </div>
+
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="site-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="top-nav" id="site-nav" aria-label="In-page navigation">
+        <ul>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#projects">Projects</a></li>
+          <li><a href="index.html" class="active">Articles</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#education">Education</a></li>
+          <li><a href="../index.html#certifications">Certifications</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social-links">
+        <li>
+          <a href="https://github.com/sonjba" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/sonja-bacinski/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href="mailto:sonja.bacinski@live.com" aria-label="Email">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <article class="article">
+
+      <a href="index.html" class="article-back">&larr; All articles</a>
+
+      <header class="article-header">
+        <p class="article-eyebrow">Data &amp; Graph Engineering</p>
+        <h1 class="article-title">Model the Job, Not the Outcome</h1>
+        <p class="article-dek">
+          I wanted my graph to answer the questions the person closing the month actually asks.
+          So I wrote those questions down and followed each one through the data.
+        </p>
+        <p class="article-meta">Sonja Bacinski · 9 October 2026</p>
+      </header>
+
+      <div class="article-body">
+
+        <p>
+          I'm building <a href="https://github.com/sonjba/Liquet" target="_blank" rel="noopener">Liquet</a>
+          in public. Once a month it reconciles a firm's cash records against its bank statement.
+          Rules match what they can, an AI agent investigates what's left, and a person approves.
+          The data is synthetic, for a made-up wealth manager.
+        </p>
+
+        <p>
+          <a href="does-the-graph-earn-its-cost.html">My first article</a> argued that a model
+          should follow the questions you intend to ask. This one is about how I found those
+          questions, and how they turned into a graph. It's a design, not a result. Nothing here
+          is built yet.
+        </p>
+
+        <div class="article-callout">
+          <p>
+            <strong>The short version.</strong> Following each question through the data showed
+            me what the graph needs, found three gaps before I wrote any graph code, and found
+            two links that no question uses. It also gave me a rule for the agent later: a
+            pattern that repeats can become a rule only if it's how things normally work. A
+            mistake that repeats should be fixed where it starts, not automated.
+          </p>
+        </div>
+
+        <h2>1. The outcome is not the question</h2>
+
+        <p>
+          The question I started with was: do the firm's closing balance and the bank's agree? I
+          thought that was the question until I realised a sum answers it. No graph needed.
+        </p>
+
+        <p>
+          That's the outcome. The job is what the person closing the month does to get there,
+          and it's a sequence of questions. Which of our entries is this bank line? Why does this
+          one differ? Whose money is it? Can I sign this off? A model is only as good as the
+          question behind it, so knowing what to ask is the core of the work. I decided to model
+          those.
+        </p>
+
+        <p>
+          But where do good questions come from? At first it felt like a circle. You rarely ask a
+          question you think can't be answered, and you can't search for a tool if you don't know
+          what to ask.
+        </p>
+
+        <p>
+          It turned out to be a loop, and you can step in from either side. I stepped in from the
+          tool side. I already knew from my thesis that keeping dates on records and links lets
+          you ask about order and time, so "what did the firm know, and when?" felt like a fair
+          question. The risk on that side is asking things only because the tool can answer
+          them. A graph could track a live balance, but that isn't the job of the person closing
+          the month, so I left it out. The job comes in from the other side. The person closing
+          the month asks "whose money is this?" without knowing anything about graphs. When I
+          answered those questions by hand, the answers followed links from one record to the
+          next, sometimes five links long. That's the shape a graph is built for.
+        </p>
+
+        <p>
+          The same data could sit in tables, and my first article showed that the connections
+          are there whichever way you store them. What the graph changes is where the logic of
+          the job lives. The links the person follows are stored once, with names, instead of
+          being worked out again in every query. The rules and the arithmetic still live in code,
+          but the graph holds how the records connect, and that is the logic the system is built
+          around.
+        </p>
+
+        <p>
+          So knowing the tools widens the questions you can imagine, and the job decides which
+          ones are worth building. Experience is going round that loop many times, until you
+          recognise the shapes faster and start noticing new questions.
+        </p>
+
+        <h2>2. Following the person closing June</h2>
+
+        <p>
+          The first thing they need is a starting point: what did the firm say its balance was on
+          31 May? The firm records it, £250,000.00, but my graph had nowhere to keep it. So the
+          very first question showed a gap. The firm's recorded balance became a node of its own,
+          with its date, so a past month's opening balance can still be found later.
+        </p>
+
+        <p>
+          Then they open the bank statement. Line 8 says <code>FASTER PAYMENT NAIR P</code>,
+          £5,000. Which of the firm's entries is it? Two could be: Priya Nair's £5,000 on 18 June
+          and the Hart Family Trust's £5,000 on 19 June. To decide, the person walks from the
+          bank line to a client's name:
+        </p>
+
+        <pre><code>BankEntry ←CONTAINS— BankStatement —FOR_ACCOUNT→ Account
+          ←ON_ACCOUNT— CashMovement ←HAS_MOVEMENT— Portfolio
+          ←OWNS_PORTFOLIO— Client</code></pre>
+
+        <p>
+          In plain words: start at the bank line, find its statement and the account it's for,
+          find the firm's £5,000 entries on that account, then follow each one to its portfolio
+          and the client who owns it. "NAIR P" fits Priya, so her entry is the match. The Hart
+          Family Trust's entry is ruled out, with the reason written down.
+        </p>
+
+        <p>
+          That's when it clicked for me. The nouns in the person's question became the nodes, and
+          the steps they took to answer it became the paths. If a step has no link in the graph,
+          the graph can't answer the question.
+        </p>
+
+        <p>
+          It also answered the question I had been stuck on before writing any code: is a payment
+          a node, an edge or a property? The answer to "which entry is this line?" is a link
+          between a bank line and a cash entry, and a link needs a node at each end. If a payment
+          were drawn as an edge, the match would be an edge pointing at another edge. So the
+          events became nodes: the firm's cash entries, the bank's lines, and trades.
+        </p>
+
+        <p>
+          Trades showed why a little later in the month. The firm bought 300 ALBN shares for
+          £3,717.00 on 29 June, and the cash moves on 1 July. The firm's books have it in June,
+          and the June statement doesn't. One trade with two dates, so the trade and its cash
+          entry are separate nodes, each keeping its own date. The fees showed it too. The bank
+          took one transfer of £1,562.50 for five fee entries the firm recorded, totalling
+          £1,598.50. Five entries matched to one bank line is easy when each entry is a node.
+        </p>
+
+        <p>
+          The questions kept coming, and the graph had a path for most of them. Why is the ATIT
+          dividend £225 short? Follow the entry to its security, which is overseas, so 15% tax
+          was taken before it was paid. The path finds the security, and code does the maths.
+          Whose money is the £36.00 fee error? Follow it to the portfolio and then to the client,
+          Amelia Hart. The bank's side knows none of these names. That's the part where I think
+          the graph earns its place.
+        </p>
+
+        <p>Put together, the graph for version 1 looks like this:</p>
+
+        <figure class="article-diagram">
+          <a href="../images/liquet-graph-v1.png" target="_blank" rel="noopener">
+            <img src="../images/liquet-graph-v1.png" width="1512" height="793" loading="lazy"
+                 alt="The version 1 graph. On the firm's side: Client, Portfolio, Trade, Security, AccountBalance and CashMovement. On the bank's side: BankStatement and BankEntry. Where they meet: Account. Links built from source data connect them, including OWNS_PORTFOLIO, HAS_TRADE, HAS_MOVEMENT, SETTLED_BY, DIVIDEND_ON, ON_ACCOUNT, FOR_ACCOUNT and CONTAINS. Two links, USES_ACCOUNT and IN_SECURITY, are not used by version 1 questions. A Finding node, created by Liquet's matching, links to cash movements and bank entries through MATCHED_TO, EXPLAINS_MOVEMENT and EXPLAINS_LINE, with a planned CLEARED_BY link that needs a second month.">
+          </a>
+          <figcaption>
+            The version 1 graph. Blue nodes are things that persist, amber nodes are events with
+            their own date, and red is created by Liquet's matching, not read from any source.
+            Grey dotted links are not used by version 1 questions; the dotted red link is planned
+            and needs a second month. Click to enlarge.
+          </figcaption>
+        </figure>
+
+        <h2>3. What the walk found</h2>
+
+        <p>
+          At the end of the month the person signs off. Who approved each explanation? My graph
+          couldn't say. It had a status and a date, but no name. That was the second gap.
+        </p>
+
+        <p>
+          Fixing it showed me the method still needs judgement. "Who approved it" could be a
+          node (a person) or just a name on the record. The person closing the month only needs
+          the name on the report, so it's a property. If someone later asks "what else did this
+          person approve?", it would become a node. A difference went through the same test
+          earlier. On its own it's just a value on the match, but once it has an explanation, a
+          status and an approver, it becomes a node of its own, a finding.
+        </p>
+
+        <p>
+          The third gap is about time. The Hart Family Trust's £5,000 and the ALBN payment are
+          still open at the end of June. A careful person checks next month that they arrived,
+          and nothing in my graph linked one month to the next. So Liquet should remember them.
+          Each month it will start with the items still open from before and look for them on the
+          new statement first. When one turns up, a new link joins the old finding to the bank
+          line that cleared it, which also proves an explanation June could only propose. When
+          one doesn't, it stays open and gets older until a person acts.
+        </p>
+
+        <p>
+          Some of these will repeat, and a repeating pattern can become a rule. But only if it's
+          how things normally work, like a purchase agreed at the end of the month settling in
+          the next one. If the same mistake shows up every month, a rule would hide it. That
+          pattern should be fixed where it starts. Version 1 only has June, so I can't test any
+          of this until I add July.
+        </p>
+
+        <p>
+          Then I checked it the other way round, looking for parts of the graph that no question
+          used. I found two links: from a portfolio to its account, and from a trade to its
+          security. They're cheap and true, so I kept them, but I've marked them as unused by
+          version 1 so I don't pretend they're needed.
+        </p>
+
+        <h2>4. What I haven't tested</h2>
+
+        <p>
+          None of this is built yet, and I haven't drawn the same data with payments as edges to
+          compare. Nothing here shows that the graph helps the agent either. That's the real test
+          still to come: the same month, one agent with graph tools and one with plain tables.
+          The data is also small and synthetic, with five portfolios, one account, one month and
+          six planted differences.
+        </p>
+
+        <h2>5. What I'd take from it</h2>
+
+        <p>
+          The question I started with described the end of the job. Writing down the job,
+          question by question, told me what the graph needs, and it found three gaps before I
+          wrote any graph code.
+        </p>
+
+        <p>
+          I expect the agent to join the same loop. If it answers the same question every month,
+          like whether a "CUSTODY FEE" line is a fee the firm forgot to record, that answer
+          should become a rule. The agent can suggest it, and a person approves and tests it like
+          any other rule. Then the agent's time goes to the questions nobody has answered yet.
+        </p>
+
+        <p>
+          Each good question leaves something behind in the system: a link, a node or a rule. So
+          the smarter the questions get, the better the system gets at answering them. The job is
+          what stops that from turning into a graph of everything.
+        </p>
+
+        <p>If your questions are different, your graph may be too.</p>
+
+        <p>
+          The project is at
+          <a href="https://github.com/sonjba/Liquet" target="_blank" rel="noopener">github.com/sonjba/Liquet</a>.
+          The first article is
+          <a href="does-the-graph-earn-its-cost.html">Does the Graph Earn Its Cost?</a>
+        </p>
+
+        <p class="article-note">
+          A note on how I wrote this: the design decisions and the data are mine. I used AI tools
+          (Claude) to help me edit the text, as English is not my first language.
+        </p>
+
+      </div>
+
+      <a href="index.html" class="article-back article-back-bottom">&larr; All articles</a>
+    </article>
+  </main>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
