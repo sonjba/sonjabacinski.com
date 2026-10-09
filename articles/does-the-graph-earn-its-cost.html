@@ -30,7 +30,7 @@
     "headline": "Does the Graph Earn Its Cost?",
     "description": "A graph database and a document store compared on the same lending data, with six questions asked of both.",
     "datePublished": "2026-10-01",
-    "dateModified": "2026-10-01",
+    "dateModified": "2026-10-09",
     "author": {
       "@type": "Person",
       "name": "Sonja Bacinski",
@@ -166,10 +166,10 @@
           <li><strong>Readability.</strong> Named links show how the data fits together, in a way
             both people and programs can read. That matters more now that AI tools are asked
             to query company data, because without named links they have to guess how records
-            connect. Section 6 comes back to this.</li>
+            connect. Section 7 comes back to this.</li>
           <li><strong>Algorithms.</strong> These are methods that look at the whole network at
             once, like finding groups, the most connected players, or patterns that repeat over
-            time. A follow-up article looks at one of these, temporal motifs.</li>
+            time. Section 6 looks at one of these, temporal motifs.</li>
         </ul>
 
         <p>
@@ -182,8 +182,7 @@
           That also shows something important. The same connections can live in documents,
           relational tables, a matrix or a graph database, and moving them doesn't add or lose
           any information. This stops being true once time matters, because a single matrix
-          can't say that A paid B before B paid C. For that you also need the dates, and section 5
-          comes back to this.
+          can't say that A paid B before B paid C. For that you also need the dates, and section 6 comes back to this.
         </p>
 
         <p>
@@ -674,12 +673,171 @@ FOR rule IN 1..1 OUTBOUND policy POLICY_HAS_RULE
         <p>
           A temporal graph goes one step further, because time belongs to the whole graph. You
           can ask for "the network as it was on a date" directly, without writing that query each
-          time. I didn't use one in this comparison, but Raphtory (Steer et al., 2024), which I used
-          in my thesis, supports this kind of view. My next project uses one from the start
-          (section 7).
+          time. I didn't use one in this comparison, but Raphtory (Steer et al., 2024), which I used in my thesis (section 6), supports this kind of view. Whether one helps is something I'd like to test in my next project (section 8).
         </p>
 
-        <h2>6. What I'd tell someone deciding</h2>
+        <h2>6. Beyond retrieval: temporal motifs</h2>
+
+        <p>
+          Section 1 gave three reasons people want a graph. Sections 4 and 5 covered the first,
+          retrieval, with questions I already knew how to ask, and section 7 comes back to
+          readability. Here I wanted an example of algorithms, methods that look for patterns
+          across the whole network, to show what having the graph makes possible.
+        </p>
+
+        <p>
+          I ran a first version of this on the lending data in my thesis. Here I share what I
+          took from modelling data as a temporal graph and using Raphtory: what time on a link
+          adds, how to tell which questions motifs can answer, and how to set the analysis up
+          properly.
+        </p>
+
+        <h3>What time on a link adds</h3>
+
+        <p>
+          In a temporal graph, every link carries the time it happened. Not just "A paid B", but
+          "A paid B at 10:42 on 3 March". That makes several kinds of work possible; three matter
+          here. You can look back and see the network as it was on a date, as in section 5. You
+          can find sequences: small patterns of events in a set order, within a set time. And you
+          can train models on the whole history to predict what comes next, such as which link
+          will form, a field called temporal graph machine learning. I focus on sequences found
+          with temporal motifs because they need no training, and each count is made of real
+          events you can point to. Raphtory's motif functions return the counts, though, not the
+          events behind them, at least in the version I checked, so listing those takes extra
+          work. That matters when you have to explain a result to an auditor or a regulator.
+        </p>
+
+        <h3>What temporal motifs are</h3>
+
+        <p>
+          A temporal motif is a small pattern of events that happen in a set order within a set
+          time. For example: money comes into an account, and within an hour it goes out again.
+          Paranjape, Benson, and Leskovec (2017) defined the version I used, and Arnold et al.
+          (2024) applied it to cryptocurrency payments with Raphtory, a tool built for networks
+          that change over time. Each link is one real event between two parties: who paid whom,
+          and when.
+        </p>
+
+        <h3>How to read the counts</h3>
+
+        <p>Arnold et al. give two rules for reading motif counts:</p>
+        <ul>
+          <li><strong>Don't trust one total.</strong> One very busy account or one unusual month
+            can make up most of the number. So look at each account separately, and at how the
+            counts change from month to month.</li>
+          <li><strong>Compare with chance.</strong> A business account that pays and gets paid
+            all day will show patterns by accident. So you also count the same payments, between
+            the same accounts, with their times shuffled, many times over. This is the baseline.
+            If the real count sits inside the range the shuffles produce, it's probably luck. If
+            it's well above, something real is going on.</li>
+        </ul>
+
+        <p>
+          The shuffle keeps how many payments happen in each period and only changes who paid
+          when. So it can tell you whether particular accounts line up in time, but not whether
+          there is an overall rhythm, because every shuffled version keeps the same one.
+        </p>
+
+        <h3>Is it a motif question?</h3>
+
+        <p>
+          The method only helps if the question fits it. A simple test: can you tell the
+          situation as a short story, in two or three steps, with a stopwatch? "Money comes in,
+          and within an hour it goes out again." If you can, it's probably a motif question. Four
+          things have to be true:
+        </p>
+        <ul>
+          <li>Real parties act on each other: who paid whom.</li>
+          <li>The order matters: this happened, then that.</li>
+          <li>The gap matters: within minutes or days, not just at some point.</li>
+          <li>You want to know whether it happens more often than chance, which is what the
+            baseline tells you.</li>
+        </ul>
+
+        <p>Some questions sound similar but aren't motif questions:</p>
+        <ul>
+          <li><strong>Is there a rush at month-end?</strong> That's a rhythm. The baseline keeps
+            it in every shuffled version, so count per day instead.</li>
+          <li><strong>Which originator (the company that made the loans) has the most
+            arrears?</strong> That's a total, not a sequence.</li>
+          <li><strong>Are arrears rising?</strong> That's a trend in one number over time.</li>
+        </ul>
+
+        <h3>Where it's used</h3>
+
+        <p>
+          This is where the method is aimed commercially. Fraud and anti-money-laundering teams
+          look for exactly these sequences. Most patterns fall into the three families Raphtory
+          counts: stars around one account, back-and-forth between two, and triangles among
+          three.
+        </p>
+        <ul>
+          <li><strong>Pass-through.</strong> An account receives money and sends almost all of
+            it on within hours, a classic sign of an account used to move money rather than
+            hold it. Busy business accounts also receive and pay all day, so the baseline asks
+            whether the gap between money in and money out is shorter than chance would
+            give.</li>
+          <li><strong>Fan-in, fan-out.</strong> Many small deposits from different people reach
+            one account within a day, then leave as one large transfer. Or one stolen card is
+            used at many shops within minutes.</li>
+          <li><strong>Back and forth.</strong> Two accounts trade the same asset back and forth
+            to fake trading volume. Real trading partners also trade often, so the question is
+            whether the reversals come faster than chance.</li>
+          <li><strong>Round trip.</strong> Money leaves A and comes back to A through B and C,
+            making turnover look bigger than it is. VAT carousel fraud works this way.</li>
+        </ul>
+
+        <p>
+          Banks already catch many of these with simple rules, like "flag if more than X leaves
+          within Y hours". What motifs add is counting every pattern at once, for every account,
+          across several time windows, and checking each count against chance.
+        </p>
+
+        <h3>Where motifs fall short</h3>
+
+        <ul>
+          <li><strong>A count isn't a reason.</strong> A motif shows that a pattern happens more
+            often than chance, not why. A payment processor or a payroll account passes money
+            through all day, for perfectly good reasons. Motifs show where to look; you still
+            have to explain what you find.</li>
+          <li><strong>The time window is a choice.</strong> A pattern that stands out within an
+            hour can disappear within a day, and with enough windows to choose from, you can
+            find the result you wanted. So I'd pick the windows from the business question
+            before looking at the counts, and report all of them.</li>
+          <li><strong>Chance depends on the baseline.</strong> The shuffle keeps some things
+            fixed and mixes others, and a different shuffle can give a different answer. Gauvin
+            et al. (2022) describe many of these reference models; choosing one is part of the
+            analysis, not a detail.</li>
+          <li><strong>With many accounts, some stand out by luck.</strong> Check thousands of
+            accounts against the shuffled range and a few will land outside it by chance alone.
+            The more you test, the stronger the evidence each result needs.</li>
+          <li><strong>They only see small patterns.</strong> Raphtory's motif functions count
+            three events among up to three parties. A scheme that moves money through ten
+            accounts over a week needs another method, such as time-respecting paths (section
+            7).</li>
+        </ul>
+
+        <h3>Applying it in Raphtory</h3>
+
+        <p>
+          The good news is that Raphtory does the heavy lifting. It counts the patterns for each
+          account or for the whole network, and for the whole network it can try several time
+          windows in one run. It even comes with a built-in baseline: one function returns your
+          event table with only the times shuffled.
+        </p>
+
+        <p>What it can't do is decide what your data means. That part is still yours:</p>
+        <ul>
+          <li>Define what counts as one event, and do it once, in the pipeline. It's the same
+            point as section 5.</li>
+          <li>Run the shuffle many times, so you can see the range chance produces.</li>
+          <li>Check events that share a timestamp. Raphtory keeps them in the order they were
+            loaded, unless you set the order yourself, so it's worth testing how much that order
+            matters. Arnold et al. did this for payments in the same blockchain block and found
+            it moved the counts by at most about 3%.</li>
+        </ul>
+
+        <h2>7. What I'd tell someone deciding</h2>
 
         <p>
           I wouldn't migrate by default. Start by building a separate analytical layer next to the
@@ -720,7 +878,7 @@ FOR rule IN 1..1 OUTBOUND policy POLICY_HAS_RULE
           <li><strong>"Does this pattern show up more than it should?"</strong> To find a few
             events between two or three parties, close together in time, you don't need the
             whole process. You need a clean list of the events: who did what to whom, and
-            when. That's what temporal motifs are for.</li>
+            when. That's what motifs are for (section 6).</li>
           <li><strong>"Where did the money go?"</strong> To follow money from one account over
             many steps, you need the same list of events but a different method:
             time-respecting paths, which follow a link only if it happened after the previous one.
@@ -732,15 +890,14 @@ FOR rule IN 1..1 OUTBOUND policy POLICY_HAS_RULE
         <p>
           If a graph is just a matrix you can rebuild anywhere, why store it at all? You could build
           the network from the documents with a script and run the analysis in a graph library.
-          At prototype scale, that works, and for algorithms it can be exactly the right choice. It's
-          how I ran one of my thesis analyses.
+          At prototype scale, that works, and for algorithms it can be exactly the right choice. It's how I ran my own motif analysis.
         </p>
 
         <p>
           What matters is whether building the network is a lasting, tested piece of work or
           something rebuilt for each analysis. A one-off export brings back the problem from
           section 4, with the manufactured keys and name matches now living in Python scripts.
-          My own script is an example.
+          My own motif script is an example.
         </p>
 
         <p>A stored graph buys three things:</p>
@@ -788,7 +945,7 @@ FOR rule IN 1..1 OUTBOUND policy POLICY_HAS_RULE
           This is strongest against a document store where connections are conventions. It's
           much weaker against a relational database with declared foreign keys, or a semantic
           layer that defines business terms for machines, because both can state the same
-          structural facts without a graph. My model also went beyond structure: it captured when
+          structural facts without a graph. My model went beyond structure: it captured when
           each change happened, and facts the pipeline derived from the data using rules, so you
           could trace which rule applied and when. A relational database or a semantic layer can
           store all of that too. What the graph adds is that these facts are connected to the
@@ -806,29 +963,45 @@ FOR rule IN 1..1 OUTBOUND policy POLICY_HAS_RULE
           believed. I haven't tested whether that actually makes their answers more reliable.
         </p>
 
-        <h2>7. What I'm building next</h2>
+        <h2>8. What I'm building next</h2>
 
         <p>
-          That question is where my next project starts. My thesis model already captured time and
-          rule-based facts, so this builds on it rather than starting over. I'm building it publicly, with synthetic
-          data for a made-up e-money firm: its own records, its bank statements and its
-          customer balances. The question is one UK payments firms must answer every
-          business day: do the funds we hold cover what we owe customers, and if not, why?
-          The data stays where it is, and a graph layer gives each connection a clear name and
-          meaning. Rules do the matching; an AI agent investigates what's left, explains each
-          break with evidence, and a person approves it. The principle is simple: rules for what you can state, machine
-          learning for what you can't, and a graph as the shared, checkable context for both. I
-          plan to use Python, store the records
-          in a document database like the system I studied, and use Raphtory for the graph layer
-          because it has time built in. The agent runs on an LLM that calls a small set of tested
-          tools rather than writing its own queries, so you can swap the model without changing
-          the design. Then I'll test whether the agent is more reliable and more traceable
-          working through the graph layer than from the raw data. Time is part of it from the start,
-          because every reconciliation is about what was true, and what was known, on a given
-          day.
+          That question is where my next project starts. My thesis model already captured time
+          and rule-based facts, so this builds on it rather than starting over.
         </p>
 
-        <h2>8. The conclusion I can actually defend</h2>
+        <p>
+          The question it answers is an everyday one: why doesn't our cash book agree with the
+          bank statement this month? Every month, a business has to check its own records of its
+          bank account against the statement. Most of it matches; the rest has to be explained
+          by hand, which is slow and easy to get wrong. The records come from different places,
+          in different formats, and every answer has to be traceable, because an accountant or
+          auditor must be able to see why.
+        </p>
+
+        <p>
+          I'm building it publicly, with synthetic data. Rules match everything that agrees. A
+          graph layer connects each record to its match, its explanation and its history across
+          months. An AI agent investigates what's left, explains each difference with evidence
+          and suggests a correcting entry, and a person approves. The next month, the system
+          checks that timing differences actually cleared. The principle is simple: rules for
+          what you can state, the AI agent for what you can't, and a graph as the shared,
+          checkable context for both.
+        </p>
+
+        <p>
+          I plan to use Python and a document database like the system I studied. How to build
+          the graph layer is still open, and deciding that is the first research step. The agent
+          calls a small set of tested tools rather than writing its own queries, so the model
+          can be swapped without changing the design. It can't change records, every answer
+          comes with its evidence, and "I can't explain this" is an allowed answer. Then I'll
+          test whether it is more reliable and easier to trace working through the graph layer
+          than from the raw data, measured against differences planted in the synthetic data.
+          Time is part of it from the start, because every reconciliation is about what was
+          true, and what was known, on a given date.
+        </p>
+
+        <h2>9. The conclusion I can actually defend</h2>
 
         <p>
           I started this project wanting to show that the graph was better. What I can actually
@@ -844,6 +1017,31 @@ FOR rule IN 1..1 OUTBOUND policy POLICY_HAS_RULE
           looks promising but is untested. And I know what data would settle it: many investors
           and originators, not one. A lot of technical writing quietly treats the first as if it proved
           the second.
+        </p>
+
+        <p>
+          Temporal motifs are where I see the most commercial promise, and the most room to get
+          it wrong. The patterns fraud and anti-money-laundering teams look for, like money
+          passing straight through an account or coming back to where it started, are
+          motif-shaped, and Arnold et al. suggest that motif counts for each account may prove
+          useful as features for this work. Much of the published research uses cryptocurrency
+          or synthetic data, and that's to be expected: bank transaction data is confidential,
+          so it's rarely available for public research. Real-world testing is more likely to
+          happen inside companies that build for these cases. Pometry, the company behind
+          Raphtory, won the BIS Innovation Hub's 2025 Analytics Challenge by using Raphtory to
+          detect financial-crime patterns such as layering, where large incoming payments are
+          quickly spread across many accounts. Results from client work usually stay private,
+          which I think is why the public evidence looks thinner than the commercial interest.
+        </p>
+
+        <p>
+          Tools have made the method much easier to reach. With Raphtory, counting the patterns
+          for every account or the whole network, trying several time windows, and building the
+          baseline takes a few function calls rather than a research project. The tool can't
+          pick the question or read the answer. If you're thinking of using motifs, start by
+          writing your question as a short story with a stopwatch. If it doesn't fit, pick
+          another method. If it does, choose your time windows and your baseline before you look
+          at the counts, and treat every count as a place to look, not a verdict.
         </p>
 
         <p>
@@ -869,9 +1067,19 @@ FOR rule IN 1..1 OUTBOUND policy POLICY_HAS_RULE
 
         <h2>References</h2>
         <ul class="article-references">
+          <li>Arnold, N. A., Zhong, P., Ba, C. T., Steer, B., Mondragon, R., Cuadrado, F., Lambiotte,
+            R. and Clegg, R. G. (2024). Insights and caveats from mining local and global temporal
+            motifs in cryptocurrency transaction networks. <em>Scientific Reports</em>, 14,
+            26569.</li>
+          <li>Gauvin, L., Génois, M., Karsai, M., Kivelä, M., Takaguchi, T., Valdano, E. and
+            Vestergaard, C. L. (2022). Randomized reference models for temporal networks.
+            <em>SIAM Review</em>, 64(4), 763–830.</li>
           <li>ISO/IEC 25010, <em>Systems and software quality models</em>.</li>
           <li>Karwin, B. (2010). <em>SQL Antipatterns: Avoiding the Pitfalls of Database
             Programming</em>. Pragmatic Bookshelf.</li>
+          <li>Paranjape, A., Benson, A. R. and Leskovec, J. (2017). Motifs in temporal networks. In
+            <em>Proceedings of the Tenth ACM International Conference on Web Search and Data
+            Mining (WSDM)</em>, 601–610.</li>
           <li>Steer, B. et al. (2024). Raphtory: The temporal graph engine for Rust and Python.
             <em>Journal of Open Source Software</em>, 9(95), 5940.</li>
         </ul>
