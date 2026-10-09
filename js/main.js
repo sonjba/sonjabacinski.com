@@ -63,14 +63,20 @@ document.addEventListener("DOMContentLoaded", function () {
   list.appendChild(dot);
 
   const links = Array.from(nav.querySelectorAll("a"));
-  const tracked = links
+  const tracked = [];
+  links
     .filter(function (a) { return a.getAttribute("href").charAt(0) === "#"; })
-    .map(function (a) {
-      const id = a.getAttribute("href").slice(1);
-      const el = id === "top" ? document.getElementById("hero") : document.getElementById(id);
-      return el ? { link: a, el: el } : null;
-    })
-    .filter(Boolean);
+    .forEach(function (a) {
+      const ids = [a.getAttribute("href").slice(1)];
+      if (a.dataset.also) ids.push.apply(ids, a.dataset.also.split(" "));
+      ids.forEach(function (id) {
+        const el = id === "top" ? document.getElementById("hero") : document.getElementById(id);
+        if (el) tracked.push({ link: a, el: el });
+      });
+    });
+  tracked.sort(function (x, y) {
+    return x.el.getBoundingClientRect().top - y.el.getBoundingClientRect().top;
+  });
 
   function place(link) {
     if (!link) return;

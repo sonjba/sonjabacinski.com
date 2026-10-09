@@ -1373,3 +1373,11 @@ a:hover .arrow {
 #how-i-work .hero-value-prop {
   margin-bottom: var(--s-4);
 }
+
+/* Comfortable line length */
+section > p,
+.project-card p,
+.role-bullets li,
+.education-detail {
+  max-width: 70ch;
+}
