@@ -660,6 +660,11 @@ a:hover .arrow {
   z-index: 1;
 }
 
+.project-card p a {
+  position: relative;
+  z-index: 2;
+}
+
 .project-card p {
   margin-top: 0.6rem;
   font-size: 0.9rem;
