@@ -1939,3 +1939,309 @@ body,
     transform: translateY(2px) rotate(-135deg);
   }
 }
+
+/* ---------- Phone: much more breathing room ---------- */
+@media (max-width: 47.99rem) {
+  .main-content {
+    padding: 2.5rem 1.75rem 5rem;
+  }
+
+  /* between sections */
+  section {
+    margin-bottom: 4.5rem;
+    padding-bottom: 4.5rem;
+  }
+
+  .hero {
+    margin-bottom: 4.5rem;
+    padding-bottom: 4.5rem;
+  }
+
+  .section-heading {
+    margin-bottom: 2rem;
+  }
+
+  /* text */
+  body {
+    line-height: 1.8;
+  }
+
+  .split-main p,
+  section p + p {
+    margin-top: 1.4rem;
+  }
+
+  .role-bullets li,
+  .project-card p,
+  .education-detail,
+  .split-main p {
+    line-height: 1.8;
+  }
+
+  .role-bullets li {
+    margin-bottom: 1rem;
+  }
+
+  /* experience */
+  .company-group {
+    margin-bottom: 4.5rem;
+  }
+
+  .company-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.75rem;
+  }
+
+  .role-item {
+    margin-bottom: 3.5rem;
+  }
+
+  .role-header {
+    margin-bottom: 1.25rem;
+  }
+
+  .role-summary,
+  .project-summary {
+    margin-top: 0.9rem;
+    line-height: 1.7;
+  }
+
+  /* tap bars */
+  .more-toggle {
+    margin-top: 1.5rem;
+    min-height: 52px;
+  }
+
+  .project-card.is-open .project-more,
+  .role-item.is-open .role-more {
+    margin-top: 1.5rem;
+  }
+
+  /* projects */
+  .project-list {
+    gap: 3.5rem;
+  }
+
+  .project-card h3 {
+    margin-bottom: 0.25rem;
+  }
+
+  .project-note {
+    margin-top: 1.25rem;
+  }
+
+  /* chips */
+  .tags,
+  .skills {
+    gap: 0.6rem;
+    margin-top: 1.25rem;
+  }
+
+  .tags li,
+  .skills li {
+    padding: 0.3rem 0.8rem;
+  }
+
+  /* skills groups */
+  .skills-groups {
+    gap: 1.1rem;
+  }
+
+  .skill-toggle {
+    min-height: 56px;
+  }
+
+  /* education, awards */
+  .education-item + .education-item {
+    margin-top: 3rem;
+    padding-top: 3rem;
+  }
+
+  .cert-list {
+    gap: 2rem;
+  }
+
+  .testimonial-quote {
+    margin-bottom: 2rem;
+    line-height: 1.8;
+  }
+
+  .next-link {
+    margin-top: 2.5rem;
+  }
+
+  .hero-actions {
+    gap: 0.9rem;
+  }
+}
+
+/* Phone: compact inside each experience entry, generous between entries */
+@media (max-width: 47.99rem) {
+  .company-header {
+    margin-bottom: 1.25rem;
+    padding-bottom: 1.25rem;
+    align-items: center;
+  }
+
+  .company-header-info h3,
+  .company-duration,
+  .company-header-info .role-location {
+    line-height: 1.4;
+  }
+
+  .company-duration {
+    margin-top: 0.1rem;
+  }
+
+  .company-header-info .role-location {
+    margin-top: 0.4rem;
+  }
+
+  .role-header {
+    margin-bottom: 0.6rem;
+  }
+
+  .role-header h4 {
+    line-height: 1.35;
+  }
+
+  .role-date,
+  .role-location {
+    line-height: 1.4;
+    margin-top: 0.2rem;
+  }
+
+  .role-summary {
+    margin-top: 0.6rem;
+    line-height: 1.6;
+  }
+
+  .role-item .more-toggle {
+    margin-top: 1rem;
+    min-height: 48px;
+  }
+
+  .role-item .tags {
+    margin-top: 1rem;
+  }
+
+  /* the space stays between entries */
+  .role-item {
+    margin-bottom: 3.5rem;
+  }
+
+  .company-group {
+    margin-bottom: 5rem;
+  }
+}
+
+@media (max-width: 47.99rem) {
+  /* the general paragraph spacing was pushing these lines apart */
+  .role-header p + p,
+  .company-header-info p + p,
+  .role-header h4 + p {
+    margin-top: 0.2rem;
+  }
+
+  .company-header {
+    align-items: flex-start;
+  }
+}
+
+/* Phone: experience entries alternate light grey and white, edge to edge */
+@media (max-width: 47.99rem) {
+  .company-group {
+    margin-bottom: 0;
+    margin-inline: -1.75rem;
+    padding: 3rem 1.75rem;
+  }
+
+  .company-group:nth-of-type(odd) {
+    background: #f4f4f6;
+  }
+
+  .company-group:nth-of-type(odd) .more-toggle,
+  .company-group:nth-of-type(odd) .tags li {
+    background: #ffffff;
+  }
+
+  .company-group:nth-of-type(odd) .company-header {
+    border-bottom-color: #e2e2e6;
+  }
+
+  .company-group .role-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .split-main > .cv-link,
+  .cv-link {
+    margin-top: 3rem;
+  }
+}
+
+/* Phone: project cards alternate light grey and white, edge to edge */
+@media (max-width: 47.99rem) {
+  .project-list {
+    gap: 0;
+  }
+
+  .project-card {
+    margin-inline: -1.75rem;
+    padding: 3rem 1.75rem;
+    border-radius: 0;
+  }
+
+  .project-card:nth-child(odd) {
+    background: #f4f4f6;
+  }
+
+  .project-card:nth-child(odd) .more-toggle,
+  .project-card:nth-child(odd) .tags li {
+    background: #ffffff;
+  }
+}
+
+/* Education: older degrees open on tap on phones */
+.edu-summary {
+  display: none;
+}
+
+@media (max-width: 47.99rem) {
+  .edu-summary {
+    display: block;
+    margin-top: 0.6rem;
+    line-height: 1.6;
+  }
+
+  .edu-more {
+    display: none;
+  }
+
+  .education-item.is-open .edu-more {
+    display: block;
+    margin-top: 1.25rem;
+  }
+
+  .education-item.is-open > .more-toggle::after {
+    transform: translateY(2px) rotate(-135deg);
+  }
+
+  .education-item .more-toggle {
+    margin-top: 1rem;
+    min-height: 48px;
+  }
+
+  .education-item + .education-item {
+    margin-top: 2rem;
+    padding-top: 2rem;
+  }
+
+  .education-item .education-meta {
+    line-height: 1.4;
+    margin-top: 0.2rem;
+  }
+
+  .education-item h3 {
+    line-height: 1.35;
+  }
+}

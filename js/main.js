@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("click", function (e) {
   const btn = e.target.closest(".more-toggle, .skill-toggle");
   if (!btn) return;
-  const box = btn.closest(".project-card, .skill-group, .role-item");
+  const box = btn.closest(".project-card, .skill-group, .role-item, .education-item");
   if (!box) return;
   const open = box.classList.toggle("is-open");
   btn.setAttribute("aria-expanded", open ? "true" : "false");
