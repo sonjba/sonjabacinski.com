@@ -417,13 +417,18 @@
 
               <li class="project-card">
                 <h3>Email-Ingestion &amp; Reconciliation Pipeline</h3>
+                <p class="project-summary">Statement emails filed, classified and reconciled automatically. In production at Exaloan.</p>
+                <details class="project-more" open>
+                  <summary>Details</summary>
                 <p><strong>Challenge:</strong> Investment-account statements arrived by email as PDFs and
-                  spreadsheets, each partner with its own layout. Someone had to download, rename, file,
-                  read and check every one by hand.</p>
-                <p><strong>Solution:</strong> I built the pipeline that does all of it as soon as an email
-                  arrives. It renames each file from its content, files it to SharePoint, classifies every
-                  transaction and reconciles the monthly cash balance against the partner's own figures.
-                  Anything it can't identify waits for a person instead of being guessed.</p>
+                    spreadsheets, each partner with its own layout. Someone had to download, rename, file,
+                    read and check every one by hand.</p>
+                  <p><strong>Solution:</strong> I built the pipeline that does all of it as soon as an email
+                    arrives. It renames each file from its content, files it to SharePoint, classifies every
+                    transaction and reconciles the monthly cash balance against the partner's own figures.
+                    Anything it can't identify waits for a person instead of being guessed.</p>
+                
+                </details>
                 <p class="project-note">In production at Exaloan · Code private</p>
                 <ul class="tags">
                   <li>Python</li>
@@ -442,14 +447,19 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="arrow" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
                   </a>
                 </h3>
+                <p class="project-summary">FIX 4.4 allocation messages flattened into one CSV row per account.</p>
+                <details class="project-more" open>
+                  <summary>Details</summary>
                 <p><strong>Challenge:</strong> When a broker splits a block trade across client accounts,
-                  the split arrives as a FIX 4.4 AllocationInstruction: dense, nested repeating groups that
-                  are hard to check or use directly.</p>
-                <p><strong>Solution:</strong> A Python tool that parses these messages and flattens them
-                  into one CSV row per account. It resolves each party by its role, including give-ups,
-                  rejects messages whose group counts don't add up, and doesn't duplicate a message that's
-                  processed twice. Built test-first on synthetic data with pytest; gap analysis and a
-                  command line are next.</p>
+                    the split arrives as a FIX 4.4 AllocationInstruction: dense, nested repeating groups that
+                    are hard to check or use directly.</p>
+                  <p><strong>Solution:</strong> A Python tool that parses these messages and flattens them
+                    into one CSV row per account. It resolves each party by its role, including give-ups,
+                    rejects messages whose group counts don't add up, and doesn't duplicate a message that's
+                    processed twice. Built test-first on synthetic data with pytest; gap analysis and a
+                    command line are next.</p>
+                
+                </details>
                 <p class="project-note">Open source · In progress</p>
                 <ul class="tags">
                   <li>Python</li>
@@ -465,15 +475,20 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="arrow" aria-hidden="true"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
                   </a>
                 </h3>
+                <p class="project-summary">Month-end reconciliation: rules, an AI agent and a person signing off.</p>
+                <details class="project-more" open>
+                  <summary>Details</summary>
                 <p><strong>Challenge:</strong> Every month a firm checks its cash records against its bank
-                  statement. Most lines match; the rest have to be explained by hand, and an auditor has to
-                  be able to follow every decision.</p>
-                <p><strong>Solution:</strong> A reconciliation system where rules match what they can, an AI
-                  agent investigates what's left through a small set of tested tools, and a person approves
-                  each explanation. When the evidence isn't enough, the answer is <em>non liquet</em>: it
-                  isn't clear, so a person decides. Built so far: a statement reader with self-checks
-                  (totals, running balance, dates) and tests. Next: the matching rules.</p>
-                <p>Read the article: <a href="articles/model-the-job-not-the-outcome.html">Model the Job, Not the Outcome</a></p>
+                    statement. Most lines match; the rest have to be explained by hand, and an auditor has to
+                    be able to follow every decision.</p>
+                  <p><strong>Solution:</strong> A reconciliation system where rules match what they can, an AI
+                    agent investigates what's left through a small set of tested tools, and a person approves
+                    each explanation. When the evidence isn't enough, the answer is <em>non liquet</em>: it
+                    isn't clear, so a person decides. Built so far: a statement reader with self-checks
+                    (totals, running balance, dates) and tests. Next: the matching rules.</p>
+                  <p>Read the article: <a href="articles/model-the-job-not-the-outcome.html">Model the Job, Not the Outcome</a></p>
+                
+                </details>
                 <p class="project-note">Building in public · Open source · Synthetic data</p>
                 <ul class="tags">
                   <li>Python</li>
@@ -485,16 +500,21 @@
 
               <li class="project-card">
                 <h3>Graph ETL Pipeline | BSc Thesis</h3>
+                <p class="project-summary">Loan data loaded into ArangoDB as a graph: about 58,000 nodes and 110,000 edges.</p>
+                <details class="project-more" open>
+                  <summary>Details</summary>
                 <p><strong>Challenge:</strong> In a lending business, loans, borrowers and investors are
-                  tightly connected, but a document store doesn't keep those connections directly
-                  queryable. Asking "who is connected to what" means rebuilding the links through repeated
-                  lookups.</p>
-                <p><strong>Solution:</strong> I worked with developers and finance colleagues to understand
-                  the data, designed a graph schema around how an investment moves through its lifecycle,
-                  and built a Python pipeline that loads it into ArangoDB: about 58,000 nodes and 110,000
-                  edges, zero orphan edges, safe to re-run. The thesis then tested what the graph actually
-                  buys you, on six real questions.</p>
-                <p>Read the article: <a href="articles/does-the-graph-earn-its-cost.html">Does the Graph Earn Its Cost?</a></p>
+                    tightly connected, but a document store doesn't keep those connections directly
+                    queryable. Asking "who is connected to what" means rebuilding the links through repeated
+                    lookups.</p>
+                  <p><strong>Solution:</strong> I worked with developers and finance colleagues to understand
+                    the data, designed a graph schema around how an investment moves through its lifecycle,
+                    and built a Python pipeline that loads it into ArangoDB: about 58,000 nodes and 110,000
+                    edges, zero orphan edges, safe to re-run. The thesis then tested what the graph actually
+                    buys you, on six real questions.</p>
+                  <p>Read the article: <a href="articles/does-the-graph-earn-its-cost.html">Does the Graph Earn Its Cost?</a></p>
+                
+                </details>
                 <p class="project-note">Prototype · Code private, built with my employer</p>
                 <ul class="tags">
                   <li>Python</li>
@@ -506,14 +526,19 @@
 
               <li class="project-card">
                 <h3>Receivables system for a small business</h3>
+                <p class="project-summary">144 customers and 73 Excel templates became one app in daily use.</p>
+                <details class="project-more" open>
+                  <summary>Details</summary>
                 <p><strong>Challenge:</strong> A family business invoiced 144 customers from 73 separate
-                  Excel templates, so tracking invoices, payments and balances was slow and easy to get
-                  wrong.</p>
-                <p><strong>Solution:</strong> I first brought everything into one Excel system, then
-                  replaced it with an app the business now runs on every day: invoices, cancellations,
-                  credit notes, payments, a ledger for each customer and quarterly rebates. I designed the
-                  database before writing any import code, so the old templates came across into one
-                  consistent model.</p>
+                    Excel templates, so tracking invoices, payments and balances was slow and easy to get
+                    wrong.</p>
+                  <p><strong>Solution:</strong> I first brought everything into one Excel system, then
+                    replaced it with an app the business now runs on every day: invoices, cancellations,
+                    credit notes, payments, a ledger for each customer and quarterly rebates. I designed the
+                    database before writing any import code, so the old templates came across into one
+                    consistent model.</p>
+                
+                </details>
                 <p class="project-note">In daily use · Code private (family business)</p>
                 <ul class="tags">
                   <li>Python</li>
@@ -626,8 +651,8 @@
           <div class="split-main">
             <div class="skills-groups">
 
-              <div class="skill-group">
-                <h3>Languages &amp; frameworks</h3>
+              <details class="skill-group" open>
+                <summary><h3>Languages &amp; frameworks</h3></summary>
                 <ul class="tags">
                   <li>Python</li>
                   <li>SQL</li>
@@ -638,10 +663,10 @@
                   <li>React</li>
                   <li>HTML/CSS</li>
                 </ul>
-              </div>
+              </details>
 
-              <div class="skill-group">
-                <h3>APIs &amp; integration</h3>
+              <details class="skill-group" open>
+                <summary><h3>APIs &amp; integration</h3></summary>
                 <ul class="tags">
                   <li>REST APIs</li>
                   <li>OAuth2 (MSAL)</li>
@@ -651,10 +676,10 @@
                   <li>Postman</li>
                   <li>FIX 4.4</li>
                 </ul>
-              </div>
+              </details>
 
-              <div class="skill-group">
-                <h3>Data engineering</h3>
+              <details class="skill-group" open>
+                <summary><h3>Data engineering</h3></summary>
                 <ul class="tags">
                   <li>ETL pipelines</li>
                   <li>Document extraction (pdfplumber)</li>
@@ -663,10 +688,10 @@
                   <li>pandas</li>
                   <li>openpyxl</li>
                 </ul>
-              </div>
+              </details>
 
-              <div class="skill-group">
-                <h3>Databases &amp; modelling</h3>
+              <details class="skill-group" open>
+                <summary><h3>Databases &amp; modelling</h3></summary>
                 <ul class="tags">
                   <li>PostgreSQL</li>
                   <li>SQLite</li>
@@ -675,10 +700,10 @@
                   <li>Schema design</li>
                   <li>Graph modelling</li>
                 </ul>
-              </div>
+              </details>
 
-              <div class="skill-group">
-                <h3>Testing, cloud &amp; practice</h3>
+              <details class="skill-group" open>
+                <summary><h3>Testing, cloud &amp; practice</h3></summary>
                 <ul class="tags">
                   <li>pytest</li>
                   <li>Git</li>
@@ -688,10 +713,10 @@
                   <li>Linux/bash</li>
                   <li>AI-assisted development</li>
                 </ul>
-              </div>
+              </details>
 
-              <div class="skill-group">
-                <h3>Finance &amp; markets</h3>
+              <details class="skill-group" open>
+                <summary><h3>Finance &amp; markets</h3></summary>
                 <ul class="tags">
                   <li>Bank &amp; cash reconciliation</li>
                   <li>Accounts receivable</li>
@@ -699,32 +724,32 @@
                   <li>Futures &amp; derivatives trade lifecycle</li>
                   <li>Give-ups</li>
                 </ul>
-              </div>
+              </details>
 
-              <div class="skill-group">
-                <h3>Working with people</h3>
+              <details class="skill-group" open>
+                <summary><h3>Working with people</h3></summary>
                 <ul class="tags">
                   <li>Requirements gathering</li>
                   <li>User training</li>
                   <li>Technical documentation</li>
                 </ul>
-              </div>
+              </details>
 
-              <div class="skill-group">
-                <h3>Business systems</h3>
+              <details class="skill-group" open>
+                <summary><h3>Business systems</h3></summary>
                 <ul class="tags">
                   <li>Salesforce (Apex, Flow, LWC, SOQL)</li>
                   <li>Excel/VBA</li>
                 </ul>
-              </div>
+              </details>
 
-              <div class="skill-group">
-                <h3>Spoken languages</h3>
+              <details class="skill-group" open>
+                <summary><h3>Spoken languages</h3></summary>
                 <ul class="tags">
                   <li>English (fluent)</li>
                   <li>Croatian, Bosnian and Serbian (native)</li>
                 </ul>
-              </div>
+              </details>
             </div>
           </div>
           <aside class="split-aside" aria-label="Highlights">

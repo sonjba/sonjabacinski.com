@@ -1757,3 +1757,142 @@ body,
     line-height: 1.65;
   }
 }
+
+/* ---------- Phone: less to scroll ---------- */
+.project-summary {
+  display: none;
+}
+
+details.project-more > summary {
+  display: none;
+}
+
+@media (max-width: 47.99rem) {
+  /* side notes repeat the content on a phone */
+  .split-aside {
+    display: none;
+  }
+
+  .project-summary {
+    display: block;
+    margin-top: 0.35rem;
+  }
+
+  details.project-more > summary {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.6rem;
+    font-size: var(--meta-size);
+    font-weight: 600;
+    color: var(--heading);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  details.project-more > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details.project-more > summary::after {
+    content: "+";
+    font-weight: 500;
+  }
+
+  details.project-more[open] > summary::after {
+    content: "\2212";
+  }
+
+  details.project-more[open] > summary {
+    margin-bottom: 0.6rem;
+  }
+
+  section {
+    margin-bottom: 1.75rem;
+    padding-bottom: 1.75rem;
+  }
+
+  .tags,
+  .skills {
+    gap: 0.4rem;
+  }
+
+  .tags li,
+  .skills li {
+    padding: 0.2rem 0.65rem;
+    font-size: 0.75rem;
+  }
+}
+
+/* "Next section" link, phones only */
+.next-link {
+  display: none;
+}
+
+@media (max-width: 47.99rem) {
+  .next-link {
+    display: block;
+    margin-top: 1.5rem;
+    font-size: var(--meta-size);
+    font-weight: 600;
+    color: var(--heading);
+    text-decoration: none;
+  }
+}
+
+/* Skills groups: always open on desktop, tap to open on phones */
+details.skill-group > summary {
+  list-style: none;
+  cursor: default;
+  pointer-events: none;
+}
+
+details.skill-group > summary::-webkit-details-marker {
+  display: none;
+}
+
+details.skill-group > summary h3 {
+  margin: 0;
+}
+
+@media (max-width: 47.99rem) {
+  details.skill-group > summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    pointer-events: auto;
+  }
+
+  details.skill-group > summary::after {
+    content: "+";
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--heading);
+  }
+
+  details.skill-group[open] > summary::after {
+    content: "\2212";
+  }
+
+  details.skill-group {
+    padding-block: 0.9rem;
+  }
+
+  details.skill-group[open] > summary {
+    margin-bottom: 0.75rem;
+  }
+}
+
+@media (max-width: 47.99rem) {
+  details.skill-group:not([open]) > summary h3 {
+    border-bottom: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  details.skill-group[open] > summary h3 {
+    flex: 1;
+    margin-right: 0.75rem;
+  }
+}

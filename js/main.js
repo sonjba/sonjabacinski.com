@@ -118,3 +118,32 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("resize", function () { place(current); });
   update();
 });
+
+// Projects and skills: details are open on desktop, collapsed on phones
+document.addEventListener("DOMContentLoaded", function () {
+  const details = document.querySelectorAll("details.project-more, details.skill-group");
+  if (!details.length || !window.matchMedia) return;
+  const phone = window.matchMedia("(max-width: 47.99rem)");
+  function sync() {
+    details.forEach(function (d) { d.open = !phone.matches; });
+  }
+  sync();
+  if (phone.addEventListener) phone.addEventListener("change", sync);
+});
+
+// Phones: a "Next" link at the end of each section
+document.addEventListener("DOMContentLoaded", function () {
+  const sections = Array.from(document.querySelectorAll("main section[id]")).filter(function (s) {
+    return s.id !== "hero" && s.querySelector("h2.section-heading");
+  });
+  sections.forEach(function (section, i) {
+    const next = sections[i + 1];
+    if (!next) return;
+    const label = next.querySelector("h2.section-heading").textContent.trim();
+    const link = document.createElement("a");
+    link.className = "next-link";
+    link.href = "#" + next.id;
+    link.textContent = "Next: " + label + " \u2193";
+    section.appendChild(link);
+  });
+});
