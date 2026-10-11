@@ -36,6 +36,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     const ul = nav.querySelector("ul");
     ul.innerHTML = "";
+    // Phones/tablets: the sidebar link is hidden, so offer Homepage in the menu
+    const homeLi = document.createElement("li");
+    homeLi.className = "toc-home";
+    const homeA = document.createElement("a");
+    homeA.href = "../";
+    homeA.textContent = "← Homepage";
+    homeLi.appendChild(homeA);
+    ul.appendChild(homeLi);
     entries.forEach(function (e) {
       if (!e.id) return;
       const li = document.createElement("li");

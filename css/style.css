@@ -1335,6 +1335,10 @@ a:hover .arrow {
 }
 
 @media (min-width: 64rem) {
+  .top-nav .toc-home {
+    display: none;
+  }
+
   .sidebar-back {
     display: inline-block;
     font-size: 0.8rem;
