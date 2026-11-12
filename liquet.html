@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Liquet Interactive Explorer</title>
+
+  <!-- Liquet explorer styles -->
+  <link rel="stylesheet" href="css/liquet-explorer.css">
+</head>
+<body>
+
+  <!-- LIQUET INTERACTIVE EXPLORER -->
+  <section class="liquet-explorer" id="liquet-explorer">
+
+    <div class="liquet-explorer__header">
+      <p class="liquet-eyebrow">LIQUET · INTERACTIVE CASE STUDY</p>
+
+      <h2>From financial records to a human decision.</h2>
+
+      <p class="liquet-intro">
+        Explore how Liquet reconciles financial records, investigates
+        exceptions and preserves an auditable decision trail.
+      </p>
+    </div>
+
+    <div class="liquet-explorer__progress">
+      <span id="liquet-step-count" aria-live="polite">
+        STEP 1 OF 6
+      </span>
+
+      <div
+        class="liquet-progress-track"
+        role="progressbar"
+        aria-label="Explorer progress"
+        aria-valuemin="1"
+        aria-valuemax="6"
+        aria-valuenow="1"
+        id="liquet-progress"
+      >
+        <div
+          class="liquet-progress-fill"
+          id="liquet-progress-fill"
+        ></div>
+      </div>
+    </div>
+
+    <nav class="liquet-stage-nav" aria-label="Reconciliation stages">
+      <button class="liquet-stage-button is-active"
+        data-stage="0" aria-current="step" type="button">
+        01 <span>Receive</span>
+      </button>
+
+      <button class="liquet-stage-button" data-stage="1" type="button">
+        02 <span>Match</span>
+      </button>
+
+      <button class="liquet-stage-button" data-stage="2" type="button">
+        03 <span>Exceptions</span>
+      </button>
+
+      <button class="liquet-stage-button" data-stage="3" type="button">
+        04 <span>Investigate</span>
+      </button>
+
+      <button class="liquet-stage-button" data-stage="4" type="button">
+        05 <span>Review</span>
+      </button>
+
+      <button class="liquet-stage-button" data-stage="5" type="button">
+        06 <span>Close</span>
+      </button>
+    </nav>
+
+    <div class="liquet-explorer__panel">
+
+      <div class="liquet-explorer__main">
+
+        <p class="liquet-eyebrow" id="liquet-subtitle">
+          INGESTION AND VALIDATION
+        </p>
+
+        <h3 id="liquet-stage-title">The records arrive.</h3>
+
+        <p class="liquet-stage-date" id="liquet-stage-date">
+          Before matching
+        </p>
+
+        <!-- Interactive evidence diagram -->
+        <div class="liquet-diagram" id="liquet-diagram">
+
+          <div class="liquet-evidence-node" id="liquet-bank-node">
+            <span class="liquet-node-label">BANK SIDE</span>
+            <strong id="liquet-bank-text">Bank statement</strong>
+          </div>
+
+          <div class="liquet-diagram-connection" aria-hidden="true">
+            <span id="liquet-connection-label">SOURCE RECORDS</span>
+            <div class="liquet-connection-line"></div>
+          </div>
+
+          <div class="liquet-evidence-node" id="liquet-book-node">
+            <span class="liquet-node-label">BOOK / EVIDENCE SIDE</span>
+            <strong id="liquet-book-text">Firm cash entries</strong>
+          </div>
+
+          <p class="liquet-diagram-caption" id="liquet-diagram-caption">
+            Two sources. One reconciliation process.
+          </p>
+
+        </div>
+
+        <div class="liquet-status-row">
+          <span class="liquet-status-dot" id="liquet-status-dot"></span>
+          <span id="liquet-status">INPUT · Records received</span>
+        </div>
+
+        <h4>What happens at this stage?</h4>
+
+        <p id="liquet-description"></p>
+
+        <div class="liquet-detail">
+          <button
+            class="liquet-detail-toggle"
+            type="button"
+            id="liquet-detail-toggle"
+            aria-expanded="false"
+            aria-controls="liquet-detail-content"
+          >
+            <span id="liquet-detail-label">
+              Explore the technical detail
+            </span>
+            <span aria-hidden="true" id="liquet-detail-icon">+</span>
+          </button>
+
+          <div id="liquet-detail-content" hidden>
+            <p id="liquet-detail-text"></p>
+          </div>
+        </div>
+
+      </div>
+
+      <aside class="liquet-explorer__sidebar">
+        <p class="liquet-eyebrow">STAGE CHECKLIST</p>
+
+        <ol class="liquet-event-list" id="liquet-event-list"></ol>
+
+        <div class="liquet-principle">
+          <p class="liquet-eyebrow">THE PRINCIPLE</p>
+          <p id="liquet-principle-text">
+            Preserve the evidence before interpreting it.
+          </p>
+        </div>
+      </aside>
+
+    </div>
+
+    <div class="liquet-explorer__controls">
+
+      <button
+        class="liquet-control-button"
+        id="liquet-back"
+        type="button"
+        disabled
+      >
+        ← Back
+      </button>
+
+      <span class="liquet-control-hint" id="liquet-control-hint">
+        Explore the journey at your own pace.
+      </span>
+
+      <button
+        class="liquet-control-button is-primary"
+        id="liquet-next"
+        type="button"
+      >
+        Next stage →
+      </button>
+
+    </div>
+
+    <p class="liquet-explorer__footer">
+      Rules match. An agent investigates. A person approves.
+    </p>
+
+    <p class="liquet-explorer__disclaimer">
+      Interactive concept demonstration using illustrative records.
+      It is not connected to a live reconciliation engine.
+    </p>
+
+  </section>
+  <!-- END LIQUET INTERACTIVE EXPLORER -->
+
+  <!-- Liquet explorer JavaScript -->
+  <script src="liquet.js" defer></script>
+
+</body>
+</html>

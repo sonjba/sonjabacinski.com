@@ -840,6 +840,19 @@ a:hover .arrow {
   gap: var(--s-4);
 }
 
+.article-group + .article-group {
+  margin-top: var(--s-5, 3rem);
+}
+
+.article-group-heading {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--faint);
+  margin-bottom: var(--s-3);
+}
+
 .article-card {
   position: relative;
   padding: var(--s-3);
