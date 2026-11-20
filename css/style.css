@@ -2280,9 +2280,6 @@ body,
     display: none;
   }
 
-  .home section.show-all .split.d-only {
-    display: block;
-  }
 
   /* How I work: blue bar by the heading, one icon tile per habit */
   .home #how-i-work .section-heading {
@@ -2406,8 +2403,10 @@ body,
   }
 
   /* hero */
+  /* hero fills the first screen (minus the 73px header); About starts below it */
   .home .main-content > .hero {
-    min-height: 0;
+    min-height: calc(100vh - 73px);
+    min-height: calc(100svh - 73px);
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
   }
@@ -2592,38 +2591,38 @@ body,
     border-bottom: 0;
   }
 
-  .home .m-list strong {
-    color: var(--heading);
+  /* selected work: same cards as experience, without the timeline */
+  .home .m-cards {
+    margin-top: 0.6rem;
+  }
+
+  .home .m-cards > li + li {
+    margin-top: 0.75rem;
+  }
+
+  .home .m-cards > li.m-extra {
+    display: none;
+  }
+
+  .home #projects.show-all .m-cards > li.m-extra {
+    display: list-item;
+  }
+
+  .home .m-job .tags + .m-card-link {
+    margin-top: -0.3rem;
+  }
+
+  .home .m-card-link {
+    display: inline-block;
+    padding: 0 0.8rem 0.9rem;
+    font-size: 0.875rem;
     font-weight: 600;
-  }
-
-  .home .m-list > li > span:first-child {
-    color: var(--heading);
-  }
-
-  .home .m-meta {
-    display: block;
-    margin-top: 0.15rem;
-    font-size: 0.85rem;
-    color: var(--faint);
-  }
-
-  .home .m-links a {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    color: var(--heading);
-    text-decoration: none;
-  }
-
-  .home .m-links li {
-    border-bottom-color: #dcdce0;
+    color: #2563eb;
   }
 
   .home .m-show-all,
   .home .m-more-link {
-    margin-top: 0.4rem;
+    margin-top: 0.9rem;
     padding: 0;
     background: none;
     border: 0;

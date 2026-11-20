@@ -480,12 +480,74 @@
       <!-- Projects -->
       <section id="projects" aria-label="Projects">
         <h2 class="section-heading"><span class="d-only">Projects</span><span class="m-only">Selected Work</span></h2>
-        <ul class="m-only m-list m-links">
+        <ul class="m-only m-cards">
           <li>
-            <a href="liquet.html"><span><strong>Liquet</strong> &mdash; AI-assisted bank reconciliation</span><span class="m-arrow" aria-hidden="true">&rarr;</span></a>
+            <details class="m-job">
+              <summary>
+                <span class="m-job-head">
+                  <span class="m-job-title"><strong>Liquet</strong> &mdash; AI-assisted bank reconciliation</span>
+                  <span class="m-job-meta"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="1"/></svg>Building in public &middot; Synthetic data</span>
+                  <span class="m-job-meta"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg>Open source</span>
+                </span>
+              </summary>
+              <p>Month-end reconciliation: rules match what they can, an AI agent investigates what&rsquo;s left, and a person signs off. Built so far: a statement reader with self-checks and tests.</p>
+              <ul class="tags"><li>Python</li><li>LLM agents</li><li>Reconciliation</li></ul>
+              <a class="m-card-link" href="liquet.html">Explore Liquet &rarr;</a>
+            </details>
           </li>
           <li>
-            <a href="articles/does-the-graph-earn-its-cost.html"><span><strong>Graph data modelling</strong> &mdash; ArangoDB thesis</span><span class="m-arrow" aria-hidden="true">&rarr;</span></a>
+            <details class="m-job">
+              <summary>
+                <span class="m-job-head">
+                  <span class="m-job-title"><strong>Graph data modelling</strong> &mdash; ArangoDB thesis</span>
+                  <span class="m-job-meta"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="1"/></svg>Prototype &middot; BSc thesis, 2026</span>
+                  <span class="m-job-meta"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg>Code private, built with my employer</span>
+                </span>
+              </summary>
+              <p>Loan data loaded into ArangoDB as a graph: about 58,000 nodes and 110,000 edges, zero orphan edges, safe to re-run. The thesis then tested what the graph actually buys you, on six real questions.</p>
+              <ul class="tags"><li>Python</li><li>ArangoDB</li><li>Graph modelling</li><li>Raphtory</li></ul>
+              <a class="m-card-link" href="articles/does-the-graph-earn-its-cost.html">Read the article &rarr;</a>
+            </details>
+          </li>
+          <li class="m-extra">
+            <details class="m-job">
+              <summary>
+                <span class="m-job-head">
+                  <span class="m-job-title"><strong>Email-ingestion pipeline</strong> &mdash; Exaloan</span>
+                  <span class="m-job-meta"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="1"/></svg>In production at Exaloan</span>
+                  <span class="m-job-meta"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg>Code private</span>
+                </span>
+              </summary>
+              <p>Statement emails filed, classified and reconciled automatically. Anything it can&rsquo;t identify waits for a person instead of being guessed.</p>
+              <ul class="tags"><li>Python</li><li>pandas</li><li>pdfplumber</li><li>AWS Lambda</li></ul>
+            </details>
+          </li>
+          <li class="m-extra">
+            <details class="m-job">
+              <summary>
+                <span class="m-job-head">
+                  <span class="m-job-title"><strong>FIX Allocation Transformer</strong> &mdash; FIX 4.4</span>
+                  <span class="m-job-meta"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="1"/></svg>In progress</span>
+                  <span class="m-job-meta"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg>Open source</span>
+                </span>
+              </summary>
+              <p>Parses FIX 4.4 allocation messages and flattens them into one CSV row per account, rejecting messages whose group counts don&rsquo;t add up. Built test-first with pytest.</p>
+              <ul class="tags"><li>Python</li><li>FIX 4.4</li><li>pytest</li></ul>
+              <a class="m-card-link" href="https://github.com/sonjba/fix-allocation-transformer" target="_blank" rel="noopener">View on GitHub &rarr;</a>
+            </details>
+          </li>
+          <li class="m-extra">
+            <details class="m-job">
+              <summary>
+                <span class="m-job-head">
+                  <span class="m-job-title"><strong>Receivables system</strong> &mdash; small business</span>
+                  <span class="m-job-meta"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="1"/></svg>In daily use</span>
+                  <span class="m-job-meta"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg>Code private (family business)</span>
+                </span>
+              </summary>
+              <p>144 customers and 73 Excel templates became one app: invoices, credit notes, payments, a ledger for each customer and quarterly rebates.</p>
+              <ul class="tags"><li>Python</li><li>FastAPI</li><li>SQLite</li></ul>
+            </details>
           </li>
         </ul>
         <button type="button" class="m-only m-show-all" aria-expanded="false" data-closed="View all projects &rarr;" data-open="Hide projects &uarr;">View all projects &rarr;</button>
