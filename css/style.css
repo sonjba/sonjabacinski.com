@@ -2262,3 +2262,472 @@ body,
     line-height: 1.35;
   }
 }
+
+/* ---------- Homepage on a phone: one short page ----------
+   .m-only = phone-only summary blocks, .d-only = hidden on a phone.
+   Scoped to .home so article and Liquet pages are unaffected. */
+.m-only {
+  display: none;
+}
+
+@media (max-width: 47.99rem) {
+  .home .m-only {
+    display: block;
+  }
+
+  .home .d-only,
+  .home .next-link {
+    display: none;
+  }
+
+  .home section.show-all .split.d-only {
+    display: block;
+  }
+
+  /* How I work: blue bar by the heading, one icon tile per habit */
+  .home #how-i-work .section-heading {
+    margin-bottom: 1.25rem;
+    padding-left: 0.9rem;
+    border-left: 4px solid var(--accent);
+    line-height: 1.2;
+  }
+
+  /* each habit is a card that opens on tap */
+  .home .m-habit {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: #ffffff;
+  }
+
+  .home .m-habit + .m-habit {
+    margin-top: 0.75rem;
+  }
+
+  .home .m-habit[open] {
+    background: #f5f7fc;
+    border-color: #e6eaf3;
+  }
+
+  .home .m-habit summary {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.5rem 0.75rem 0.5rem 0.5rem;
+    list-style: none;
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--heading);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .home .m-habit summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .home .m-habit-title {
+    flex: 1;
+  }
+
+  .home .m-habit summary::after {
+    content: "";
+    flex: none;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-right: 2px solid var(--heading);
+    border-bottom: 2px solid var(--heading);
+    transform: translateY(-2px) rotate(45deg);
+    transition: transform 0.2s ease;
+  }
+
+  .home .m-habit[open] summary::after {
+    transform: translateY(2px) rotate(-135deg);
+  }
+
+  .home .m-habit p {
+    margin: 0;
+    padding: 0.1rem 1rem 1rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text);
+  }
+
+  .home .m-habit-icon {
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.4rem;
+    height: 2.3rem;
+    border-radius: 10px;
+    background: #eef2fa;
+  }
+
+  .home .m-habit[open] .m-habit-icon {
+    background: #e3e9f6;
+  }
+
+  .home .m-habit-icon svg {
+    width: 1.3rem;
+    height: 1.3rem;
+  }
+
+  /* header: menu button first, then the four icons */
+  .home .header-container {
+    gap: 1.1rem;
+  }
+
+  .home .social-links {
+    gap: 1.1rem;
+  }
+
+  .home .main-content {
+    padding: 0 1.5rem;
+  }
+
+  /* white page, thin divider between sections */
+  .home .main-content > section {
+    margin: 0;
+    padding: 1.75rem 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .home .main-content > #contact {
+    border-bottom: 0;
+  }
+
+  .home .section-heading {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+
+  /* hero */
+  .home .main-content > .hero {
+    min-height: 0;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .home .hero-accent-bar {
+    margin-bottom: 1.5rem;
+  }
+
+  .home .hero-name {
+    font-size: 2.4rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .home .hero-headline {
+    font-size: 1.3rem;
+    line-height: 1.3;
+    margin-bottom: 0.6rem;
+  }
+
+  .home .hero-value-prop {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .home .hero-meta {
+    margin-bottom: 1.5rem;
+  }
+
+  .home .hero-actions {
+    gap: 0.9rem;
+  }
+
+  /* about */
+  .home .m-about {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  /* short lists: experience, selected work, writing */
+  .home .m-list li {
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.94rem;
+    line-height: 1.45;
+  }
+
+  /* experience: dots on a thin line */
+  .home .m-timeline {
+    padding-left: 1.2rem;
+    margin-top: 0.6rem;
+  }
+
+  .home .m-timeline > li {
+    position: relative;
+  }
+
+  .home .m-timeline > li + li {
+    margin-top: 0.75rem;
+  }
+
+  /* dot level with each card's title */
+  .home .m-timeline > li::before {
+    content: "";
+    position: absolute;
+    left: -1.2rem;
+    top: 1.05rem;
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 50%;
+    background: var(--heading);
+  }
+
+  /* line from this dot down to the next one */
+  .home .m-timeline > li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: calc(-1.2rem + 0.3rem - 0.5px);
+    top: 1.35rem;
+    bottom: calc(-0.75rem - 1.35rem);
+    width: 1px;
+    background: #b8b8bd;
+  }
+
+  .home .m-job {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: #ffffff;
+  }
+
+  .home .m-job[open] {
+    background: #f5f7fc;
+    border-color: #e6eaf3;
+  }
+
+  .home .m-job summary {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.7rem 0.7rem 0.7rem 0.75rem;
+    list-style: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .home .m-job summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .home .m-job summary::after {
+    content: "";
+    flex: none;
+    width: 0.5rem;
+    height: 0.5rem;
+    margin-top: 0.45rem;
+    border-right: 2px solid var(--heading);
+    border-bottom: 2px solid var(--heading);
+    transform: rotate(45deg);
+    transition: transform 0.2s ease;
+  }
+
+  .home .m-job[open] summary::after {
+    margin-top: 0.65rem;
+    transform: rotate(-135deg);
+  }
+
+  .home .m-job-head {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .home .m-job-title {
+    font-size: 0.875rem;
+    line-height: 1.4;
+    color: var(--heading);
+  }
+
+  .home .m-job-title strong {
+    font-weight: 700;
+  }
+
+  .home .m-job-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.8rem;
+    line-height: 1.45;
+    color: var(--faint);
+  }
+
+  .home .m-job-meta svg {
+    flex: none;
+    width: 0.85rem;
+    height: 0.85rem;
+  }
+
+  .home .m-job p {
+    margin: 0;
+    padding: 0 0.8rem;
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: var(--text);
+  }
+
+  .home .m-job .tags {
+    margin: 0;
+    padding: 0.75rem 0.8rem 0.9rem;
+    gap: 0.4rem;
+  }
+
+  .home .m-job .tags li {
+    padding: 0.2rem 0.7rem;
+    background: #ffffff;
+    border: 1px solid var(--line);
+    font-size: 0.75rem;
+  }
+
+  .home .m-list li:last-child {
+    border-bottom: 0;
+  }
+
+  .home .m-list strong {
+    color: var(--heading);
+    font-weight: 600;
+  }
+
+  .home .m-list > li > span:first-child {
+    color: var(--heading);
+  }
+
+  .home .m-meta {
+    display: block;
+    margin-top: 0.15rem;
+    font-size: 0.85rem;
+    color: var(--faint);
+  }
+
+  .home .m-links a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    color: var(--heading);
+    text-decoration: none;
+  }
+
+  .home .m-links li {
+    border-bottom-color: #dcdce0;
+  }
+
+  .home .m-show-all,
+  .home .m-more-link {
+    margin-top: 0.4rem;
+    padding: 0;
+    background: none;
+    border: 0;
+    font: inherit;
+    font-size: 0.9rem;
+    color: #2563eb;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .home .m-writing li {
+    display: grid;
+    grid-template-columns: 5.5rem 1fr;
+    gap: 0.75rem;
+    align-items: baseline;
+  }
+
+  .home .m-writing time,
+  .home .m-writing span {
+    font-size: 0.85rem;
+    color: var(--faint);
+  }
+
+  .home .m-writing a {
+    color: var(--heading);
+    text-decoration: none;
+  }
+
+  /* skills: four compact bars */
+  .home .skills-groups {
+    gap: 0.5rem;
+  }
+
+  .home .skill-group:nth-child(n + 5) {
+    display: none;
+  }
+
+  .home .skill-group {
+    padding: 0 0.9rem;
+    background: #ffffff;
+    border-radius: 8px;
+  }
+
+  .home .skill-group h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--heading);
+  }
+
+  .home .skill-toggle {
+    min-height: 44px;
+  }
+
+  .home .skill-group.is-open .tags {
+    margin-top: 0;
+    padding: 0.6rem 0 0.8rem;
+  }
+
+  /* education: title and one meta line */
+  .home .education-item .education-detail,
+  .home .education-item .edu-summary,
+  .home .education-item .more-toggle,
+  .home .education-item .edu-more {
+    display: none;
+  }
+
+  .home .education-item h3 {
+    font-size: 1rem;
+    margin-bottom: 0;
+  }
+
+  .home .education-item .education-meta {
+    margin: 0.1rem 0 0;
+    font-size: 0.85rem;
+  }
+
+  .home .education-item + .education-item {
+    margin-top: 0.9rem;
+    padding-top: 0.9rem;
+  }
+
+  /* contact becomes the page footer */
+  .home .main-content > #contact {
+    padding-bottom: 2rem;
+  }
+
+  .home .m-footer-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--heading);
+  }
+
+  .home .m-footer p + p {
+    margin-top: 0.25rem;
+  }
+
+  .home .m-footer-links {
+    font-size: 0.9rem;
+    color: var(--faint);
+  }
+
+  .home .m-footer-links a {
+    color: #2563eb;
+  }
+}

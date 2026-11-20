@@ -24,7 +24,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body id="top">
+<body id="top" class="home">
   <header class="top-header">
     <div class="header-container">
       <div class="identity">
@@ -106,7 +106,11 @@
       <!-- About -->
       <section id="about" aria-label="About me">
         <h2 class="section-heading">About</h2>
-        <div class="split">
+        <p class="m-only m-about">
+          I started in finance and moved into software engineering, combining financial knowledge
+          with data pipelines, integrations and systems design.
+        </p>
+        <div class="split d-only">
           <div class="split-main">
           <p>
             My career started in finance. In 2018, as a finance intern in Denmark, I prepared the
@@ -161,7 +165,7 @@
       </section>
 
       <!-- What Colleagues Say -->
-      <section id="testimonials" aria-label="What colleagues say">
+      <section id="testimonials" class="d-only" aria-label="What colleagues say">
         <h2 class="section-heading">What Colleagues Say</h2>
         <div class="split">
           <div class="split-main">
@@ -185,7 +189,61 @@
       <!-- Experience -->
       <section id="experience" aria-label="Work experience">
         <h2 class="section-heading">Experience</h2>
-        <div class="split">
+        <ul class="m-only m-timeline">
+          <li>
+            <details class="m-job" open>
+              <summary>
+                <span class="m-job-head">
+                  <span class="m-job-title"><strong>Exaloan AG</strong> &mdash; Junior Software Developer</span>
+                  <span class="m-job-meta"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Jan 2025 &ndash; Jun 2026 &middot; 1 yr 6 mos</span>
+                  <span class="m-job-meta"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>London, United Kingdom &middot; Remote</span>
+                </span>
+              </summary>
+              <p>Built a pipeline that reads partner statements, classifies transactions and reconciles cash balances. Later modelled the company&rsquo;s lending data as a graph.</p>
+              <ul class="tags"><li>Python</li><li>ArangoDB</li><li>ETL</li><li>AWS Lambda</li></ul>
+            </details>
+          </li>
+          <li>
+            <details class="m-job">
+              <summary>
+                <span class="m-job-head">
+                  <span class="m-job-title"><strong>Globant</strong> &mdash; Junior Salesforce Consultant</span>
+                  <span class="m-job-meta"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Sep 2023 &ndash; Mar 2024 &middot; 7 mos</span>
+                  <span class="m-job-meta"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>London, United Kingdom &middot; On-site</span>
+                </span>
+              </summary>
+              <p>Graduate programme and Salesforce implementations for enterprise clients, alongside senior consultants.</p>
+              <ul class="tags"><li>Salesforce</li><li>Apex</li><li>Lightning Web Components</li><li>SOQL</li></ul>
+            </details>
+          </li>
+          <li>
+            <details class="m-job">
+              <summary>
+                <span class="m-job-head">
+                  <span class="m-job-title"><strong>Zolibri</strong> &mdash; Co-founder</span>
+                  <span class="m-job-meta"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Jan 2022 &ndash; Aug 2023 &middot; 1 yr 8 mos</span>
+                  <span class="m-job-meta"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>London, United Kingdom &middot; Part-time</span>
+                </span>
+              </summary>
+              <p>Co-founded an online shop for ethical and eco-friendly cosmetics, and did the market and financial analysis behind our strategy.</p>
+              <ul class="tags"><li>E-commerce</li><li>WordPress</li><li>Shopify</li><li>Market analysis</li></ul>
+            </details>
+          </li>
+          <li>
+            <details class="m-job">
+              <summary>
+                <span class="m-job-head">
+                  <span class="m-job-title"><strong>Aperian Global</strong> &mdash; Finance Intern</span>
+                  <span class="m-job-meta"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Feb 2018 &ndash; Jul 2018 &middot; 6 mos</span>
+                  <span class="m-job-meta"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Kolding, Denmark</span>
+                </span>
+              </summary>
+              <p>Supported the CFO with receivables, monthly bank reconciliations and vendor payments.</p>
+              <ul class="tags"><li>Reconciliation</li><li>Accounts receivable</li><li>Salesforce</li></ul>
+            </details>
+          </li>
+        </ul>
+        <div class="split d-only">
           <div class="split-main">
 
             <div class="company-group">
@@ -421,8 +479,17 @@
 
       <!-- Projects -->
       <section id="projects" aria-label="Projects">
-        <h2 class="section-heading">Projects</h2>
-        <div class="split">
+        <h2 class="section-heading"><span class="d-only">Projects</span><span class="m-only">Selected Work</span></h2>
+        <ul class="m-only m-list m-links">
+          <li>
+            <a href="liquet.html"><span><strong>Liquet</strong> &mdash; AI-assisted bank reconciliation</span><span class="m-arrow" aria-hidden="true">&rarr;</span></a>
+          </li>
+          <li>
+            <a href="articles/does-the-graph-earn-its-cost.html"><span><strong>Graph data modelling</strong> &mdash; ArangoDB thesis</span><span class="m-arrow" aria-hidden="true">&rarr;</span></a>
+          </li>
+        </ul>
+        <button type="button" class="m-only m-show-all" aria-expanded="false" data-closed="View all projects &rarr;" data-open="Hide projects &uarr;">View all projects &rarr;</button>
+        <div class="split d-only">
           <div class="split-main">
             <ul class="project-list">
 
@@ -575,7 +642,29 @@
       <!-- How I work -->
       <section id="how-i-work" aria-label="How I work">
         <h2 class="section-heading">How I work</h2>
-        <div class="split">
+        <div class="m-only m-habits">
+          <details class="m-habit" open>
+            <summary><span class="m-habit-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><span class="m-habit-title">Start from the person doing the job.</span></summary>
+            <p>I listen and ask questions until I understand the process completely. Before I designed Liquet&rsquo;s graph, I followed the person closing the month, question by question, and their questions became the design.</p>
+          </details>
+          <details class="m-habit">
+            <summary><span class="m-habit-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"/></svg></span><span class="m-habit-title">I&rsquo;d rather stop than guess.</span></summary>
+            <p>When I don&rsquo;t understand something, I ask instead of guessing, and I build my systems to do the same. My pipeline leaves any file it can&rsquo;t identify for a person instead of forcing it into the database. In finance, a quiet wrong answer costs more than an open question.</p>
+          </details>
+          <details class="m-habit">
+            <summary><span class="m-habit-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 10 5-10 5L2 7z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg></span><span class="m-habit-title">Build in small, tested steps.</span></summary>
+            <p>I build one piece of logic at a time and test it before I move on: the normal case, the edge cases, and the bad input that should be rejected rather than quietly accepted. Liquet&rsquo;s statement reader was built this way, with pytest.</p>
+          </details>
+          <details class="m-habit">
+            <summary><span class="m-habit-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2"/><path d="M8.5 2h7"/></svg></span><span class="m-habit-title">Go looking for new ideas, then test them.</span></summary>
+            <p>Graph databases started as my thesis topic and opened up a whole new world for me. Liquet is my next experiment: I believe a graph will help its agent find answers, but I want to see it working with my own eyes before I claim it.</p>
+          </details>
+          <details class="m-habit">
+            <summary><span class="m-habit-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/></svg></span><span class="m-habit-title">Build trust with the people I work with.</span></summary>
+            <p>I deliver what I promise, and I only promise what&rsquo;s realistic. When I build a tool, I train the people who will use it in the way they learn best, with a recording or written steps.</p>
+          </details>
+        </div>
+        <div class="split d-only">
           <div class="split-main">
             <p class="hero-value-prop">The same five habits run through everything I build.</p>
             <p>
@@ -632,7 +721,22 @@
       <!-- Writing -->
       <section id="writing" aria-label="Writing">
         <h2 class="section-heading">Writing</h2>
-        <div class="split">
+        <ul class="m-only m-list m-writing">
+          <li>
+            <time datetime="2026-10-01">1 Oct 2026</time>
+            <a href="articles/does-the-graph-earn-its-cost.html">Does the Graph Earn Its Cost?</a>
+          </li>
+          <li>
+            <time datetime="2026-10-09">9 Oct 2026</time>
+            <a href="articles/model-the-job-not-the-outcome.html">Model the Job, Not the Outcome</a>
+          </li>
+          <li>
+            <span>Medium</span>
+            <a href="https://medium.com/towards-artificial-intelligence/your-ai-agent-should-remember-the-question-not-the-answer-e7c7a5d28728" target="_blank" rel="noopener">Your AI Agent Should Remember the Question, Not the Answer</a>
+          </li>
+        </ul>
+        <a href="articles/" class="m-only m-more-link">All articles &rarr;</a>
+        <div class="split d-only">
           <div class="split-main">
             <ul class="article-list">
               <li class="article-card">
@@ -853,7 +957,7 @@
       </section>
 
       <!-- Awards & Certifications -->
-      <section id="certifications" aria-label="Awards and certifications">
+      <section id="certifications" class="d-only" aria-label="Awards and certifications">
         <h2 class="section-heading">Awards &amp; Certifications</h2>
         <div class="split">
           <div class="split-main">
@@ -877,14 +981,18 @@
       
       <!-- Contact -->
       <section id="contact" aria-label="Contact">
-        <h2 class="section-heading">Contact</h2>
-        <div class="split">
+        <h2 class="section-heading d-only">Contact</h2>
+        <div class="m-only m-footer">
+          <p class="m-footer-name">Sonja Bacinski</p>
+          <p class="m-footer-links">
+            <a href="https://github.com/sonjba" target="_blank" rel="noopener">GitHub</a> &middot;
+            <a href="https://www.linkedin.com/in/sonja-bacinski/" target="_blank" rel="noopener">LinkedIn</a> &middot;
+            <a href="https://medium.com/@sonja.bacinski" target="_blank" rel="noopener">Medium</a> &middot;
+            <a href="mailto:sonja.bacinski@live.com">Email</a>
+          </p>
+        </div>
+        <div class="split d-only">
           <div class="split-main">
-            <p>
-              If you're hiring for integration, implementation, data engineering or automation roles
-              in financial services, or you work in fintech and want to talk, I'd be glad to hear from
-              you. I'm based in London.
-            </p>
             <div class="contact-actions">
               <a href="mailto:sonja.bacinski@live.com" class="btn">
                 <span>Email me</span>

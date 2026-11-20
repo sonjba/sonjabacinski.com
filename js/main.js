@@ -137,6 +137,15 @@ document.addEventListener("click", function (e) {
   btn.setAttribute("aria-expanded", open ? "true" : "false");
 });
 
+// Phones: "View all projects" / "Read more" open the full section under the short list
+document.addEventListener("click", function (e) {
+  const btn = e.target.closest(".m-show-all");
+  if (!btn) return;
+  const open = btn.closest("section").classList.toggle("show-all");
+  btn.setAttribute("aria-expanded", open ? "true" : "false");
+  btn.textContent = open ? btn.dataset.open : btn.dataset.closed;
+});
+
 // Phones: a "Next" link at the end of each section
 document.addEventListener("DOMContentLoaded", function () {
   const sections = Array.from(document.querySelectorAll("main section[id]")).filter(function (s) {
